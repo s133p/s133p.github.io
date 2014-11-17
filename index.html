@@ -2,33 +2,25 @@
   <head>
     <title>Startup Demo</title>
     <script src="d3/d3.min.js" charset="utf-8"></script>
-    <style>
-
-      .chart rect {
-        fill: steelblue;
-      }
-
-      .chart text {
-        fill: white;
-        font: 10px sans-serif;
-        text-anchor: end;
-      }
-      .test {background: #00ff00;}
-      td {width: 100px;}
-      input {display: inline; width: 80px;}
-      #excel {width: 75%;}
-      table {display: inline; width: 100%;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="demo.css">
   </head>
   <body>
+
+    <div id="header">
+      <h1>Tur</h1>
+    </div>
+
+    <div id="main">
+      <div class="centrallink"><a href="excel.html"><img src="images/database.svg" /><br />Database</a></div>
+        <div class="centrallink"><a href="excel.html"><img src="images/note.svg"><br />File</a></div>
+        <div class="centrallink" style="margin-right:0px"><a href="excel.html"><img src="images/redshift.svg" /><br />Redshift</a></div>
+    </div>
 
     <div id = "excel">
       <table></table>
     </div>
     
-    <svg class="chart"></svg> 
     
-    
-    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
     </body>
   </html>
