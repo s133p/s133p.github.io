@@ -1,8 +1,9 @@
     .test {background: #00ff00;}
-    td {width: 100px;}
     input {display: inline; width: 80px;}
-    #excel {width: 75%; margin-left: 12.5%; margin-top: 100px;}
-    table {display: block; width: 100%;}
+    #excel {width: 100%; margin-top: 100px;}
+    #excel #mainbar {width: 100%; float: left; display:block; overflow:scroll;}
+    #excel table {width: 100%;}
+    #excel #sidebar {width: 25%; float: left; display:table-cell; background: #00FFFF; height: 100%;}
 
     body {background-color: #F3FFFF;}
     #header {background-color: #003333; width: 100%; height: 50px; position: absolute; top: 0px; left: 0px;}

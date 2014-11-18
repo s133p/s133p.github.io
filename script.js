@@ -57,7 +57,7 @@ function test (d,i,t)
       return "background: #FFFFFF;";
     }
 
-d3.selectAll("tr").selectAll("td").attr("style", function(d,i,t){return test(d,i,t) + "border: 1px solid black; text-align: center; display:block;";});
+d3.selectAll("tr").selectAll("td").attr("style", function(d,i,t){return test(d,i,t) + "border: 1px solid black; text-align: center;";});
 var tmp = d3.selectAll("tr").selectAll("td");
 
 
