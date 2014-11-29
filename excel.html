@@ -19,10 +19,11 @@
           lay = webix.ui({
             container:"layout_div",
             id:"mylayout",
-            type:"space",
+            //type:"space",
             responsive:true,
+            height: ($( document ).height()-55),
             rows:[
-                //{template:"<div id='header'/>", height: 80},
+                {template:"<div id='ribbon'/>", height: 70},
                 {cols:[
                     {template:"<div id='box'/>"},
                     {template:"<div id='sidebar'/>", width: 400}
@@ -43,14 +44,37 @@
                 { id:"Payment_Type",  header:"Payment Type", fillspace:1, editor:"text"},
                 { id:"Name", header:"Name", adjust:"data", fillspace:1, editor:"text"},
                 { id:"State", header:"State", editor:"text"},
-                { id:"Account_Created", header:"Account Created", fillspace:1, editor:"text" }
+                { id:"Account_Created", header:"Account Created", fillspace:1, editor:"text" },
+                { id:"G", header:"G", editor:"text"},
+                { id:"H", header:"H", editor:"text"},
+                { id:"I", header:"I", editor:"text"}
                 ],
             autoheight:true,
             //autowidth:true,
             url:"sales.json"
             });
+          
+          form = webix.ui({
+            view:"form", 
+            container:"ribbon",
+            //height: 5,
+            elements:[
+                {cols:[
+                    { view:"text", label:"F(x):" },
+                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/sort24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/sort24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/sort24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
+                    { view:"button", type: "image", image:"../images/sort24.png", width: 40}
+                ]}
+                ]
+            });
           });
-        
+        $('.webix_view').css("margin-left", "0px");
+        $('.webix_view').css("margin-top", "0px");
         webix.event(window, "resize", function(){ lay.adjust(); grida.adjust();  })
     </script>
   </body>

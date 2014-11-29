@@ -22,9 +22,8 @@
           }
 
 
-    .webix_view {padding: 0px!important; margin: 0px!important; overflow: scroll!important;}
-    #layout_div {padding: 0px!important; margin-left: 2%!important; margin-right: 2%!important; position: absolute; top: 55px; left: 0px; width: 96%!important; height: 100%!important;}
-    .webix_layout_space {padding: 0px!important; padding-right: -10px!important;}
-    .webix_template {padding: 0px!important; margin: 0px!important; width: 100%!important}
-*/
-    .webix_layout_line {width: 100%!important}
+    .webix_view {overflow: scroll!important; margin: 0px!important; padding: 0px!important; border: 0px!important;}
+    
+    #layout_div {margin-left: 2%!important; margin-right: 2%!important; position: absolute; top: 55px; left: 0px; width: 96%!important;}
+
+    #sidebar {background-color: #EEE!important;height: 100%;}
