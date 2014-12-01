@@ -7,7 +7,7 @@
   </head>
   <body>
       <div id="header">
-      <h1><a href="index.html">Tur</a></h1>
+      <span id="head"><a href="index.html"><h1><img src="./images/horse.png" height="80px" />Tur</h1></a></span>
     </div>
     <div id="layout_div">
         <!--<div id="box"></div>
@@ -66,12 +66,13 @@
                     { view:"text", label:"F(x):", id:"f_x" },
                     { view:"button", type: "image", image:"../images/filter24.png", width: 40},
                     { view:"button", type: "image", image:"../images/sort24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/sort24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/sort24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/filter24.png", width: 40},
-                    { view:"button", type: "image", image:"../images/sort24.png", width: 40}
+                    { view:"button", type: "image", image:"../images/chain.png", width: 40},
+                    { view:"button", type: "image", image:"../images/chart-512.png", width: 40},
+                    { view:"button", type: "image", image:"../images/integral.png", width: 40},
+                    { view:"button", type: "image", image:"../images/spark-plug.png", width: 40},
+                    { view:"button", type: "image", image:"../images/tag-1.png", width: 40},
+                    { view:"button", type: "image", image:"../images/tag-2.png", width: 40},
+                    { view:"button", type: "image", image:"../images/cube.svg", width: 40, id:'workflow'}
                 ]}
                 ]
             });
@@ -84,6 +85,10 @@
                 {
                     $("#sidebar").html("");
                 }
+            });
+            
+            $$("workflow").attachEvent("onItemClick", function (id){
+                window.location.href = './workflow.html';
             });
           
             webix.ui({
@@ -102,7 +107,7 @@
                 alert( z.column );
                 $('input').attr('value', 'potato');*/
             });
-          
+            $(".webix_image").css('background-size', '30px 30px');
           });
         $('.webix_view').css("margin-left", "0px");
         $('.webix_view').css("margin-top", "0px");
