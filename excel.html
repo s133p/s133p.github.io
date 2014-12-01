@@ -13,7 +13,11 @@
         <!--<div id="box"></div>
         <div id="sidebar"></div>-->
     </div>
-
+    
+    <div id="context_menu">
+        asdasdads    
+    </div>
+      
     <script type="text/javascript" charset="utf-8">
       var z = null;
       var x = null;
@@ -45,11 +49,11 @@
                 { id:"Price", header:"Price",editor:"text"},
                 { id:"Payment_Type",  header:"Payment Type", fillspace:1, editor:"text"},
                 { id:"Name", header:"Name", adjust:"data", fillspace:1, editor:"text"},
-                { id:"State", header:"State", editor:"text"},
+                //{ id:"State", header:"State", editor:"text"},
                 { id:"Account_Created", header:"Account Created", fillspace:1, editor:"text" },
-                { id:"G", header:"G", editor:"text"},
-                { id:"H", header:"H", editor:"text"},
-                { id:"I", header:"I", editor:"text"}
+                { id:"Country", header:"Country", editor:"text", fillspace:1},
+                { id:"H", header:"H", editor:"text"}//,
+                //{ id:"I", header:"I", editor:"text"}
                 ],
             autoheight:true,
             onContext:{},
@@ -103,11 +107,11 @@
           
             x = webix.ui({
                 view:"context",
-                data:[
-                    "Comment",
-                    "Add Trigger",
-                    "Apply Formula"
-                ],
+                body:{ 
+                    view:'list',
+                    //template:"...",
+                    data: ['test1', 'test2', 'test3']
+                },
                 left:120,
                 top:120,
                 width: 500,
