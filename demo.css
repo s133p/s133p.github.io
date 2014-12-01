@@ -27,6 +27,6 @@
     
     #layout_div {margin-left: 2%!important; margin-right: 2%!important; position: absolute; top: 80px; left: 0px; width: 96%!important;}
     #layout_div img {display: block; margin: 0 auto; margin-top: 10px;}
-    #ribbon {margin-right: -30px;}
+    #ribbon {margin-right: -30px;overflow: hidden;}
 
     #sidebar {background-color: #EEE!important;height: 100%;}

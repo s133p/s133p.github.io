@@ -101,7 +101,29 @@
                 master:"box" //  ID of a DIV container
             });
           
+            x = webix.ui({
+                view:"context",
+                data:[
+                    "Comment",
+                    "Add Trigger",
+                    "Apply Formula"
+                ],
+                left:120,
+                top:120,
+                width: 500,
+                autofocus: false,
+                master:"ribbon" //  ID of a DIV container
+            });
+          
             var myEvent = $$("f_x").attachEvent("onItemClick", function (id){
+                x.show();
+                /*z = grida.getSelectedId();
+                x = grida.getItem(z);
+                alert( z.column );
+                $('input').attr('value', 'potato');*/
+            });
+            var myEvent = $$("f_x").attachEvent("onBlur", function (id){
+                x.hide();
                 /*z = grida.getSelectedId();
                 x = grida.getItem(z);
                 alert( z.column );
