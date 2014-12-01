@@ -28,6 +28,9 @@ csv = d3.csv("sales.csv",
           for (var x in d){
             z.push(d[x].trim());
           }
+            z.push(" ");
+            z.push(" ");
+            z.push(" ");
           return z;
         });
       dCsv.push(tmp);
