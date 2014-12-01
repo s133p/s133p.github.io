@@ -16,6 +16,7 @@
 
     <script type="text/javascript" charset="utf-8">
       var z = null;
+      var x = null;
       webix.ready(function(){
           lay = webix.ui({
             container:"layout_div",
@@ -51,6 +52,7 @@
                 { id:"I", header:"I", editor:"text"}
                 ],
             autoheight:true,
+            onContext:{},
             //autowidth:true,
             url:"sales.json"
             });
@@ -61,7 +63,7 @@
             //height: 5,
             elements:[
                 {cols:[
-                    { view:"text", label:"F(x):" },
+                    { view:"text", label:"F(x):", id:"f_x" },
                     { view:"button", type: "image", image:"../images/filter24.png", width: 40},
                     { view:"button", type: "image", image:"../images/sort24.png", width: 40},
                     { view:"button", type: "image", image:"../images/filter24.png", width: 40},
@@ -83,6 +85,24 @@
                     $("#sidebar").html("");
                 }
             });
+          
+            webix.ui({
+                view:"contextmenu",
+                data:[
+                    "Comment",
+                    "Add Trigger",
+                    "Apply Formula"
+                ],
+                master:"box" //  ID of a DIV container
+            });
+          
+            var myEvent = $$("f_x").attachEvent("onItemClick", function (id){
+                /*z = grida.getSelectedId();
+                x = grida.getItem(z);
+                alert( z.column );
+                $('input').attr('value', 'potato');*/
+            });
+          
           });
         $('.webix_view').css("margin-left", "0px");
         $('.webix_view').css("margin-top", "0px");
