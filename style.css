@@ -69,8 +69,6 @@ body {
     padding-right: 32px;
 }
 
-/*.content .inner .workimg {display: block;width: 400px; height: 275px;background-color: purple; overflow: hidden;}
-*/
 .content .inner .workimg img {
     position: relative;
     object-fit: cover; 

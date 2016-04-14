@@ -1,24 +1,29 @@
 <html>
+
 <head>
-<title>.</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <title>.</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
+
 <body>
-<div id="scrollable"></div>
-<div id="container">
-    
-    <div id="contentwrap" class="">
-        <div class="content md anim" id="home"><div class="before"></div>
-            <div class="inner">
-                <div class="sectionhead">
-                    <img src="http://s133p.github.io/CV.png" class="headimg"/><br/>
-                    <hr/>
+    <div id="scrollable"></div>
+    <div id="container">
+
+        <div id="contentwrap" class="">
+            <div class="content md anim" id="home">
+                <div class="before"></div>
+                <div class="inner">
+                    <div class="sectionhead">
+                        <img src="http://s133p.github.io/CV.png" class="headimg" />
+                        <br/>
+                        <hr/>
+                    </div>
                 </div>
+                <div class="after"></div>
             </div>
-            <div class="after"></div></div>
-        <div class="content lg anim" id="work">
-            <div class="before"></div>
+            <div class="content lg anim" id="work">
+                <div class="before"></div>
                 <div class="inner anim">
                     <h2>MY WORK</h2>
                     <div class="sectionhead anim">
@@ -29,175 +34,181 @@
                         <span class='workimg anim'><img src="work/4.png" class="anim"/></span>
                     </div>
                 </div>
-            <div class="after"></div>
-        </div>
-        <div class="content md anim" id="cv">
-            <div class="before"></div>
-            <div class="inner anim">
-                <h2>SKILLS</h2>
-                <h3>GENERAL</h3>
-                <ul>
-                    <li>Design Thinking</li>
-                    <li>Excellent Written & Visual Communication</li>
-                    <li>Detail Oriented</li>
-                    <li>Efficient Workflow</li>
-                </ul>
-                <h3>3D</h3>
-                <ul>
-                    <li>Physical Modeling & Prototyping</li>
-                    <li>Modeling</li>
-                    <li>Texturing</li>
-                    <li>Lighting</li>
-                    <li>3D Rendering</li>
-                </ul>
-                <h3>2D</h3>
-                <ul>
-                    <li>Web & Print Design</li>
-                    <li>Drawing & Painting</li>
-                    <li>Typography</li>
-                </ul>
-                <h3>TECHNICAL</h3>
-                <ul>
-                    <li>Web Development</li>
-                    <li>Embedded Systems Programming</li>
-                    <li>Data-Viz / Interactive Media</li>
-                </ul>
+                <div class="after"></div>
             </div>
-            <div class="after"></div>
+            <div class="content md anim" id="cv">
+                <div class="before"></div>
+                <div class="inner anim">
+                    <h2>SKILLS</h2>
+                    <h3>GENERAL</h3>
+                    <ul>
+                        <li>Design Thinking</li>
+                        <li>Excellent Written & Visual Communication</li>
+                        <li>Detail Oriented</li>
+                        <li>Efficient Workflow</li>
+                    </ul>
+                    <h3>3D</h3>
+                    <ul>
+                        <li>Physical Modeling & Prototyping</li>
+                        <li>Modeling</li>
+                        <li>Texturing</li>
+                        <li>Lighting</li>
+                        <li>3D Rendering</li>
+                    </ul>
+                    <h3>2D</h3>
+                    <ul>
+                        <li>Web & Print Design</li>
+                        <li>Drawing & Painting</li>
+                        <li>Typography</li>
+                    </ul>
+                    <h3>TECHNICAL</h3>
+                    <ul>
+                        <li>Web Development</li>
+                        <li>Embedded Systems Programming</li>
+                        <li>Data-Viz / Interactive Media</li>
+                    </ul>
+                </div>
+                <div class="after"></div>
+            </div>
+            <div class="content sm anim" id="blog"></div>
         </div>
-        <div class="content sm anim" id="blog"></div>
+
+
+        <div id="sidenav">
+            <nav>
+                <div class='links'>
+                    <a href="#home" class="selected anim">HOME</a>
+                    <a href="#work" class="anim">WORK</a>
+                    <a href="#cv" class="anim">CV</a>
+                    <a href="#blog" class="anim">BLOG</a>
+                </div>
+            </nav>
+        </div>
+
     </div>
 
-    
-    <div id="sidenav"> 
-        <nav>
-            <div class='links'>
-                <a href="#home" class="selected anim">HOME</a>
-                <a href="#work" class="anim">WORK</a>
-                <a href="#cv" class="anim">CV</a>
-                <a href="#blog" class="anim">BLOG</a>
-            </div>
-        </nav>
-    </div>
-    
-</div>
-    
-<script src="./jquery.js"></script>
-<script>
-    
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function() {
 
-$(document).ready(function() {
+            var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    
-    function re_sz() {
-        cw = 0;
-        var lastIndex = $('.content').length - 1;
-        
-        cw = $($('.content')[lastIndex]).position().left;
+            function re_sz() {
+                cw = 0;
+                var lastIndex = $('.content').length - 1;
 
-        $('#scrollable').css('height', cw + $(window).height()-60 + 'px');
-        //$(window).scrollTop( p*h );
-    }
+                cw = $($('.content')[lastIndex]).position().left;
 
-
-    var cw = 0;
-    
-    //Resize container, and resize again if window changes
-    re_sz();
-    $(window).resize(re_sz());
-    
-    
-    //Scrolling and tabs behaviour for iphone (Horizontal scroll) & desktop (Proxy scroll vertically)
-    if(iOS){
-        $('#container').scroll(function() {
-            var scrollLeft = $('#container').scrollLeft();
-            
-            $('.content').each( function(index){
-                var l = $(this).position().left;
-                if (index!=0){l-=85;}
-                var w = $(this).width();
-
-
-                if (scrollLeft >= l && scrollLeft < l+w){
-                    var cID = $(this).attr("id") ;
-                    $('nav a').removeClass('selected');
-                    $('a[href$="#'+cID+'"]').addClass('selected');
-                    window.location.hash = cID;
-                }
-            });
-            
-        });
-    }else{
-        $(window).scroll(function(e) {
-            e.preventDefault(); 
-            var scrollTop = $(window).scrollTop();
-            $("#contentwrap").css('left', '-' + scrollTop + 'px');
-            
-            $('.content').each( function(index){
-                var l = $(this).position().left;
-                if (index!=0){l-=85;}
-                var w = $(this).width();
-
-
-                if (scrollTop >= l && scrollTop < l+w){
-                    var cID = $(this).attr("id") ;
-                    $('nav a').removeClass('selected');
-                    $('a[href$="#'+cID+'"]').addClass('selected');
-                    window.location.hash = cID;
-                }
-            });
-
-        });
-    }
-
-    
-    //Move the correct content box into position
-    function navto( n_id ) {
-        //Get left pos of element to scroll to, accounting for padding on first element
-        var ll = $(n_id).position().left;
-        if ($(this).index() != 0) {ll-=80;}
-
-        if(iOS){
-            $('#container').scrollLeft(ll);
-        }else{
-            $('#contentwrap').addClass('anim');
-            $(window).scrollTop(ll);
-            //$('#contentwrap').addClass('anim');
-            //$(window).scrollTop( (ll/cw)*$(document).height() );
-            setTimeout( function(){$('#contentwrap').removeClass('anim');}, 180);
-        }
-    }
-    
-    //Sidebar navigation
-    $('nav a').click(function(e) {
-        e.preventDefault(); 
-        navto( $(this).attr('href') );
-    });
-    
-    //Debugging stuff for testing panel sizes
-    if(iOS){}
-    else{
-        $('.content').click(function() {
-            if ( $(this).hasClass('sm') )
-            {
-                $(this).removeClass('sm');
-                $(this).addClass('md');
-            }else if ($(this).hasClass('md')) {
-                $(this).removeClass('md');
-                $(this).addClass('lg');
-            }else{
-                $(this).removeClass('lg');
-                $(this).addClass('sm');
+                $('#scrollable').css('height', cw + $(window).height() - 60 + 'px');
+                //$(window).scrollTop( p*h );
             }
-            setTimeout( re_sz, 220 );
-        });
-    }
-    
-    //If page is loaded with a target, navigate there
-    if(window.location.hash){navto(window.location.hash);}
-});
 
-</script>
+
+            var cw = 0;
+
+            //Resize container, and resize again if window changes
+            $(window).resize(re_sz());
+
+
+            //Scrolling and tabs behaviour for iphone (Horizontal scroll) & desktop (Proxy scroll vertically)
+            if (iOS) {
+                $('#container').scroll(function() {
+                    var scrollLeft = $('#container').scrollLeft();
+
+                    $('.content').each(function(index) {
+                        var l = $(this).position().left;
+                        if (index != 0) {
+                            l -= 85;
+                        }
+                        var w = $(this).width();
+
+
+                        if (scrollLeft >= l && scrollLeft < l + w) {
+                            var cID = $(this).attr("id");
+                            $('nav a').removeClass('selected');
+                            $('a[href$="#' + cID + '"]').addClass('selected');
+                            window.location.hash = cID;
+                        }
+                    });
+
+                });
+            } else {
+                $(window).scroll(function(e) {
+                    e.preventDefault();
+                    var scrollTop = $(window).scrollTop();
+                    $("#contentwrap").css('left', '-' + scrollTop + 'px');
+
+                    $('.content').each(function(index) {
+                        var l = $(this).position().left;
+                        if (index != 0) {
+                            l -= 85;
+                        }
+                        var w = $(this).width();
+
+
+                        if (scrollTop >= l && scrollTop < l + w) {
+                            var cID = $(this).attr("id");
+                            $('nav a').removeClass('selected');
+                            $('a[href$="#' + cID + '"]').addClass('selected');
+                            window.location.hash = cID;
+                        }
+                    });
+
+                });
+            }
+
+
+            //Move the correct content box into position
+            function navto(n_id) {
+                //Get left pos of element to scroll to, accounting for padding on first element
+                var ll = $(n_id).position().left;
+                if ($(this).index() != 0) {
+                    ll -= 80;
+                }
+
+                $('#contentwrap').addClass('anim');
+
+                if (iOS) {
+                    $('#container').scrollLeft(ll);
+                } else {
+                    $(window).scrollTop(ll);
+                }
+                setTimeout(function() {
+                        $('#contentwrap').removeClass('anim');
+                    }, 180);
+            }
+
+            //Sidebar navigation
+            $('nav a').click(function(e) {
+                e.preventDefault();
+                navto($(this).attr('href'));
+            });
+
+            //Debugging stuff for testing panel sizes
+            if (iOS) {} else {
+                $('.content').click(function() {
+                    if ($(this).hasClass('sm')) {
+                        $(this).removeClass('sm');
+                        $(this).addClass('md');
+                    } else if ($(this).hasClass('md')) {
+                        $(this).removeClass('md');
+                        $(this).addClass('lg');
+                    } else {
+                        $(this).removeClass('lg');
+                        $(this).addClass('sm');
+                    }
+                    setTimeout(re_sz, 220);
+                });
+            }
+
+            //If page is loaded with a target, navigate there
+            if (window.location.hash) {
+                navto(window.location.hash);
+            }
+
+            setTimeout(re_sz, 500);
+        });
+    </script>
 </body>
+
 </html>
