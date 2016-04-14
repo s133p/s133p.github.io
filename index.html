@@ -107,12 +107,13 @@ $(document).ready(function() {
     //TODO: side-tab nav for iphone
     if(iOS | !iOS){
         $('#container').scroll(function() {
-            alert('scroll!')
             var scrollLeft = $('#container').scrollLeft();
             
-            $('.content').each( function(){
+            $('.content').each( function(index){
                 var l = $(this).position().left;
-                var w = $(this).width;
+                if (index!=0){l-=85;}
+                var w = $(this).width();
+                console.log(scrollLeft-l);
 
                 if (scrollLeft > l && scrollLeft < l+w){
                     var cID = $(this).attr("id") ;
