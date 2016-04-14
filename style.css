@@ -38,6 +38,7 @@ body {
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
+    body {background-color: green!important;}
     #contentwrap {overflow:scroll!important;}
     #scrollable  {display: none;}
 }
