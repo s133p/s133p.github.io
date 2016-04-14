@@ -80,11 +80,34 @@ body {
 }
 
 .content .inner .workimg {
-    box-shadow: inset 0px 0px 10px rgba(0,0,0,.5);    
+    /*box-shadow: inset 0px 0px 8px 4px rgba(0,0,0,.35);*/
+    /*background-color: rgba(255,255,255, .2);*/
     display: inline-block;
-    width: 90%; 
-    height: 30vh;
     margin: 10px;
+    border: 4px solid rgba(255,255,255, .25);
+    /*border-bottom: 48px solid #F9F9F9;*/
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,.15);
+}
+
+.content .inner .workimg:hover {
+    /*box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,.35);*/
+    background-color: rgba(255,255,255, .05);
+    box-shadow: 0px 0px 12px 4px rgba(0,0,0,.15);
+}
+
+.content.lg .inner .workimg {
+    width: 45%; 
+    height: 30vh;
+}
+
+.content.md .inner .workimg {
+    width: 85%; 
+    height: 25vh;
+}
+
+.content.sm .inner .workimg {
+    width: 90%; 
+    height: 20vh;
 }
 
 .content .inner .sectionhead {text-align: center}
@@ -93,7 +116,7 @@ body {
 
 .content .inner .sectionhead .headimg {display: inline-block;width: 50%; height: auto; max-width: 150px}
 
-h1, h2 {text-align: center; padding-top: 32px;}
+h1, h2 {text-align: center; padding-top: 32px; font-size: 24pt; font-weight: 100}
 
 h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
 
@@ -106,7 +129,7 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     top: 0vh; 
     position: relative; 
     padding-top: 64px; 
-    padding-bottom: 50%;
+    padding-bottom: 80px;
     font-size: 11pt;
 }
 
@@ -115,9 +138,7 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     position: absolute;
     bottom: 0px;
     left: 5%;
-    height: 150px;
-    max-height: 150px;
-    min-height: 100px;
+    height: 130px;
     width: 90%;
     background-image: linear-gradient(0deg, #F9F9F9 0%, rgba(249,249,249,0.00) 100%);
 }
@@ -127,9 +148,7 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     position: absolute;
     top: 0px;
     left: 5%;
-    height: 150px;
-    max-height: 150px;
-    min-height: 100px;
+    height: 130px;
     width: 90%;
     z-index: 5;
     background-image: linear-gradient(-180deg, #F9F9F9 0%, rgba(249,249,249,0.00) 100%);
