@@ -5,6 +5,7 @@ and (max-device-width : 667px) {
     #contentwrap {position:relative!important;}
     #container {overflow:scroll!important;position: absolute!important;}
     #scrollable  {display: none;}
+    .links{padding-top: 130px;}
 }
 
 .z9 {z-index: 9!important;}
