@@ -26,6 +26,15 @@ body {
     height: 100%;
 }
 
+#container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 #contentwrap {
     position: fixed;
     top: 0px;
@@ -39,7 +48,7 @@ body {
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
     body {background-color: green!important;}
-    #contentwrap {}
+    #contentwrap {position:relative!important;}
     #container {overflow:scroll!important;}
     #scrollable  {display: none;}
 }
@@ -147,15 +156,6 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     max-width: 250px;
     width: 20vw;
     min-width: 200px;
-}
-
-#container {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
 }
 
 #sidenav {
