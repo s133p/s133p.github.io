@@ -106,7 +106,7 @@ $(document).ready(function() {
                 var w = $(this).width();
 
 
-                if (scrollLeft > l && scrollLeft < l+w){
+                if (scrollLeft >= l && scrollLeft < l+w){
                     var cID = $(this).attr("id") ;
                     $('nav a').removeClass('selected');
                     $('a[href$="#'+cID+'"]').addClass('selected');
