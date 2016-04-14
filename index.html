@@ -107,8 +107,24 @@ $(document).ready(function() {
     
     
     //TODO: side-tab nav for iphone
-    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){}
-    else{
+    if(iOS){
+        $('#container').scroll(function() {
+            var scrollLeft = $('#container').scrollLeft();
+            
+            $('.content').each( function(){
+                var l = $(this).position().left;
+                var w = $(this).width;
+
+                if (scrollLeft > l && scrollLeft < l+w){
+                    var cID = $(this).attr("id") ;
+                    $('nav a').removeClass('selected');
+                    $('a[href$="#'+cID+'"]').addClass('selected');
+                    window.location.hash = cID;
+                }
+            };
+            
+        });
+    }else{
         re_sz();
         $(window).resize(re_sz());
         
@@ -159,7 +175,7 @@ $(document).ready(function() {
         var ll = $(n_id).position().left;
         if ($(this).index() != 0) {ll-=80;}
 
-        if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
+        if(iOS){
             $('#container').scrollLeft(ll);
         }else{
             $('#contentwrap').addClass('animateblock');
@@ -169,7 +185,7 @@ $(document).ready(function() {
     }
     
     
-    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
+    if(iOS){
         $('nav a').click(function(e) {
             e.preventDefault(); 
             navto( $(this).attr('href') );
@@ -182,10 +198,9 @@ $(document).ready(function() {
         });
     }
     
-    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){}
+    if(iOS){}
     else{
         $('.content').click(function() {
-            //$('nav a').removeClass('selected');
             if ( $(this).hasClass('sm') )
             {
                 $(this).removeClass('sm');
@@ -198,13 +213,11 @@ $(document).ready(function() {
                 $(this).addClass('sm');
             }
             setTimeout( re_sz, 300 );
-            //re_sz();
         });
     }
     
     //window.location.hash = '#home';
     if(window.location.hash){navto(window.location.hash);}
-    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){alert('iphone!');}
 });
 
 </script>
