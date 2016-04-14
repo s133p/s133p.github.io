@@ -81,6 +81,10 @@
 
 $(document).ready(function() {
 
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (! iOs ) {alert("!ios");}
+    else {alert("is ios!");}
+    
     function re_sz() {
         cw = 0;
         //var $content = $('.content');
