@@ -69,11 +69,29 @@ body {
     padding-right: 32px;
 }
 
+/*.content .inner .workimg {display: block;width: 400px; height: 275px;background-color: purple; overflow: hidden;}
+*/
+.content .inner .workimg img {
+    position: relative;
+    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.content .inner .workimg {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,.5);    
+    display: inline-block;
+    width: 90%; 
+    height: 30vh;
+    margin: 10px;
+}
+
 .content .inner .sectionhead {text-align: center}
 
-.content .inner .sectionhead hr {margin-top: 32px;opacity: .5; width: 75%; display: inline-block;}
+.content .inner .sectionhead hr {margin-top: 32px;margin-bottom: 32px; opacity: .5; width: 75%; display: inline-block;}
 
-.content .inner .sectionhead img {display: inline-block;width: 50%; height: auto; max-width: 150px}
+.content .inner .sectionhead .headimg {display: inline-block;width: 50%; height: auto; max-width: 150px}
 
 h1, h2 {text-align: center; padding-top: 32px;}
 
