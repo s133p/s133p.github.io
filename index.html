@@ -82,8 +82,6 @@
 $(document).ready(function() {
 
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (! iOS ) {alert("!ios");}
-    else {alert("is ios!");}
     
     function re_sz() {
         cw = 0;
@@ -107,8 +105,9 @@ $(document).ready(function() {
     
     
     //TODO: side-tab nav for iphone
-    if(iOS){
+    if(iOS | !iOS){
         $('#container').scroll(function() {
+            alert('scroll!')
             var scrollLeft = $('#container').scrollLeft();
             
             $('.content').each( function(){
