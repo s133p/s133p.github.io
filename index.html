@@ -154,20 +154,20 @@ $(document).ready(function() {
     }
 
     
-        function navto( n_id ) {
-            //Get left pos of element to scroll to, accounting for padding on first element
-            var ll = $(n_id).position().left;
-            if ($(this).index() != 0) {ll-=80;}
-            
-            if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
-                $('#container').scrollLeft(ll);
-            }else{
-                $('#contentwrap').addClass('animateblock');
-                $(window).scrollTop( (ll/cw)*$(document).height() );
-                setTimeout( function(){$('#contentwrap').removeClass('animateblock');}, 500);
-            }
+    function navto( n_id ) {
+        //Get left pos of element to scroll to, accounting for padding on first element
+        var ll = $(n_id).position().left;
+        if ($(this).index() != 0) {ll-=80;}
+
+        if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
+            $('#container').scrollLeft(ll);
+        }else{
+            $('#contentwrap').addClass('animateblock');
+            $(window).scrollTop( (ll/cw)*$(document).height() );
+            setTimeout( function(){$('#contentwrap').removeClass('animateblock');}, 500);
         }
     }
+    
     
     if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
         $('nav a').click(function(e) {
