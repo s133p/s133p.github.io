@@ -1,3 +1,12 @@
+/* IPHONE */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    #contentwrap {position:relative!important;}
+    #container {overflow:scroll!important;position: absolute!important;}
+    #scrollable  {display: none;}
+}
+
 .z9 {z-index: 9!important;}
 .z8 {z-index: 8!important;}
 .z7 {z-index: 7!important;}
@@ -42,15 +51,6 @@ body {
     width: 900%;
     height: 100%;
     overflow: hidden;
-}
-
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) { 
-    body {background-color: green!important;}
-    #contentwrap {position:relative!important;}
-    #container {overflow:scroll!important;}
-    #scrollable  {display: none;}
 }
 
 .content {

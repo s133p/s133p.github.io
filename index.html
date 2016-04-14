@@ -9,7 +9,7 @@
 <div id="container">
     
     <div id="contentwrap" class="">
-        <div class="content sm animateblock" id="home"><div class="before"></div>
+        <div class="content md animateblock" id="home"><div class="before"></div>
             <div class="inner">
                 <div class="sectionhead">
                     <img src="http://s133p.github.io/CV.png"><br/>
@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="after"></div></div>
-        <div class="content sm animateblock" id="work"></div>
-        <div class="content sm animateblock" id="cv">
+        <div class="content lg animateblock" id="work"></div>
+        <div class="content md animateblock" id="cv">
             <div class="before"></div>
             <div class="inner animateblock">
                 <h2>SKILLS</h2>
@@ -113,7 +113,9 @@ $(document).ready(function() {
     var curIndex = 0;
     //re_sz();
     //$(window).resize(re_sz());
-
+    
+    
+    //TODO: side-tab nav for iphone
     if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){}
     else{
         re_sz();
@@ -171,10 +173,13 @@ $(document).ready(function() {
         setTimeout( function(){$('#contentwrap').removeClass('animateblock');}, 500);
     }
     
-    $('nav a').click(function(e) {
-        e.preventDefault(); 
-        navto( $(this).attr('href') );
-    });
+    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){}
+    else{
+        $('nav a').click(function(e) {
+            e.preventDefault(); 
+            navto( $(this).attr('href') );
+        });
+    }
     
     $('.content').click(function() {
         //$('nav a').removeClass('selected');
@@ -187,7 +192,7 @@ $(document).ready(function() {
             $(this).addClass('lg');
         }else{
             $(this).removeClass('lg');
-            $(this).addClass('md');
+            $(this).addClass('sm');
         }
         setTimeout( re_sz, 300 );
         //re_sz();
