@@ -9,7 +9,7 @@
 <div id="container">
     
     <div id="contentwrap" class="">
-        <div class="content md animateblock" id="home"><div class="before"></div>
+        <div class="content md anim" id="home"><div class="before"></div>
             <div class="inner">
                 <div class="sectionhead">
                     <img src="http://s133p.github.io/CV.png"><br/>
@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="after"></div></div>
-        <div class="content sm animateblock" id="work"></div>
-        <div class="content md animateblock" id="cv">
+        <div class="content sm anim" id="work"></div>
+        <div class="content md anim" id="cv">
             <div class="before"></div>
-            <div class="inner animateblock">
+            <div class="inner anim">
                 <h2>SKILLS</h2>
                 <h3>GENERAL</h3>
                 <ul>
@@ -52,24 +52,18 @@
             </div>
             <div class="after"></div>
         </div>
-        <div class="content sm animateblock" id="blog"></div>
+        <div class="content sm anim" id="blog"></div>
     </div>
 
     
-    <div id="sidenav">
-        <!--<img id="cutout" src="Combined Shape 2.png" />
-        <img id="logo" src="Polygon 1.png" />-->
-        
+    <div id="sidenav"> 
         <nav>
-            <!--<div class="innersn"></div>-->
-            
             <div class='links'>
-                <a href="#home" class="selected animateblock">HOME</a>
-                <a href="#work" class="animateblock">WORK</a>
-                <a href="#cv" class="animateblock">CV</a>
-                <a href="#blog" class="animateblock">BLOG</a>
+                <a href="#home" class="selected anim">HOME</a>
+                <a href="#work" class="anim">WORK</a>
+                <a href="#cv" class="anim">CV</a>
+                <a href="#blog" class="anim">BLOG</a>
             </div>
-            <!--<div class="outersn"></div>-->
         </nav>
     </div>
     
@@ -85,22 +79,23 @@ $(document).ready(function() {
     
     function re_sz() {
         cw = 0;
-        //var $content = $('.content');
         var lastIndex = $('.content').length - 1;
         
-        cw = $($('.content')[lastIndex]).position().left + $(window).width();
+        cw = $($('.content')[lastIndex]).position().left;
 
-        $('#scrollable').css('height', cw + 'px');
+        $('#scrollable').css('height', cw + $(window).height()-60 + 'px');
         //$(window).scrollTop( p*h );
     }
 
-    var $elems = $('.animateblock');
 
     var cw = 0;
-    var curIndex = 0;
+    
+    //Resize container, and resize again if window changes
+    re_sz();
+    $(window).resize(re_sz());
     
     
-    //TODO: side-tab nav for iphone
+    //Scrolling and tabs behaviour for iphone (Horizontal scroll) & desktop (Proxy scroll vertically)
     if(iOS){
         $('#container').scroll(function() {
             var scrollLeft = $('#container').scrollLeft();
@@ -121,9 +116,6 @@ $(document).ready(function() {
             
         });
     }else{
-        re_sz();
-        $(window).resize(re_sz());
-        
         $(window).scroll(function(e) {
             e.preventDefault(); 
             var scrollTop = $(window).scrollTop();
@@ -147,6 +139,7 @@ $(document).ready(function() {
     }
 
     
+    //Move the correct content box into position
     function navto( n_id ) {
         //Get left pos of element to scroll to, accounting for padding on first element
         var ll = $(n_id).position().left;
@@ -155,20 +148,21 @@ $(document).ready(function() {
         if(iOS){
             $('#container').scrollLeft(ll);
         }else{
-            $('#contentwrap').addClass('animateblock');
+            $('#contentwrap').addClass('anim');
             $(window).scrollTop(ll);
-            //$('#contentwrap').addClass('animateblock');
+            //$('#contentwrap').addClass('anim');
             //$(window).scrollTop( (ll/cw)*$(document).height() );
-            setTimeout( function(){$('#contentwrap').removeClass('animateblock');}, 180);
+            setTimeout( function(){$('#contentwrap').removeClass('anim');}, 180);
         }
     }
     
-    
+    //Sidebar navigation
     $('nav a').click(function(e) {
         e.preventDefault(); 
         navto( $(this).attr('href') );
     });
     
+    //Debugging stuff for testing panel sizes
     if(iOS){}
     else{
         $('.content').click(function() {
@@ -183,11 +177,11 @@ $(document).ready(function() {
                 $(this).removeClass('lg');
                 $(this).addClass('sm');
             }
-            setTimeout( re_sz, 300 );
+            setTimeout( re_sz, 180 );
         });
     }
     
-    //window.location.hash = '#home';
+    //If page is loaded with a target, navigate there
     if(window.location.hash){navto(window.location.hash);}
 });
 
