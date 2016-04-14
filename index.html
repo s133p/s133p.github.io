@@ -111,11 +111,14 @@ $(document).ready(function() {
 
     var cw = 0;
     var curIndex = 0;
-    re_sz();
-    $(window).resize(re_sz());
+    //re_sz();
+    //$(window).resize(re_sz());
 
     if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){}
     else{
+        re_sz();
+        $(window).resize(re_sz());
+        
         $(window).scroll(function(e) {
             e.preventDefault(); 
             var scrollTop = $(window).scrollTop();
