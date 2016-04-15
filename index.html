@@ -152,9 +152,9 @@
                     $('.content').each(function(index) {
                         var sidebarW = $('#sidenav').width();
                         var l = $(this).position().left;
-                        /*if (index != 0) {
+                        if (index == 0) {
                             l -= 85;
-                        }*/
+                        }
                         var w = $(this).width();
 
                         l -= sidebarW;
@@ -177,9 +177,9 @@
 
                     $('.content').each(function(index) {
                         var l = $(this).position().left;
-                        /*if (index != 0) {
-                            l = 85;
-                        }*/
+                        if (index == 0) {
+                            l += 85;
+                        }
                         var w = $(this).width();
 
                         l -= sidebarW;
