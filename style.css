@@ -122,10 +122,10 @@ body {
     border: 1px solid rgba(0,0,0,.2);
     /*box-shadow: 0px 0px 6px 2px rgba(0,0,0,.15);*/
     /*padding: 12px;*/
-    padding-top: 20px;
+    padding-top: 12px;
     padding-bottom: 20px;
     margin-bottom: 24px;
-    width: 85%;
+    width: 95%;
     margin-top: 10px;
 }
 
@@ -312,3 +312,48 @@ nav a:hover {
     font-weight: 100;
     bottom: .1em;
 }
+
+p.l {
+    text-align: left!important;
+    text-indent: 2em;
+    padding-top: 6px!important;
+    padding-bottom: 10px!important;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 12pt!important;
+}
+
+p.home {
+    font-weight: 100;
+    font-size: 12pt!important;
+}
+.em {
+    color: #2FABFF;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.vcenter {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.vcenter p.home {
+    display: inline-block;
+    flex: auto;
+}
+
+.vcenter img {
+    height: 100%;
+    position: relative;
+    margin-right:12px;
+}
+
+
+
+
+
+
