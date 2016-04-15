@@ -90,8 +90,8 @@
             <div class="content sm anim" id="blog"></div>
         </div>
 
-
-        <div id="sidenav">
+    </div>
+    <div id="sidenav">
             <nav>
                 <div class='links'>
                     <a href="#home" class="selected anim">HOME</a>
@@ -103,13 +103,11 @@
             <a href="http://s133p.github.io"><img src="Logo.png" class="anim" /></a>
         </div>
 
-    </div>
-
     <script src="./jquery.js"></script>
     <script>
         $(document).ready(function() {
 
-            var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            var iOS = true;// /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
             function re_sz() {
                 cw = 0;
