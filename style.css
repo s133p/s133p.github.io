@@ -233,11 +233,23 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     opacity: 1;
     
 }
+#sidenav.menuc {width: 280px;}
 
-#sidenav a img {
-    position: absolute;
-    top: 12px;
-    left: 14px;
+#sidenav.menuc .links a {padding-left: 0px;}
+#sidenav.menuc .links a.selected {padding-bottom: 140px;}
+#sidenav .links a {padding-left: 0px;}
+
+#sidenav .links a hr {display: block; color: black; opacity: .05; width: 0%;margin-left: 50%;}
+#sidenav.menuc .links a.selected hr {display: block; opacity: .1; width: 80%; text-align: center; margin-left: 10%}
+
+
+#sidenav .logolink {display: flex; flex-direction: row;
+  align-items: center; width: 100%;height: auto;    position: absolute;
+    top: 12px; left: 0px;}
+
+#sidenav .logolink img {
+    display: inline;
+    margin-left: auto; margin-right: auto;
     z-index: 20;
     width: 62px;
     height: auto;
@@ -252,23 +264,23 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
 
 nav {
     display: block;
-   position: fixed;
+   position: relative;
    top: 0px; left: 0px; 
     height: 100%;
     padding-top: 131px;
 }
 
 .links {
-   display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; height: 100vh;position: relative;top: -139px;}
+  justify-content: center; height: 100vh;position: relative;top: -139px;left: 0px;}
 
 nav a {
     position: relative;
     display: block;
     padding-top: 20px;
     padding-bottom: 20px;
-    width: 90px;
+    width: 100%;
     text-align: center;
     text-size: 18pt;
     font-family: sans-serif;
@@ -364,14 +376,16 @@ p.home {
 #menubutton .an {opacity: 1; transition: all .15s linear .15s}
 #menubutton .an:nth-child(2) {opacity: 1; transition: all .15s linear}
 
-#menubutton {position: absolute; top: 0px; left: 0px;
-  display: flex; flex-direction: column;width: 90px; height: 90px;
-  justify-content: space-between; align-items: center;z-index: 100;
+#menubutton {position: absolute; top: 0px;left: 0px;
+  display: flex; flex-direction: row;width: 100%; height: 90px;
+  align-items: center;z-index: 100;
   }
 
-#menubutton.nobg { background: #2FABFF;border: 2px solid rgba(255,255,255,.5);border-radius: 12px;}
+/*#menubutton { background: rgba(47,171,255,.75);}*/
 
-#menubutton .menu {position: absolute;width: 38px; height: 34px;top: 30px;left: 26px;
+#menubutton #menuwrap {position: relative;width:38px; height: 34px;top: -10px; margin-left: auto; margin-right: auto;}
+
+#menubutton .menu {position: absolute;width: 38px; height: 34px;top: 0px; left: 0px;
 display: flex; flex-direction: column;justify-content: space-between; align-items: center;}
 
 #menubutton .barz {

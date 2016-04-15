@@ -81,29 +81,41 @@
         <div class="content sm anim" id="blog"></div>
     </div>
 
-    <div id="sidenav">
-        <div id="menubutton">
-            <div class="menu">
-                <span class="barz an"></span>
-                <span class="barz an"></span>
-                <span class="barz an"></span>
-            </div>
-            <div class="menu">
-                <span class="barz an"></span>
-                <span class="barz an"></span>
-                <span class="barz an"></span>
-            </div>
-
-        </div>
-        <nav>
-            <div class='links'>
-                <a href="#home" class="selected anim">HOME</a>
-                <a href="#work" class="anim">WORK</a>
-                <a href="#cv" class="anim">CV</a>
-                <a href="#blog" class="anim">BLOG</a>
+    <div id="sidenav" class="anim">
+        <nav class="anim">
+            <div class='links anim'>
+                <a href="#home" class="selected anim">
+                    HOME<hr/>
+                </a>
+                <a href="#work" class="anim">
+                    WORK<hr/>
+                </a>
+                <a href="#cv" class="anim">
+                    CV<hr/>
+                </a>
+                <a href="#blog" class="anim">
+                    BLOG<hr/>
+                </a>
             </div>
         </nav>
-        <a href="http://s133p.github.io"><img src="Logo.png" class="an" /></a>
+        <a href="http://s133p.github.io" class="logolink anim">
+            <img src="Logo.png" class="an" />
+            <div id="menubutton">
+                <div id="menuwrap">
+                    <div class="menu">
+                        <span class="barz an"></span>
+                        <span class="barz an"></span>
+                        <span class="barz an"></span>
+                    </div>
+                    <div class="menu">
+                        <span class="barz an"></span>
+                        <span class="barz an"></span>
+                        <span class="barz an"></span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
     </div>
     </div>
 
@@ -138,13 +150,15 @@
                     var scrollLeft = $('#container').scrollLeft();
 
                     $('.content').each(function(index) {
+                        var sidebarW = $('#sidenav').width();
                         var l = $(this).position().left;
-                        if (index != 0) {
+                        /*if (index != 0) {
                             l -= 85;
-                        }
+                        }*/
                         var w = $(this).width();
 
-
+                        l -= sidebarW;
+                        w += sidebarW;
                         if (scrollLeft >= l && scrollLeft < l + w) {
                             var cID = $(this).attr("id");
                             $('nav a').removeClass('selected');
@@ -157,18 +171,19 @@
             } else {
                 $(window).scroll(function(e) {
                     e.preventDefault();
+                    var sidebarW = $('#sidenav').width();
                     var scrollTop = $(window).scrollTop();
                     $("#contentwrap").css('left', '-' + scrollTop + 'px');
 
                     $('.content').each(function(index) {
                         var l = $(this).position().left;
-                        if (index != 0) {
-                            l -= 85;
-                        }
+                        /*if (index != 0) {
+                            l = 85;
+                        }*/
                         var w = $(this).width();
 
-
-                        if (scrollTop >= l && scrollTop < l + w) {
+                        l -= sidebarW;
+                        if (scrollTop >= l && scrollTop < (l + w+sidebarW) ) {
                             var cID = $(this).attr("id");
                             $('nav a').removeClass('selected');
                             $('a[href$="#' + cID + '"]').addClass('selected');
@@ -229,9 +244,15 @@
                 navto(window.location.hash);
             }
 
-            $('#menubutton').click(function(e){
+            $('#menubutton').click(function(e) {
+                //$('#sidenav').addClass('anim');
                 $(this).toggleClass('ani');
                 $('#sidenav a img').toggleClass('menuclick');
+                $('#sidenav').toggleClass('menuc');
+
+                /*setTimeout(function() {
+                    $('#sidenav').removeClass('anim');
+                }, 220);*/
                 e.preventDefault();
             });
 
