@@ -3,7 +3,7 @@
 /*@media only screen
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { */
-    #contentwrap {position:absolute!important;}
+    #contentwrap {position:absolute!important; pointer-events: none;}
     /*#container {width: auto!important; position: absolute!important;}*/
     #container {overflow-x:scroll!important;position: absolute!important; overflow-y: hidden!important;}
     #scrollable  {display: none;}
