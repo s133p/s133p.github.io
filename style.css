@@ -2,7 +2,7 @@
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
-    #contentwrap {position:fixed!important;overflow-x: scroll;}
+    #contentwrap {position:absolute!important;overflow-x: scroll; width: 100%!important;}
     #container {width: auto!important; position: absolute!important;}
     /*#container {overflow-x:scroll!important;position: absolute!important; overflow-y: hidden;}*/
     #scrollable  {display: none;}
