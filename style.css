@@ -234,17 +234,19 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     
 }
 
-#sidenav img {
+#sidenav a img {
     position: absolute;
     top: 12px;
     left: 14px;
     z-index: 20;
     width: 62px;
     height: auto;
+    transition: all .15s linear;
     /*transform: translate(-50%, -50%);*/
 }
 
-#sidenav img:hover {
+#sidenav a img.menuclick {
+    transition: all .15s linear .15s;
     transform: rotate(60deg);
 }
 
@@ -354,6 +356,36 @@ p.home {
 
 
 
+#menubutton, #menubutton * {padding: 0px; margin: 0px}
 
+#menubutton.ani .an {opacity: 1; transition: all .15s linear}
+#menubutton.ani .an:nth-child(2) {opacity: 1; transition: all .15s linear .15s}
+
+#menubutton .an {opacity: 1; transition: all .15s linear .15s}
+#menubutton .an:nth-child(2) {opacity: 1; transition: all .15s linear}
+
+#menubutton {position: absolute; top: 0px; left: 0px;
+  display: flex; flex-direction: column;width: 90px; height: 90px;
+  justify-content: space-between; align-items: center;z-index: 100;
+  }
+
+#menubutton.nobg { background: #2FABFF;border: 2px solid rgba(255,255,255,.5);border-radius: 12px;}
+
+#menubutton .menu {position: absolute;width: 38px; height: 34px;top: 30px;left: 26px;
+display: flex; flex-direction: column;justify-content: space-between; align-items: center;}
+
+#menubutton .barz {
+  display: block; width: 95%; background-color: #EFEFEF;height: 6px;color: white;z-index: 10;
+  border-radius: 3px;
+  }
+
+#menubutton .barz:first-child {margin-top: 3px;}
+#menubutton .barz:last-child {margin-bottom:3px;}
+
+#menubutton.ani .menu:first-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(45deg);}
+#menubutton.ani .menu:last-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(-45deg);}
+
+#menubutton.ani .barz:first-child {opacity: 0}
+#menubutton.ani .barz:last-child {opacity: 0}
 
 

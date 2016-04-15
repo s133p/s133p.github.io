@@ -16,81 +16,95 @@
                 <div class="inner anim">
                     <h1>HOME</h1>
                     <div class="sectionhead">
-                        <hr /><br/>
+                        <hr />
+                        <br/>
                         <span class="card anim">
 
 
                         <div class="vcenter">
                             <p class="home">
-                                I'm <span class="em">Luke Purcell</span><br/>Dreamer, Designer, Developer.
-                            </p>
-                            <img src="http://s133p.github.io/CV.png"/>
-                        </div>
-                            <hr/>
-                        <p class="l home">
-                            We live in an increasingly digital and interactive world, and I'm here to make that world come to life. From
-                            crafting unique Apps and Websites &mdash; to Projection Mapping and VR &mdash; user
-                            experience is the name of the game.
+                                I'm <span class="em">Luke Purcell</span>
+                        <br/>Dreamer, Designer, Developer.
                         </p>
-                        </span>
+                        <img src="http://s133p.github.io/CV.png" />
                     </div>
+                    <hr/>
+                    <p class="l home">
+                        We live in an increasingly digital and interactive world, and I'm here to make that world come to life. From crafting unique Apps and Websites &mdash; to Projection Mapping and VR &mdash; user experience is the name of the game.
+                    </p>
+                    </span>
                 </div>
-                <div class="after"></div>
             </div>
-            <div class="content lg anim" id="work">
-                <div class="before"></div>
-                <div class="inner anim">
-                    <h1>MY WORK</h1>
-                    <div class="sectionhead anim">
-                        <hr/>
-                        <span class='workimg anim'><img src="work/1.png" class="anim"/></span>
-                        <span class='workimg anim'><img src="work/2.png" class="anim"/></span>
-                        <span class='workimg anim'><img src="work/3.png" class="anim"/></span>
-                        <span class='workimg anim'><img src="work/4.png" class="anim"/></span>
-                    </div>
+            <div class="after"></div>
+        </div>
+        <div class="content lg anim" id="work">
+            <div class="before"></div>
+            <div class="inner anim">
+                <h1>MY WORK</h1>
+                <div class="sectionhead anim">
+                    <hr/>
+                    <span class='workimg anim'><img src="work/1.png" class="anim"/></span>
+                    <span class='workimg anim'><img src="work/2.png" class="anim"/></span>
+                    <span class='workimg anim'><img src="work/3.png" class="anim"/></span>
+                    <span class='workimg anim'><img src="work/4.png" class="anim"/></span>
                 </div>
-                <div class="after"></div>
             </div>
-            <div class="content sm anim" id="cv">
-                <div class="before"></div>
+            <div class="after"></div>
+        </div>
+        <div class="content sm anim" id="cv">
+            <div class="before"></div>
 
-                <div class="inner anim">
-                    <h1>CV</h1>
-                    <div class="sectionhead anim">
-                        <hr/>
-                        <span class="card anim">
+            <div class="inner anim">
+                <h1>CV</h1>
+                <div class="sectionhead anim">
+                    <hr/>
+                    <span class="card anim">
                             <h2>Portland State Univerity</h2>
                             <hr/>
                             <p>B.S. in Architecture<br/><i>2011-2015</i></p>
                         </span>
-                        <span class="card anim">
+                    <span class="card anim">
                             <h2>Computer Science Tutor</h2>
                             <hr/>
                             <p><i>2011-2015</i></p>
                         </span>
-                        <span class="card anim">
+                    <span class="card anim">
                             <h2>FIRST Robotics</h2>
                             <hr/>
-                            <p>Head of electronics <span class="amp">+</span> proramming<br/><i>2007-2011</i></p>
-                        </span>
-                    </div>
+                            <p>Head of electronics <span class="amp">+</span> proramming
+                    <br/><i>2007-2011</i></p>
+                    </span>
                 </div>
-                <div class="after"></div>
             </div>
-            <div class="content sm anim" id="blog"></div>
+            <div class="after"></div>
         </div>
+        <div class="content sm anim" id="blog"></div>
+    </div>
 
-        <div id="sidenav">
-            <nav>
-                <div class='links'>
-                    <a href="#home" class="selected anim">HOME</a>
-                    <a href="#work" class="anim">WORK</a>
-                    <a href="#cv" class="anim">CV</a>
-                    <a href="#blog" class="anim">BLOG</a>
-                </div>
-            </nav>
-            <a href="http://s133p.github.io"><img src="Logo.png" class="anim" /></a>
+    <div id="sidenav">
+        <div id="menubutton">
+            <div class="menu">
+                <span class="barz an"></span>
+                <span class="barz an"></span>
+                <span class="barz an"></span>
+            </div>
+            <div class="menu">
+                <span class="barz an"></span>
+                <span class="barz an"></span>
+                <span class="barz an"></span>
+            </div>
+
         </div>
+        <nav>
+            <div class='links'>
+                <a href="#home" class="selected anim">HOME</a>
+                <a href="#work" class="anim">WORK</a>
+                <a href="#cv" class="anim">CV</a>
+                <a href="#blog" class="anim">BLOG</a>
+            </div>
+        </nav>
+        <a href="http://s133p.github.io"><img src="Logo.png" class="an" /></a>
+    </div>
     </div>
 
     <script src="./jquery.js"></script>
@@ -183,8 +197,8 @@
                     $(window).scrollTop(ll);
                 }
                 setTimeout(function() {
-                        $('#contentwrap').removeClass('anim');
-                    }, 180);
+                    $('#contentwrap').removeClass('anim');
+                }, 180);
             }
 
             //Sidebar navigation
@@ -214,6 +228,12 @@
             if (window.location.hash) {
                 navto(window.location.hash);
             }
+
+            $('#menubutton').click(function(e){
+                $(this).toggleClass('ani');
+                $('#sidenav a img').toggleClass('menuclick');
+                e.preventDefault();
+            });
 
             setTimeout(re_sz, 500);
         });
