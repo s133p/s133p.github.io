@@ -11,7 +11,7 @@
     <div id="container">
 
         <div id="contentwrap" class="">
-            <div class="content md anim" id="home">
+            <div class="content sm anim" id="home">
                 <div class="before"></div>
                 <div class="inner">
                     <div class="sectionhead">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="after"></div>
             </div>
-            <div class="content md anim" id="cv">
+            <div class="content sm anim" id="cv">
                 <div class="before"></div>
                 <div class="inner anim">
                     <h2>SKILLS</h2>
@@ -186,7 +186,7 @@
             });
 
             //Debugging stuff for testing panel sizes
-            if (iOS) {} else {
+            if (iOS || !iOS) {} else {
                 $('.content').click(function() {
                     if ($(this).hasClass('sm')) {
                         $(this).removeClass('sm');
