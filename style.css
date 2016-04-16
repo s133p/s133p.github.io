@@ -201,6 +201,10 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
     margin-left:90px;
 }
 
+.content.menuopen:first-child {
+    margin-left: 280px;
+}
+
 .lg {
     max-width: 800px;
     width: 45vw;
@@ -236,12 +240,44 @@ h3, h4, h5, h6 {text-align: left;padding-top: 1.25em;}
 #sidenav.menuc {width: 280px;}
 
 #sidenav.menuc .links a {padding-left: 0px;}
-#sidenav.menuc .links a.selected {padding-bottom: 140px;}
+
 #sidenav .links a {padding-left: 0px;}
 
-#sidenav .links a hr {display: block; color: black; opacity: .05; width: 0%;margin-left: 50%;}
-#sidenav.menuc .links a.selected hr {display: block; opacity: .1; width: 80%; text-align: center; margin-left: 10%}
+#sidenav .links a .expandedlinks hr {
+    display: block;
+    color: black;
+    opacity: .05;
+    width: 0%;
+    margin-left: 50%;
+    margin-bottom: 12px;
+}
 
+#sidenav.menuc .links a.selected .expandedlinks hr {
+    display: block;
+    opacity: .1;
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.expandedlinks {
+    height: 0%;
+    position: relative;
+    display: block;
+    width: 0%;
+    overflow: hidden;
+}
+.innerlink {
+    position: relative;
+    font-size: 10pt;
+    color: black;
+    vertical-align: middle;
+}
+
+#sidenav.menuc .links a.selected .expandedlinks {
+    height: auto;
+    width: 100%;
+}
 
 #sidenav .logolink {display: flex; flex-direction: row;
   align-items: center; width: 100%;height: auto;    position: absolute;

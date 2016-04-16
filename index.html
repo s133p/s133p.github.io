@@ -66,7 +66,7 @@
                     <span class="card anim">
                             <h2>Computer Science Tutor</h2>
                             <hr/>
-                            <p><i>2011-2015</i></p>
+                            <p>C++ / OOP / Data-Structures<br/><i>2011-2015</i></p>
                         </span>
                     <span class="card anim">
                             <h2>FIRST Robotics</h2>
@@ -82,23 +82,27 @@
     </div>
 
     <div id="sidenav" class="anim">
-        <nav class="anim">
-            <div class='links anim'>
+        <nav class="">
+            <div class='links'>
                 <a href="#home" class="selected anim">
-                    HOME<hr/>
+                    HOME
                 </a>
                 <a href="#work" class="anim">
-                    WORK<hr/>
+                    WORK
+                    <span class="expandedlinks">
+                        <hr/>
+                        <span class='innerlink'>ARCHITECTURE</span>
+                    </span>
                 </a>
                 <a href="#cv" class="anim">
-                    CV<hr/>
+                    CV
                 </a>
                 <a href="#blog" class="anim">
-                    BLOG<hr/>
+                    BLOG
                 </a>
             </div>
         </nav>
-        <a href="http://s133p.github.io" class="logolink anim">
+        <a href="http://s133p.github.io" class="logolink">
             <img src="Logo.png" class="an" />
             <div id="menubutton">
                 <div id="menuwrap">
@@ -199,9 +203,11 @@
             function navto(n_id) {
                 //Get left pos of element to scroll to, accounting for padding on first element
                 var ll = $(n_id).position().left;
-                if ($(this).index() != 0) {
-                    ll -= 80;
+                if ($(this).index() == 0) {
+                    ll -= 85;
                 }
+                var sidebarW = $('#sidenav').width();
+                ll -= sidebarW;
 
                 $('#contentwrap').addClass('anim');
 
@@ -249,6 +255,8 @@
                 $(this).toggleClass('ani');
                 $('#sidenav a img').toggleClass('menuclick');
                 $('#sidenav').toggleClass('menuc');
+                $('.content').toggleClass('menuopen');
+
 
                 /*setTimeout(function() {
                     $('#sidenav').removeClass('anim');
