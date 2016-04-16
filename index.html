@@ -102,7 +102,7 @@
                 </a>
             </div>
         </nav>
-        <a href="http://s133p.github.io" class="logolink">
+        <a href="" class="logolink">
             <img src="Logo.png" class="an" />
             <div id="menubutton">
                 <div id="menuwrap">
@@ -250,18 +250,26 @@
                 navto(window.location.hash);
             }
 
+            var open = false;
             $('#menubutton').click(function(e) {
+                e.preventDefault();
                 //$('#sidenav').addClass('anim');
+
                 $(this).toggleClass('ani');
                 $('#sidenav a img').toggleClass('menuclick');
-                $('#sidenav').toggleClass('menuc');
-                $('.content').toggleClass('menuopen');
 
+
+                $('#sidenav').toggleClass('menuc');
+
+                $('.content').toggleClass('menuopen');
+                if ( open ) {navto('#home');}
+
+                if (open) {open=false;}
+                else {open=true;}
 
                 /*setTimeout(function() {
                     $('#sidenav').removeClass('anim');
                 }, 220);*/
-                e.preventDefault();
             });
 
             setTimeout(re_sz, 500);
