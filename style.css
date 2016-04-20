@@ -434,8 +434,8 @@ display: flex; flex-direction: column;justify-content: space-between; align-item
 #menubutton .barz:first-child {margin-top: 3px;}
 #menubutton .barz:last-child {margin-bottom:3px;}
 
-#menubutton.ani .menu:first-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(45deg);opacity: 1!important}
-#menubutton.ani .menu:last-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(-45deg);opacity: 1!important}
+#menubutton.ani .menu:first-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(45deg);opacity: .75!important}
+#menubutton.ani .menu:last-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(-45deg);opacity: .75!important}
 
 #menubutton.ani .barz:first-child {opacity: 0!important}
 #menubutton.ani .barz:last-child {opacity: 0!important}
