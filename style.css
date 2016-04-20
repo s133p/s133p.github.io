@@ -426,16 +426,18 @@ display: flex; flex-direction: column;justify-content: space-between; align-item
 
 #menubutton .barz {
   display: block; width: 95%; background-color: #EFEFEF;height: 6px;color: white;z-index: 10;
-  border-radius: 3px;
+  border-radius: 3px; opacity: .15!important;
   }
+
+#menubutton.ani .menu {}
 
 #menubutton .barz:first-child {margin-top: 3px;}
 #menubutton .barz:last-child {margin-bottom:3px;}
 
-#menubutton.ani .menu:first-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(45deg);}
-#menubutton.ani .menu:last-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(-45deg);}
+#menubutton.ani .menu:first-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(45deg);opacity: 1!important}
+#menubutton.ani .menu:last-child .barz:nth-child(2) {background: #2FABFF;transform: rotate(-45deg);opacity: 1!important}
 
-#menubutton.ani .barz:first-child {opacity: 0}
-#menubutton.ani .barz:last-child {opacity: 0}
+#menubutton.ani .barz:first-child {opacity: 0!important}
+#menubutton.ani .barz:last-child {opacity: 0!important}
 
 
