@@ -69,7 +69,9 @@ Plugin 'kshenoy/vim-signature'
 "  m?           Open location list and display markers from current buffer
 "  m<BS>        Remove all markers
 
-Plugin 'kana/vim-arpeggio'
+"Plugin 'kana/vim-arpeggio'
+Plugin 'gabrielelana/vim-markdown'
+"Plugin 'vivkin/flatland.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -102,6 +104,8 @@ set scrolloff=6
 set splitbelow
 set splitright
 set nohlsearch
+colorscheme default
+set background=dark
 
 nnoremap // /\v
 vnoremap // /\v
