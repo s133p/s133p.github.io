@@ -13,7 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'spiiph/vim-space'
 
 Plugin 'easymotion/vim-easymotion'
-map  // <Plug>(easymotion-sn)
+noremap // /
+map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
@@ -102,8 +103,8 @@ set splitbelow
 set splitright
 set nohlsearch
 
-nnoremap / /\v
-vnoremap / /\v
+nnoremap // /\v
+vnoremap // /\v
 set incsearch
 set ignorecase
 set smartcase
