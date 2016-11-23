@@ -36,6 +36,7 @@ map <C-n> :NERDTreeToggle<CR>
 "" Trigger configuration. Do not use <tab> if you use
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'  
 Plugin 'SirVer/ultisnips'
 "let g:UltiSnipsExpandTrigger="<cr>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -71,7 +72,12 @@ Plugin 'kshenoy/vim-signature'
 
 "Plugin 'kana/vim-arpeggio'
 Plugin 'gabrielelana/vim-markdown'
-"Plugin 'vivkin/flatland.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vivkin/flatland.vim'
+Plugin 'morhetz/gruvbox'
+
+Plugin 'vim-scripts/dbext.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,7 +110,10 @@ set scrolloff=6
 set splitbelow
 set splitright
 set nohlsearch
-colorscheme default
+"colorscheme flatland
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_invert_tabline="1"
+colorscheme gruvbox
 set background=dark
 
 nnoremap // /\v
@@ -153,6 +162,9 @@ nmap J LztM
 nmap K HzbM
 nmap <leader>c/ :s/^\(\s\{-}\)\(\S\)/\1\/\/\2/<cr>
 nmap <leader>c; :s/^\(\s\{-}\)\/\//\1/<cr>
+noremap Q !!zsh<cr>
+nnoremap gb :bnext<cr> " go-next buffer
+nnoremap gB :bprevious<cr> " go previous buffer
 
 
 autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
@@ -161,9 +173,13 @@ autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
 autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
 
 "powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+
+"switching to airline over powerline
+let g:airline#extensions#tabline#enabled = 1 
+let g:airline_powerline_fonts = 1
 
 "<leader>y & <leader>p copy from osx clipboard
 nmap <leader>p "*p
