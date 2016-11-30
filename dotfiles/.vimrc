@@ -134,10 +134,13 @@ nnoremap sl o<esc>
 nnoremap so O<esc>
 nnoremap sd yyp
 nnoremap sr !!zsh<cr>
-autocmd FileType vim nnoremap sk 0i"<esc>
-autocmd FileType c,cpp nnoremap ska I//<esc>
-autocmd FileType c,cpp nnoremap sku :s/\/\///<CR>
-autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
+augroup commentz
+    autocmd!
+    autocmd FileType vim nnoremap sk 0i"<esc>
+    autocmd FileType c,cpp nnoremap ska I//<esc>
+    autocmd FileType c,cpp nnoremap sku :s/\/\///<CR>
+    autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
+augroup END
 
 "================= Plugin mappings/settings ================= 
 " use // for normal search + magic
@@ -155,19 +158,28 @@ set background=dark
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline_powerline_fonts = 1
 " a.vim
-autocmd FileType c,cpp nmap <leader>cv :AV<cr>
-autocmd FileType c,cpp nmap <leader>ch :AS<cr>
-"vimmux (tmux)
-autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
-autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
-autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
-"YouComepleteMe
-autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
-autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
-autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
-autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
-autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
+augroup clearimap
+    autocmd!
+    autocmd VimEnter * iunmap <leader>ih
+    autocmd VimEnter * iunmap <leader>is
+    autocmd VimEnter * iunmap <leader>ihn
+augroup END
+augroup plugcpp
+    autocmd!
+    autocmd FileType c,cpp nmap <leader>cv :AV<cr>
+    autocmd FileType c,cpp nmap <leader>ch :AS<cr>
+    "vimmux (tmux)
+    autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+    autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
+    autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
+    autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
+    "YouComepleteMe
+    autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
+    autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
+    autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
+    autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
+    autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
+augroup END
 "unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
