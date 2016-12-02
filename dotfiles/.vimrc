@@ -86,10 +86,11 @@ set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
 "" MAPPINGS
-map Y y$ " yank til EOL
-noremap <Leader>w :w<CR>
-noremap <Leader>q :wq<CR>
-nmap <leader>x :q!<CR>
+nmap Y y$ " yank til EOL
+noremap <Leader>ww :w<CR>
+noremap <Leader>wq :wq<CR>
+nmap <leader>x :q<CR>
+nmap <leader>q :q<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -122,7 +123,7 @@ nnoremap gB :bprevious<cr> " go previous buffer
 
 "<leader>y & <leader>p copy from system clipboard
 nmap <leader>p "*p
-nmap <leader>y "*yy
+nmap <leader>y 0"*y$
 nmap <leader>a mzggVG"*y`z
 
 
@@ -156,6 +157,8 @@ let g:gruvbox_invert_tabline="1"
 colorscheme gruvbox
 set background=dark
 let g:airline#extensions#tabline#enabled = 1 
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 " a.vim
 augroup clearimap
@@ -168,11 +171,11 @@ augroup plugcpp
     autocmd!
     autocmd FileType c,cpp nmap <leader>cv :AV<cr>
     autocmd FileType c,cpp nmap <leader>ch :AS<cr>
-    "vimmux (tmux)
-    autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-    autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
-    autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
-    autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
+    ""vimmux (tmux)
+    "autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+    "autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
+    "autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
+    "autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
     "YouComepleteMe
     autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
     autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
@@ -183,7 +186,16 @@ augroup END
 "unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nmap <leader>F :Unite -no-split file buffer bookmark:*<cr>
+nmap <leader>f :Unite -no-split -start-insert file buffer bookmark:*<cr>
+nmap <leader>b :UniteBookmarkAdd<cr><cr>
+
 "dbext
 let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
-autocmd FileType sql DBSetOption profile=mySqlite
+augroup sqldb
+    autocmd!
+    autocmd FileType sql DBSetOption profile=mySqlite
+    autocmd FileType sql nmap > ,sejgjggjVGygk//;<cr>o<esc>kp:DBResultsClose<cr>
+    autocmd FileType sql nmap < ,selgjggjVGygko<esc>kp:DBResultsClose<cr>
+augroup END
 
