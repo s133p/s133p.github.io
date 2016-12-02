@@ -5,14 +5,6 @@ set secure
 let mapleader=','
 filetype off                  " required
 
-"Saving for now, may delete
-"Plugin 'tpope/vim-fugitive' " Git integration
-"Plugin 'honza/vim-snippets'
-"Plugin 'SirVer/ultisnips'
-"let g:UltiSnipsExpandTrigger="<cr>"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 " set the runtime path to include Vundle and initialize
 "================= VUNDLE BEGIN ================= 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -30,7 +22,6 @@ Plugin 'vim-scripts/a.vim'              " Swap between cpp & hpp
 Plugin 'tpope/vim-surround'             " Does what it says on the tin
 Plugin 'kshenoy/vim-signature'          " marks in sidebar
 Plugin 'scrooloose/nerdtree'            " file tree
-Plugin 'Valloric/YouCompleteMe'         " Clang based completeion
 Plugin 'gabrielelana/vim-markdown'      " markdown highlighting
 Plugin 'vim-airline/vim-airline'        " Better tab/status line
 Plugin 'vim-airline/vim-airline-themes' " Themes for airline
@@ -38,6 +29,10 @@ Plugin 'morhetz/gruvbox'                " Pretty theme!
 Plugin 'vim-scripts/dbext.vim'          " databases from within vim
 Plugin 'gfontenot/vim-xcode'            " Xcode integration
 Plugin 'Shougo/unite.vim'               " good?
+if has("win32")
+    Plugin 'Shougo/neocomplcache.vim'       " autocomplete across buffers
+    Plugin 'sgur/unite-qf'                  " quickfix for unite
+endif
 
 "================= VUNDLE END ================= 
 call vundle#end()            " required
@@ -75,6 +70,9 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
+set noswapfile
+set nowrap
+set lazyredraw
 
 "search settings
 nnoremap // /\v
@@ -84,6 +82,21 @@ set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
+
+if has("win32")
+    "gvim specific
+    set shellslash
+    "set autochdir
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L
+    set guifont=Sauce_Code_powerline:h10:cANSI:qDRAFT
+    set guioptions-=e " Use default vim tabs
+    set guioptions+=c " use console prompt
+    au GUIEnter * simalt ~x
+    inoremap <Insert> <esc>
+endif
 
 "" MAPPINGS
 nmap Y y$ " yank til EOL
@@ -116,7 +129,9 @@ noremap ` '
 
 " J & K jump to bottom/top & center on new pos
 nmap J LztM
+vmap J LztM
 nmap K HzbM
+vmap K HzbM
 
 nnoremap gb :bnext<cr> " go-next buffer
 nnoremap gB :bprevious<cr> " go previous buffer
@@ -125,6 +140,10 @@ nnoremap gB :bprevious<cr> " go previous buffer
 nmap <leader>p "*p
 nmap <leader>y 0"*y$
 nmap <leader>a mzggVG"*y`z
+
+" Execute current line or current selection as Vim EX commands.
+nnoremap <F2> :exe getline(".")<CR>
+vnoremap <F2> :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
 
 " I never use the default s or S, so nop them; now its a new prefix!
@@ -153,13 +172,14 @@ let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
 map <C-n> :NERDTreeToggle<CR>
 let g:ycm_confirm_extra_conf = 0                              " Don't confirm on load
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
-let g:gruvbox_invert_tabline="1"
 colorscheme gruvbox
 set background=dark
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#fnamemod = ':p:t'
+
 " a.vim
 augroup clearimap
     autocmd!
@@ -171,27 +191,38 @@ augroup plugcpp
     autocmd!
     autocmd FileType c,cpp nmap <leader>cv :AV<cr>
     autocmd FileType c,cpp nmap <leader>ch :AS<cr>
-    ""vimmux (tmux)
-    "autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-    "autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
-    "autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
-    "autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
-    "YouComepleteMe
-    autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
-    autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
-    autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
-    autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
-    autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
+    if has("mac")
+        "vimmux (tmux)
+        autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+        autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
+        autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
+        autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
+        "YouComepleteMe
+        autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
+        autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
+        autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
+        autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
+        autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
+    elseif has("win32")
+        "Unite quickfix
+        autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
+        autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
+    endif
 augroup END
+
 "unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nmap <leader>F :Unite -no-split file buffer bookmark:*<cr>
-nmap <leader>f :Unite -no-split -start-insert file buffer bookmark:*<cr>
+nmap <leader>f :Unite -no-split -start-insert file_rec buffer bookmark:*<cr>
+nmap <leader>F :Unite -no-split file_rec buffer bookmark:*<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
 
 "dbext
-let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
+if has("mac")
+    let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
+elseif has("win32")
+    let g:dbext_default_profile_sqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite:bin_path=/Users/luke.purcell/Desktop/Misc/sqlite'
+endif
 augroup sqldb
     autocmd!
     autocmd FileType sql DBSetOption profile=mySqlite
@@ -199,3 +230,59 @@ augroup sqldb
     autocmd FileType sql nmap < ,selgjggjVGygko<esc>kp:DBResultsClose<cr>
 augroup END
 
+
+if has("win32")
+    "neocomplcache
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 3
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+    " Define dictionary.
+    let g:neocomplcache_dictionary_filetype_lists = {
+                \ 'default' : '',
+                \ 'vimshell' : $HOME.'/.vimshell_hist',
+                \ 'scheme' : $HOME.'/.gosh_completions'
+                \ }
+
+    " Define keyword.
+    if !exists('g:neocomplcache_keyword_patterns')
+        let g:neocomplcache_keyword_patterns = {}
+    endif
+    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplcache#undo_completion()
+    inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        " return neocomplcache#smart_close_popup() . "\<CR>"
+        " For no inserting <CR> key.
+        return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplcache#close_popup()
+    inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+
+    " use msbuild
+    autocmd FileType c,cpp compiler msbuild
+    " awkwardly use msvc errorformat rather than msbuild's
+    autocmd FileType c,cpp set errorformat+=%f(%l)\ :\ %t%*\\D%n:\ %m,%*[^\"]\"%f\"%*\\D%l:\ %m,%f(%l)\ :\ %m,%*[^\ ]\ %f\ %l:\ %m,%f:%l:%c:%m,%f(%l):%m,%f:%l:%m,%f|%l|\ %m
+
+
+    set encoding=utf8
+    set novisualbell
+endif
