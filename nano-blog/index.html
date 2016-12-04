@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <title>Void Engine</title>
+    <style type="text/css">
+        body {
+            margin: 40px auto;
+            max-width: 690px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #444;
+            padding: 0 10px;
+            font-family: sans-serif;
+        }
+        .toc {
+            background-color: #eeeeee;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 20px;
+            margin-top: 40px;
+            margin-right: 80px;
+            margin-left: 80px;
+            padding-bottom: 20px;
+            width: auto;
+        }
+        .toc a {
+            color: #145;
+            padding-left: 40px;
+            padding-top: 8px;
+        }
+        .content {
+            background-color: #eeeeee;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 20px;
+            margin-top: 40px;
+            padding-bottom: 20px;
+            width: auto;
+        }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+        }
+        h1, h2, h3 {
+            line-height: 1.2
+        }
+        code {
+            font-family: monospace;
+            font-size: 14px;
+            padding: 2px;
+            background-color: #ffffff;
+        }
+        pre {
+            background-color: #ffffff;
+            display: block;
+            padding: 10px 20px;
+            border-left: solid 5px #ddd;
+        }
+        img {
+            width: 610px;
+        }
+        h1, h2 {
+            background: #ddd;
+            padding: 5px 12px;
+            10px;
+            border-right: solid 10px #bbb;
+        }
+        ul {
+            list-style-type: circle;
+        }
+        li>ul {
+            list-style-type: circle;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class='toc'>
+<h1> TOC </h1>
+<a href='#nanoblog.md'>nanoblog.md</a><br />
+<a href='#ideas.md'>ideas.md</a><br />
+<a href='#README.md'>README.md</a><br />
+<a href='#fancy.md'>fancy.md</a><br />
+<a href='#testing.md'>testing.md</a><br />
+</div>
+<div class='content' id='nanoblog.md'>
+<h1>Vim NanoBlog</h1>
+
+<p><img src="images/nano-blog.png" alt="test" title="" /></p>
+
+<ul>
+<li><p><code>&lt;pitch&gt;</code></p>
+
+<pre><code>Minimalist markdown powered blog/notebook, all from within vim!!
+</code></pre></li>
+</ul>
+
+<h2>Basics</h2>
+
+<p>Vim NanoBlog is based around running a shell script each time 
+a <code>markdown</code> file is saved in the nano-blog/posts folder. 
+The script composites all of the markdown files in that folder, along 
+with a header, footer &amp; wrapping for each "post". The markdown is 
+compiled into html using daring-fireball's markdown program. </p>
+
+<p>The header file is used to add styling and correct surrounding HTML 
+to the generated file.</p>
+
+<h2>Output</h2>
+
+<p>NanoBlog generates an index.html in the nano-blog folder</p>
+
+<h2>todo</h2>
+
+<ul>
+<li>Sorting based on creation date, not edit date</li>
+</ul>
+</div>
+<div class='content' id='ideas.md'>
+<h1>IDEAS</h1>
+
+<h2>Engine</h2>
+
+<h4>Rendering</h4>
+
+<ul>
+<li>Render engine holds all constant render state (textures, models, etc) </li>
+<li>Render <code>packets</code> are recieved, and translated into batched drawing instructions</li>
+</ul>
+
+<h4>Events / UI</h4>
+
+<ul>
+<li>pass cinder / system events to engine</li>
+<li>Engine event system processes those events and delegates to interested entities or systems</li>
+<li><strong>EXAMPLE</strong>: mouse/touch down, move, and up</li>
+<li>Events can also be messages between systems</li>
+</ul>
+
+<h4>Jobs</h4>
+
+<ul>
+<li>Systems create jobs</li>
+<li>Jobs can spawn new jobs &amp; wait for child jobs to complete before completing</li>
+<li>Fibers?</li>
+</ul>
+</div>
+<div class='content' id='README.md'>
+<h1>Void Engine</h1>
+
+<p>A C++ &amp; <a href="https://libcinder.org">libcinder</a> based interactive application engine.</p>
+
+<hr />
+
+<h2>Design Ideals</h2>
+
+<ul>
+<li><h3>Main Goals</h3>
+
+<ul>
+<li><p><strong>Mutli-threaded</strong></p>
+
+<p>whats-a_big,word</p>
+
+<p>A <em>multi-threaded</em> <strong>architecture</strong></p>
+
+<blockquote>
+  <p><em>Indented</em> block quote!</p>
+</blockquote></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<pre><code>&lt;random&gt;
+    &lt;span&gt;
+        &lt;div id="one"&gt;
+            &lt;test&gt;bot&lt;/test&gt;
+        &lt;/div&gt;
+        &lt;div id="two"&gt;
+            &lt;test&gt;bot&lt;/test&gt;
+        &lt;/div&gt;
+    &lt;/span&gt;
+&lt;/random&gt;
+</code></pre>
+
+<ul>
+<li>Job system</li>
+<li>Messaging/event driven</li>
+</ul>
+
+<h3>Architecture</h3>
+
+<h3>Settings</h3>
+
+<h2>TODO</h2>
+
+<ul>
+<li>Engine Diagram</li>
+<li>Data structures</li>
+<li>File structure</li>
+<li>Configuration</li>
+</ul>
+</div>
+<div class='content' id='fancy.md'>
+<h1>Fancy</h1>
+
+<h2>level 2</h2>
+
+<ul>
+<li>listy</li>
+<li>listy2</li>
+<li>mmmmm</li>
+</ul>
+</div>
+<div class='content' id='testing.md'>
+<h1>mic check</h1>
+
+<p>Sat Dec  3 15:52:39 PST 2016</p>
+
+<h2>level 2</h2>
+
+<ul>
+<li>hopefully?
+I mean? please?
+pretyy please?</li>
+<li>Next topic?</li>
+<li>boink!</li>
+</ul>
+</div>
