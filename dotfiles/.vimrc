@@ -75,6 +75,8 @@ set expandtab
 set noswapfile
 set nowrap
 set lazyredraw
+set encoding=utf8
+set t_Co=256
 
 "search settings
 nnoremap // /\v
