@@ -2,7 +2,7 @@ set nocompatible
 set exrc
 set secure
 
-let mapleader=','
+let mapleader=';'
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -11,27 +11,29 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space' " Use spacebar to repeat last movement
-Plugin 'easymotion/vim-easymotion'
+Plugin 'spiiph/vim-space'                      " Use spacebar to repeat last movement
+Plugin 'easymotion/vim-easymotion'             " Fast buffer navigation
+Plugin 'benmills/vimux'                        " Tmux
+Plugin 'mhinz/vim-startify'                    " Nicer start page / most recent files
+Plugin 'godlygeek/tabular'                     " Alignment & tables
+Plugin 'vim-scripts/a.vim'                     " Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                    " Does what it says on the tin
+Plugin 'kshenoy/vim-signature'                 " marks in sidebar
+Plugin 'scrooloose/nerdtree'                   " file tree
+Plugin 'plasticboy/vim-markdown'               " markdown highlighting
+Plugin 'vim-airline/vim-airline'               " Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'        " Themes for airline
+Plugin 'morhetz/gruvbox'                       " Pretty theme!
+Plugin 'vim-scripts/dbext.vim'                 " databases from within vim
+Plugin 'gfontenot/vim-xcode'                   " Xcode integration
+Plugin 'Shougo/unite.vim'                      " good?
+Plugin 'sgur/unite-qf'                         " quickfix for unite
+Plugin 'JamshedVesuna/vim-markdown-preview'    " Markdown preview
 
-
-Plugin 'benmills/vimux'                 " Tmux
-Plugin 'mhinz/vim-startify'             " Nicer start page / most recent files
-Plugin 'godlygeek/tabular'              " Alignment & tables
-Plugin 'vim-scripts/a.vim'              " Swap between cpp & hpp
-Plugin 'tpope/vim-surround'             " Does what it says on the tin
-Plugin 'kshenoy/vim-signature'          " marks in sidebar
-Plugin 'scrooloose/nerdtree'            " file tree
-Plugin 'gabrielelana/vim-markdown'      " markdown highlighting
-Plugin 'vim-airline/vim-airline'        " Better tab/status line
-Plugin 'vim-airline/vim-airline-themes' " Themes for airline
-Plugin 'morhetz/gruvbox'                " Pretty theme!
-Plugin 'vim-scripts/dbext.vim'          " databases from within vim
-Plugin 'gfontenot/vim-xcode'            " Xcode integration
-Plugin 'Shougo/unite.vim'               " good?
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'       " autocomplete across buffers
-    Plugin 'sgur/unite-qf'                  " quickfix for unite
+elseif has("mac")
+    Plugin 'Valloric/YouCompleteMe'         " Clang based completeion
 endif
 
 "================= VUNDLE END ================= 
@@ -73,8 +75,6 @@ set expandtab
 set noswapfile
 set nowrap
 set lazyredraw
-set encoding=utf8
-set t_Co=256
 
 "search settings
 nnoremap // /\v
@@ -98,6 +98,15 @@ if has("win32")
     set guioptions+=c " use console prompt
     au GUIEnter * simalt ~x
     inoremap <Insert> <esc>
+elseif has("mac")
+    " macvim options
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L
+    set guifont=Hack\ Regular:h12
+    set guioptions-=e " Use default vim tabs
+    set guioptions+=c " use console prompt
 endif
 
 "" MAPPINGS
@@ -109,16 +118,15 @@ nmap <leader>q :q<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Insert line before/after without going to insert
-"nmap <space>o o<esc>
-"nmap <space>O O<esc>
-
 "go (beween) splits
 nmap gs <C-W><C-W>
 nmap gk <C-W>k
 nmap gh <C-W>h
 nmap gl <C-W>l
 nmap gj <C-W>j
+" go next/previous buffer
+nnoremap gb :bnext<cr> 
+nnoremap gB :bprevious<cr> 
 
 " create splits/tabs
 nmap <leader>v :vnew<CR>
@@ -135,18 +143,16 @@ vmap J LztM
 nmap K HzbM
 vmap K HzbM
 
-nnoremap gb :bnext<cr> " go-next buffer
-nnoremap gB :bprevious<cr> " go previous buffer
-
 "<leader>y & <leader>p copy from system clipboard
 nmap <leader>p "*p
 nmap <leader>y 0"*y$
-nmap <leader>a mzggVG"*y`z
+nmap <leader>Y "*y$
+" Yank entire buffer
+nmap <leader>ay mzggVG"*y`z
 
 " Execute current line or current selection as Vim EX commands.
-nnoremap <F2> :exe getline(".")<CR>
-vnoremap <F2> :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
-
+nnoremap <leader>e :exe getline(".")<CR>
+vnoremap <leader>e :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
 " I never use the default s or S, so nop them; now its a new prefix!
 " Think: special -> ...
@@ -156,6 +162,7 @@ nnoremap sl o<esc>
 nnoremap so O<esc>
 nnoremap sd yyp
 nnoremap sr !!zsh<cr>
+
 augroup commentz
     autocmd!
     autocmd FileType vim nnoremap sk 0i"<esc>
@@ -165,22 +172,51 @@ augroup commentz
 augroup END
 
 "================= Plugin mappings/settings ================= 
-" use // for normal search + magic
-noremap // /\v
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-"nmap s <Plug>(easymotion-overwin-f2)
-let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
-map <C-n> :NERDTreeToggle<CR>
-let g:ycm_confirm_extra_conf = 0                              " Don't confirm on load
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
 colorscheme gruvbox
 set background=dark
+" use // for normal search
+noremap // /
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" youcompleteme
+let g:ycm_confirm_extra_conf = 0                              " Don't confirm on load
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
+
+" airline
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
+
+"vim-markdown
+let g:vim_markdown_fenced_languages = ['c=c']
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_level = 6
+" markdown preview
+let g:vim_markdown_preview_github=0
+let g:vim_markdown_preview_temp_file=1
+let g:vim_markdown_preview_toggle=2
+augroup mkdownNotes
+    au!
+    autocmd BufWritePost /Users/lukepurcell/Desktop/nano-blog/posts/*.md silent exec "!/Users/lukepurcell/Desktop/nano-blog/make_preview.sh" | redraw!
+    autocmd BufEnter /Users/lukepurcell/Desktop/nano-blog/posts/*.md lcd ~/Desktop/nano-blog
+augroup END
+augroup markdown
+    au!
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    autocmd BufNewFile,BufReadPost *.md setlocal wrap
+    autocmd BufNewFile,BufReadPost *.md noremap <buffer> j gj
+    autocmd BufNewFile,BufReadPost *.md noremap <buffer> k gk
+    autocmd BufNewFile,BufReadPost *.md set linebreak
+    au BufRead *.md set nofoldenable
+    au BufRead,BufWrite *.md Toc
+augroup END
 
 " a.vim
 augroup clearimap
@@ -193,6 +229,9 @@ augroup plugcpp
     autocmd!
     autocmd FileType c,cpp nmap <leader>cv :AV<cr>
     autocmd FileType c,cpp nmap <leader>ch :AS<cr>
+    autocmd FileType c,cpp nmap <leader><leader> m'A;<esc>''
+    "Unite quickfix
+    autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
     if has("mac")
         "vimmux (tmux)
         autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
@@ -206,8 +245,6 @@ augroup plugcpp
         autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
         autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
     elseif has("win32")
-        "Unite quickfix
-        autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
         autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
     endif
 augroup END
@@ -215,6 +252,8 @@ augroup END
 "unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
 nmap <leader>f :Unite -no-split -start-insert file_rec buffer bookmark:*<cr>
 nmap <leader>F :Unite -no-split file_rec buffer bookmark:*<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
