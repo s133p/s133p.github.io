@@ -29,6 +29,7 @@ Plugin 'gfontenot/vim-xcode'                   " Xcode integration
 Plugin 'Shougo/unite.vim'                      " good?
 Plugin 'sgur/unite-qf'                         " quickfix for unite
 Plugin 'JamshedVesuna/vim-markdown-preview'    " Markdown preview
+Plugin 'airblade/vim-rooter'                   " change directory to root of projects
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'       " autocomplete across buffers
@@ -196,6 +197,10 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 
+" Rooter (auto cd to project roots)
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_targets = '/,*'
+
 "vim-markdown
 let g:vim_markdown_fenced_languages = ['c=c']
 let g:vim_markdown_toc_autofit = 1
@@ -216,6 +221,8 @@ augroup markdown
     autocmd BufNewFile,BufReadPost *.md noremap <buffer> j gj
     autocmd BufNewFile,BufReadPost *.md noremap <buffer> k gk
     autocmd BufNewFile,BufReadPost *.md set linebreak
+    autocmd BufEnter *.md set spell
+    autocmd BufLeave *.md set nospell
     au BufRead *.md set nofoldenable
     au BufRead,BufWrite *.md Toc
 augroup END
@@ -264,7 +271,7 @@ nmap <leader>b :UniteBookmarkAdd<cr><cr>
 if has("mac")
     let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
 elseif has("win32")
-    let g:dbext_default_profile_sqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite:bin_path=/Users/luke.purcell/Desktop/Misc/sqlite'
+    let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite:bin_path=/Users/luke.purcell/Desktop/Misc/sqlite'
 endif
 augroup sqldb
     autocmd!
