@@ -244,10 +244,10 @@ augroup plugcpp
     autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
     if has("mac")
         "vimmux (tmux)
-        autocmd FileType c,cpp nmap <leader>b :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-        autocmd FileType c,cpp nmap <leader>r :call VimuxRunCommand("./run.sh")<CR>
-        autocmd FileType c,cpp nmap <leader>z :call VimuxZoomRunner()<CR>
-        autocmd FileType c,cpp nmap <leader>c :VimuxInterruptRunner<CR>
+        autocmd FileType c,cpp nmap <leader>xb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+        autocmd FileType c,cpp nmap <leader>xr :call VimuxRunCommand("./run.sh")<CR>
+        autocmd FileType c,cpp nmap <leader>xz :call VimuxZoomRunner()<CR>
+        autocmd FileType c,cpp nmap <leader>xc :VimuxInterruptRunner<CR>
         "YouComepleteMe
         autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
         autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
@@ -264,8 +264,8 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
-nmap <leader>f :UniteWithCurrentDir -no-split -start-insert file_rec buffer bookmark:*<cr>
-nmap <leader>F :UniteWithCurrentDir -no-split file_rec buffer bookmark:*<cr>
+nmap <leader>f :UniteWithCurrentDir -no-split -start-insert file_rec buffer<cr>
+nmap <leader>F :UniteWithCurrentDir -no-split -start-insert file buffer<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
 
 "dbext
