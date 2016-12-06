@@ -80,8 +80,8 @@ set encoding=utf8
 set t_Co=256
 
 "search settings
-nnoremap // /\v
-vnoremap // /\v
+nnoremap // /
+vnoremap // /
 set incsearch
 set ignorecase
 set smartcase
@@ -100,6 +100,7 @@ if has("win32")
     set guioptions-=e " Use default vim tabs
     set guioptions+=c " use console prompt
     au GUIEnter * simalt ~x
+    " remap insert (FN-; on poker3 kbd)
     inoremap <Insert> <esc>
 elseif has("mac")
     " macvim options
