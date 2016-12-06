@@ -264,8 +264,8 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
-nmap <leader>f :Unite -no-split -start-insert file_rec buffer bookmark:*<cr>
-nmap <leader>F :Unite -no-split file_rec buffer bookmark:*<cr>
+nmap <leader>f :UniteWithCurrentDir -no-split -start-insert file_rec buffer bookmark:*<cr>
+nmap <leader>F :UniteWithCurrentDir -no-split file_rec buffer bookmark:*<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
 
 "dbext
