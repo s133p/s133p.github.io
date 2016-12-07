@@ -30,6 +30,7 @@ Plugin 'Shougo/unite.vim'                      " good?
 Plugin 'sgur/unite-qf'                         " quickfix for unite
 Plugin 'JamshedVesuna/vim-markdown-preview'    " Markdown preview
 Plugin 'airblade/vim-rooter'                   " change directory to root of projects
+Plugin 'tpope/vim-fugitive'                    " Git integration
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'       " autocomplete across buffers
