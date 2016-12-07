@@ -143,10 +143,10 @@ noremap ' `
 noremap ` '
 
 " J & K jump to bottom/top & center on new pos
-nmap J LztM
-vmap J LztM
-nmap K HzbM
-vmap K HzbM
+nmap J Lzz
+vmap J Lzz
+nmap K Hzz
+vmap K Hzz
 
 "<leader>y & <leader>p copy from system clipboard
 nmap <leader>p "*p
@@ -245,10 +245,10 @@ augroup plugcpp
     autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
     if has("mac")
         "vimmux (tmux)
-        autocmd FileType c,cpp nmap <leader>xb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-        autocmd FileType c,cpp nmap <leader>xr :call VimuxRunCommand("./run.sh")<CR>
-        autocmd FileType c,cpp nmap <leader>xz :call VimuxZoomRunner()<CR>
-        autocmd FileType c,cpp nmap <leader>xc :VimuxInterruptRunner<CR>
+       autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+        autocmd FileType c,cpp nmap <leader>ccr :call VimuxRunCommand("./run.sh")<CR>
+        autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
+        autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
         "YouComepleteMe
         autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
         autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
