@@ -11,31 +11,31 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space'                      " Use spacebar to repeat last movement
-Plugin 'easymotion/vim-easymotion'             " Fast buffer navigation
-Plugin 'benmills/vimux'                        " Tmux
-Plugin 'mhinz/vim-startify'                    " Nicer start page / most recent files
-Plugin 'godlygeek/tabular'                     " Alignment & tables
-Plugin 'vim-scripts/a.vim'                     " Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                    " Does what it says on the tin
-Plugin 'kshenoy/vim-signature'                 " marks in sidebar
-Plugin 'scrooloose/nerdtree'                   " file tree
-Plugin 'plasticboy/vim-markdown'               " markdown highlighting
-Plugin 'vim-airline/vim-airline'               " Better tab/status line
-Plugin 'vim-airline/vim-airline-themes'        " Themes for airline
-Plugin 'morhetz/gruvbox'                       " Pretty theme!
-Plugin 'vim-scripts/dbext.vim'                 " databases from within vim
-Plugin 'gfontenot/vim-xcode'                   " Xcode integration
-Plugin 'Shougo/unite.vim'                      " good?
-Plugin 'sgur/unite-qf'                         " quickfix for unite
-Plugin 'JamshedVesuna/vim-markdown-preview'    " Markdown preview
-Plugin 'airblade/vim-rooter'                   " change directory to root of projects
-Plugin 'tpope/vim-fugitive'                    " Git integration
+Plugin 'spiiph/vim-space'                      " [vim-space]              = Use spacebar to repeat last movement
+Plugin 'easymotion/vim-easymotion'             " [vim-easymotion]         = Fast buffer navigation
+Plugin 'benmills/vimux'                        " [vimux]                  = Tmux
+Plugin 'mhinz/vim-startify'                    " [vim-startify]           = Nicer start page / most recent files
+Plugin 'godlygeek/tabular'                     " [tabular]                = Alignment & tables
+Plugin 'vim-scripts/a.vim'                     " [a.vim]                  = Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                    " [vim-surround]           = Does what it says on the tin
+Plugin 'kshenoy/vim-signature'                 " [vim-signature]          = marks in sidebar
+Plugin 'scrooloose/nerdtree'                   " [nerdtree]               = file tree
+Plugin 'plasticboy/vim-markdown'               " [vim-markdown]           = markdown highlighting
+Plugin 'vim-airline/vim-airline'               " [vim-airline]            = Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'        " [vim-airline-themes]     = Themes for airline
+Plugin 'morhetz/gruvbox'                       " [gruvbox]                = Pretty theme!
+Plugin 'vim-scripts/dbext.vim'                 " [dbext.vim]              = databases from within vim
+Plugin 'gfontenot/vim-xcode'                   " [vim-xcode]              = Xcode integration
+Plugin 'Shougo/unite.vim'                      " [unite.vim]              = good?
+Plugin 'sgur/unite-qf'                         " [unite-qf]               = quickfix for unite
+Plugin 'JamshedVesuna/vim-markdown-preview'    " [vim-markdown-preview]   = Markdown preview
+Plugin 'airblade/vim-rooter'                   " [vim-rooter]             = change directory to root of projects
+Plugin 'tpope/vim-fugitive'                    " [vim-fugitive]           = Git integration
 
 if has("win32")
-    Plugin 'Shougo/neocomplcache.vim'       " autocomplete across buffers
+    Plugin 'Shougo/neocomplcache.vim'          " [neocomplcache.vim]      = autocomplete across buffers
 elseif has("mac")
-    Plugin 'Valloric/YouCompleteMe'         " Clang based completeion
+    Plugin 'Valloric/YouCompleteMe'            " [YouCompleteMe]          = Clang based completeion
 endif
 
 "================= VUNDLE END ================= 
@@ -44,7 +44,7 @@ filetype plugin indent on    " required
 
 
 
-"" Settings
+" [Settings]
 filetype indent plugin on
 syntax on
 set hidden
@@ -80,7 +80,7 @@ set lazyredraw
 set encoding=utf8
 set t_Co=256
 
-"search settings
+" [Search Settings]
 nnoremap // /
 vnoremap // /
 set incsearch
@@ -114,7 +114,7 @@ elseif has("mac")
     set guioptions+=c " use console prompt
 endif
 
-"" MAPPINGS
+" [MAPPINGS]
 nmap Y y$ " yank til EOL
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
@@ -176,38 +176,41 @@ augroup commentz
     autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
 augroup END
 
-"================= Plugin mappings/settings ================= 
+"================= [Plugin mappings/settings] ================= 
+" [gruvbox]
 colorscheme gruvbox
 set background=dark
+
+" [vim-easymotion]
 " use // for normal search
 noremap // /
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
 
-" NERDTree
+" [nerdtree]
 map <C-n> :NERDTreeToggle<CR>
 
-" youcompleteme
+" [YouCompleteMe]
 let g:ycm_confirm_extra_conf = 0                              " Don't confirm on load
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
 
-" airline
+" [vim-airline]
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 
-" Rooter (auto cd to project roots)
+" [vim-rooter] (auto cd to project roots)
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_targets = '/,*'
 
-"vim-markdown
+" [vim-markdown]
 let g:vim_markdown_fenced_languages = ['c=c']
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_level = 6
-" markdown preview
+" [vim-markdown-preview]
 let g:vim_markdown_preview_github=0
 let g:vim_markdown_preview_temp_file=1
 let g:vim_markdown_preview_toggle=1
@@ -231,7 +234,7 @@ augroup markdown
     autocmd FileType markdown setlocal nofoldenable
 augroup END
 
-" a.vim
+" [a.vim]
 augroup clearimap
     autocmd!
     autocmd VimEnter * iunmap <leader>ih
@@ -243,15 +246,15 @@ augroup plugcpp
     autocmd FileType c,cpp nmap <leader>cv :AV<cr>
     autocmd FileType c,cpp nmap <leader>ch :AS<cr>
     autocmd FileType c,cpp nmap <leader><leader> m'A;<esc>''
-    "Unite quickfix
+    " [unite-qf]
     autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
     if has("mac")
-        "vimmux (tmux)
+        " [vimmux] (tmux)
         autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
         autocmd FileType c,cpp nmap <leader>ccr :call VimuxRunCommand("./run.sh")<CR>
         autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
         autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
-        "YouComepleteMe
+        " [YouComepleteMe]
         autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
         autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
         autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
@@ -262,19 +265,17 @@ augroup plugcpp
     endif
 augroup END
 
-"unite
+" [unite.vim]
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
-"nmap <leader>f :Unite -no-split -start-insert file_rec buffer<cr>
-"nmap <leader>F :Unite -no-split -start-insert file buffer<cr>
 nmap <leader>f :Unite -start-insert file_rec tab buffer<cr>
 nmap <leader>F :Unite -start-insert file tab buffer<cr>
 nmap <leader>u :Unite tab bookmark buffer<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
 
-"dbext
+" [dbext.vim]
 if has("mac")
     let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
 elseif has("win32")
@@ -287,7 +288,7 @@ augroup sqldb
     autocmd FileType sql nmap < ,selgjggjVGygko<esc>kp:DBResultsClose<cr>
 augroup END
 
-" Git (vim-fugitive)
+" [vim-fugitive]
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
@@ -296,7 +297,7 @@ nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 
 if has("win32")
-    "neocomplcache
+    " [neocomplcache.vim]
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     " Use neocomplcache.
