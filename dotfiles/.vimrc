@@ -210,7 +210,7 @@ let g:vim_markdown_folding_level = 6
 " markdown preview
 let g:vim_markdown_preview_github=0
 let g:vim_markdown_preview_temp_file=1
-let g:vim_markdown_preview_toggle=2
+let g:vim_markdown_preview_toggle=1
 augroup mkdownNotes
     au!
     autocmd BufWritePost /Users/lukepurcell/Desktop/nano-blog/posts/*.md silent exec "!/Users/lukepurcell/Desktop/nano-blog/make_preview.sh" | redraw!
@@ -220,13 +220,15 @@ augroup markdown
     au!
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.md setlocal wrap
-    autocmd BufNewFile,BufReadPost *.md noremap <buffer> j gj
-    autocmd BufNewFile,BufReadPost *.md noremap <buffer> k gk
-    autocmd BufNewFile,BufReadPost *.md set linebreak
+    autocmd BufNewFile,BufReadPost *.md nnoremap <buffer> j gj
+    autocmd BufNewFile,BufReadPost *.md nnoremap <buffer> k gk
+    autocmd BufNewFile,BufReadPost *.md setlocal linebreak
     autocmd BufEnter *.md set spell
     autocmd BufLeave *.md set nospell
-    au BufRead *.md set nofoldenable
-    au BufRead,BufWrite *.md Toc
+    "au BufRead *.md set nofoldenable
+    "au BufRead,BufWrite *.md Toc
+    autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
+    autocmd FileType markdown setlocal nofoldenable
 augroup END
 
 " a.vim
@@ -245,7 +247,7 @@ augroup plugcpp
     autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
     if has("mac")
         "vimmux (tmux)
-       autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+        autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
         autocmd FileType c,cpp nmap <leader>ccr :call VimuxRunCommand("./run.sh")<CR>
         autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
         autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
@@ -265,8 +267,11 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
-nmap <leader>f :UniteWithCurrentDir -no-split -start-insert file_rec buffer<cr>
-nmap <leader>F :UniteWithCurrentDir -no-split -start-insert file buffer<cr>
+"nmap <leader>f :Unite -no-split -start-insert file_rec buffer<cr>
+"nmap <leader>F :Unite -no-split -start-insert file buffer<cr>
+nmap <leader>f :Unite -start-insert file_rec tab buffer<cr>
+nmap <leader>F :Unite -start-insert file tab buffer<cr>
+nmap <leader>u :Unite tab bookmark buffer<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
 
 "dbext
