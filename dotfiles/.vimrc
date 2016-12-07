@@ -282,6 +282,13 @@ augroup sqldb
     autocmd FileType sql nmap < ,selgjggjVGygko<esc>kp:DBResultsClose<cr>
 augroup END
 
+" Git (vim-fugitive)
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gp :Gpush<cr>
+nmap <leader>gu :Gpull<cr>
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gd :Gdiff<cr>
 
 if has("win32")
     "neocomplcache
