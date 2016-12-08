@@ -4,7 +4,7 @@ set secure
 
 let mapleader=';'
 
-"============================================= "  VUNDLE BEGIN ==============================================================='
+"============================================= "  VUNDLE BEGIN ==============================================================={{{
 filetype off                                   "  required
 set rtp+=~/.vim/bundle/Vundle.vim              "  required
 call vundle#begin()                            "  required
@@ -40,9 +40,9 @@ endif
 
 call vundle#end()                              "  required
 filetype plugin indent on                      "  required
-"============================================  "  VUNDLE END ================================================================='
+"============================================  "  VUNDLE END =================================================================}}}
 
-"================================================ [Settings] ==============================================================='
+"================================================ [Settings] ==============================================================={{{
 filetype indent plugin on
 syntax on
 set hidden
@@ -77,15 +77,17 @@ set nowrap
 set lazyredraw
 set encoding=utf8
 set t_Co=256
+"================================================ [END Settings] ===============================================================}}}
 
-"================================================ [Search Settings] ==============================================================='
+"================================================ [Search Settings] ==============================================================={{{
 set incsearch
 set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
+"================================================ [END Search Settings] ===============================================================}}}
 
-"================================================ [Gvim / MacVim] ==============================================================='
+"================================================ [Gvim / MacVim] ==============================================================={{{
 if has("win32")
     "gvim specific
     set shellslash
@@ -110,8 +112,9 @@ elseif has("mac")
     set guioptions-=e " Use default vim tabs
     set guioptions+=c " use console prompt
 endif
+"================================================ [END Gvim / MacVim] ===============================================================}}}
 
-"================================================ [MAPPINGS] ==============================================================='
+"================================================ [MAPPINGS] ==============================================================={{{
 nmap Y y$ " yank til EOL
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
@@ -158,58 +161,60 @@ nnoremap <leader>ay mzggVG"*y`z
 nnoremap <leader>e :exe getline(".")<CR>
 vnoremap <leader>e :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
+augroup vimrc
+    au!
+    autocmd FileType vim setlocal fdm=marker
+augroup END
 " I never use the default s or S, so nop them; now its a new prefix!
 " Think: special -> ...
-nnoremap s <nop>
-nnoremap S <nop>
-nnoremap sl o<esc>
-nnoremap so O<esc>
-nnoremap sd yyp
-nnoremap sr !!zsh<cr>
+" nnoremap s <nop>
+" nnoremap S <nop>
+" nnoremap sl o<esc>
+" nnoremap so O<esc>
+" nnoremap sd yyp
+" nnoremap sr !!zsh<cr>
 
-augroup commentz
-    autocmd!
-    autocmd FileType vim nnoremap sk 0i"<esc>
-    autocmd FileType c,cpp nnoremap ska I//<esc>
-    autocmd FileType c,cpp nnoremap sku :s/\/\///<CR>
-    autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
-augroup END
-"================= [END MAPPINGS] =================
+"================================================ [END MAPPINGS] ===============================================================}}}
 
-"================================================ [Plugin mappings/settings] ==============================================================='
+"================================================ [Plugin mappings/settings] ==============================================================={{{
 
-" [gruvbox]
+" [gruvbox] {{{
 colorscheme gruvbox
 set background=dark
+" [END gruvbox] }}}
 
-" [vim-easymotion]
+" [vim-easymotion] {{{
 " use // for normal search
 nnoremap // <Plug>(easymotion-sn)
 let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
+" [END vim-easymotion] }}}
 
-" [nerdtree]
+" [nerdtree] {{{
 map <C-n> :NERDTreeToggle<CR>
+" [END nerdtree] }}}
 
-" [YouCompleteMe]
+" [YouCompleteMe] {{{
 let g:ycm_confirm_extra_conf = 0                              " Don't confirm on load
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
+" [END YouCompleteMe] }}}
 
-" [vim-airline]
+" [vim-airline] {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
+" [END vim-airline] }}}
 
-" [vim-rooter] (auto cd to project roots)
+" [vim-rooter] (auto cd to project roots) {{{
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_targets = '/,*'
+" [END vim-rooter] (auto cd to project roots) }}}
 
-" [vim-markdown]
+" [vim-markdown] & [vim-markdown-preview]{{{
 let g:vim_markdown_fenced_languages = ['c=c']
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_level = 6
-" [vim-markdown-preview]
 let g:vim_markdown_preview_github=0
 let g:vim_markdown_preview_temp_file=1
 let g:vim_markdown_preview_toggle=1
@@ -232,8 +237,9 @@ augroup markdown
     autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
     autocmd FileType markdown setlocal nofoldenable
 augroup END
+" [vim-markdown] & [vim-markdown-preview]}}}
 
-" [a.vim]
+" [a.vim]{{{
 augroup clearimap
     autocmd!
     autocmd VimEnter * iunmap <leader>ih
@@ -263,8 +269,9 @@ augroup plugcpp
         autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
     endif
 augroup END
+" [a.vim]}}}
 
-" [unite.vim]
+" [unite.vim] {{{
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -273,8 +280,9 @@ nmap <leader>f :Unite -start-insert file_rec tab buffer<cr>
 nmap <leader>F :Unite -start-insert file tab buffer<cr>
 nmap <leader>u :Unite tab bookmark buffer<cr>
 nmap <leader>b :UniteBookmarkAdd<cr><cr>
+" [END unite.vim] }}}
 
-" [dbext.vim]
+" [dbext.vim]{{{
 if has("mac")
     let g:dbext_default_profile_mySqlite = 'type=SQLITE:user=:passwd=:dbname=./db.sqlite'
 elseif has("win32")
@@ -286,16 +294,18 @@ augroup sqldb
     autocmd FileType sql nmap > ,sejgjggjVGygk//;<cr>o<esc>kp:DBResultsClose<cr>
     autocmd FileType sql nmap < ,selgjggjVGygko<esc>kp:DBResultsClose<cr>
 augroup END
+" [dbext.vim]}}}
 
-" [vim-fugitive]
+" [vim-fugitive] {{{
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
 nmap <leader>gu :Gpull<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
+" [END vim-fugitive] }}}
 
-" [neocomplcache.vim]
+" [neocomplcache.vim]{{{
 if has("win32")
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -350,4 +360,6 @@ if has("win32")
     set encoding=utf8
     set novisualbell
 endif
-"================= [END Plugin mappings/settings] =================
+" [neocomplcache.vim]}}}
+
+"================================================ [END Plugin mappings/settings] ===============================================================}}}
