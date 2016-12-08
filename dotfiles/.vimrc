@@ -127,17 +127,15 @@ nmap gk <C-W>k
 nmap gh <C-W>h
 nmap gl <C-W>l
 nmap gj <C-W>j
+nmap gw <c-w>
 " go next/previous buffer
 nnoremap gb :bnext<cr> 
 nnoremap gB :bprevious<cr> 
 
 " create splits/tabs
 nmap <leader>v :vnew<CR>
-nmap <leader>h :new<CR>
+nmap <leader>V :new<CR>
 nmap <leader>t :tabnew<CR>
-
-" alternative to control-w (window/split control)
-nmap <leader>m <c-w>
 
 " swap defauly behavior of ' and ` (jump to mark/jump to mark @ col)
 noremap ' `
