@@ -4,7 +4,7 @@ set secure
 
 let mapleader=';'
 
-"============================================= "  VUNDLE BEGIN ==============================================================={{{
+"======== [VUNDLE BEGIN] ========{{{
 filetype off                                   "  required
 set rtp+=~/.vim/bundle/Vundle.vim              "  required
 call vundle#begin()                            "  required
@@ -40,9 +40,9 @@ endif
 
 call vundle#end()                              "  required
 filetype plugin indent on                      "  required
-"============================================  "  VUNDLE END =================================================================}}}
+"======== [VUNDLE END] ========}}}
 
-"================================================ [Settings] ==============================================================={{{
+"======== [Settings] ========{{{
 filetype indent plugin on
 syntax on
 set hidden
@@ -77,17 +77,17 @@ set nowrap
 set lazyredraw
 set encoding=utf8
 set t_Co=256
-"================================================ [END Settings] ===============================================================}}}
+"======== [END Settings] ========}}}
 
-"================================================ [Search Settings] ==============================================================={{{
+"======== [Search Settings] ========{{{
 set incsearch
 set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
-"================================================ [END Search Settings] ===============================================================}}}
+"======== [END Search Settings] ========}}}
 
-"================================================ [Gvim / MacVim] ==============================================================={{{
+"======== [Gvim / MacVim] ========{{{
 if has("win32")
     "gvim specific
     set shellslash
@@ -112,9 +112,9 @@ elseif has("mac")
     set guioptions-=e " Use default vim tabs
     set guioptions+=c " use console prompt
 endif
-"================================================ [END Gvim / MacVim] ===============================================================}}}
+"======== [END Gvim / MacVim] ========}}}
 
-"================================================ [MAPPINGS] ==============================================================={{{
+"======== [MAPPINGS] ========{{{
 nmap Y y$ " yank til EOL
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
@@ -176,9 +176,9 @@ augroup END
 " nnoremap sd yyp
 " nnoremap sr !!zsh<cr>
 
-"================================================ [END MAPPINGS] ===============================================================}}}
+"======== [END MAPPINGS] ========}}}
 
-"================================================ [Plugin mappings/settings] ==============================================================={{{
+"======== [Plugin mappings/settings] ========{{{
 
 " [gruvbox] {{{
 colorscheme gruvbox
@@ -364,4 +364,4 @@ if has("win32")
 endif
 " [neocomplcache.vim]}}}
 
-"================================================ [END Plugin mappings/settings] ===============================================================}}}
+"======== [END Plugin mappings/settings] ========}}}
