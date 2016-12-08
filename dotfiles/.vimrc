@@ -42,8 +42,7 @@ call vundle#end()                              "  required
 filetype plugin indent on                      "  required
 "============================================  "  VUNDLE END ================================================================='
 
-
-" [Settings]
+"================================================ [Settings] ==============================================================='
 filetype indent plugin on
 syntax on
 set hidden
@@ -79,13 +78,14 @@ set lazyredraw
 set encoding=utf8
 set t_Co=256
 
-" [Search Settings]
+"================================================ [Search Settings] ==============================================================='
 set incsearch
 set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
+"================================================ [Gvim / MacVim] ==============================================================='
 if has("win32")
     "gvim specific
     set shellslash
@@ -111,7 +111,7 @@ elseif has("mac")
     set guioptions+=c " use console prompt
 endif
 
-" [MAPPINGS]
+"================================================ [MAPPINGS] ==============================================================='
 nmap Y y$ " yank til EOL
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
@@ -174,8 +174,10 @@ augroup commentz
     autocmd FileType c,cpp nnoremap sku :s/\/\///<CR>
     autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
 augroup END
+"================= [END MAPPINGS] =================
 
-"================= [Plugin mappings/settings] =================
+"================================================ [Plugin mappings/settings] ==============================================================='
+
 " [gruvbox]
 colorscheme gruvbox
 set background=dark
@@ -293,8 +295,8 @@ nmap <leader>gu :Gpull<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 
+" [neocomplcache.vim]
 if has("win32")
-    " [neocomplcache.vim]
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     " Use neocomplcache.
@@ -348,3 +350,4 @@ if has("win32")
     set encoding=utf8
     set novisualbell
 endif
+"================= [END Plugin mappings/settings] =================
