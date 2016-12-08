@@ -161,9 +161,11 @@ nnoremap <leader>ay mzggVG"*y`z
 nnoremap <leader>e :exe getline(".")<CR>
 vnoremap <leader>e :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
-augroup vimrc
+augroup myfolding
     au!
     autocmd FileType vim setlocal fdm=marker
+    autocmd FileType c,cpp setlocal fdm=syntax
+    autocmd FileType c,cpp setlocal nofoldenable
 augroup END
 " I never use the default s or S, so nop them; now its a new prefix!
 " Think: special -> ...
@@ -249,16 +251,14 @@ augroup END
 augroup plugcpp
     autocmd!
     autocmd FileType c,cpp nmap <leader>cv :AV<cr>
-    autocmd FileType c,cpp nmap <leader>ch :AS<cr>
-    autocmd FileType c,cpp nmap <leader><leader> m'A;<esc>''
-    " [unite-qf]
-    autocmd FileType c,cpp nmap <leader>cf :Unite qf<cr>
+    autocmd FileType c,cpp nmap <leader>cV :AS<cr>
+    " autocmd FileType c,cpp nmap <leader><leader> m'A;<esc>''
     if has("mac")
         " [vimmux] (tmux)
-        autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
-        autocmd FileType c,cpp nmap <leader>ccr :call VimuxRunCommand("./run.sh")<CR>
-        autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
-        autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
+        " autocmd FileType c,cpp nmap <leader>ccb :w<CR> :call VimuxRunCommand("xcb \| xcpretty")<CR>
+        " autocmd FileType c,cpp nmap <leader>ccr :call VimuxRunCommand("./run.sh")<CR>
+        " autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
+        " autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
         " [YouComepleteMe]
         autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
         autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
@@ -271,7 +271,7 @@ augroup plugcpp
 augroup END
 " [a.vim]}}}
 
-" [unite.vim] {{{
+" [unite.vim] & [unite-qf] {{{
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -279,7 +279,9 @@ call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/
 nmap <leader>f :Unite -start-insert file_rec tab buffer<cr>
 nmap <leader>F :Unite -start-insert file tab buffer<cr>
 nmap <leader>u :Unite tab bookmark buffer<cr>
-nmap <leader>b :UniteBookmarkAdd<cr><cr>
+nmap <leader>Ub :UniteBookmarkAdd<cr><cr>
+nmap <leader>Ur :Unite register<cr>
+nmap <leader>cf :Unite qf locationlist<cr>
 " [END unite.vim] }}}
 
 " [dbext.vim]{{{
