@@ -5,41 +5,42 @@ set secure
 let mapleader=';'
 
 "======== [VUNDLE BEGIN] ========{{{
-filetype off                                   "  required
-set rtp+=~/.vim/bundle/Vundle.vim              "  required
-call vundle#begin()                            "  required
+filetype off                                 " required
+set rtp+=~/.vim/bundle/Vundle.vim            " required
+call vundle#begin()                          " required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space'                      "  [vim-space]               =  Use spacebar to repeat last movement
-Plugin 'easymotion/vim-easymotion'             "  [vim-easymotion]          =  Fast buffer navigation **???**
-Plugin 'benmills/vimux'                        "  [vimux]                   =  Tmux
-Plugin 'mhinz/vim-startify'                    "  [vim-startify]            =  Nicer start page / most recent files **???**
-Plugin 'godlygeek/tabular'                     "  [tabular]                 =  Alignment & tables
-Plugin 'vim-scripts/a.vim'                     "  [a.vim]                   =  Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                    "  [vim-surround]            =  Does what it says on the tin
-Plugin 'kshenoy/vim-signature'                 "  [vim-signature]           =  marks in sidebar
-Plugin 'scrooloose/nerdtree'                   "  [nerdtree]                =  file tree
-Plugin 'plasticboy/vim-markdown'               "  [vim-markdown]            =  markdown highlighting
-Plugin 'vim-airline/vim-airline'               "  [vim-airline]             =  Better tab/status line
-Plugin 'vim-airline/vim-airline-themes'        "  [vim-airline-themes]      =  Themes for airline
-Plugin 'morhetz/gruvbox'                       "  [gruvbox]                 =  Pretty theme!
-Plugin 'vim-scripts/dbext.vim'                 "  [dbext.vim]               =  databases from within vim
-Plugin 'gfontenot/vim-xcode'                   "  [vim-xcode]               =  Xcode integration
-Plugin 'Shougo/unite.vim'                      "  [unite.vim]               =  Fully replaces Ctrl-P & much more
-Plugin 'sgur/unite-qf'                         "  [unite-qf]                =  Quickfix for unite
-Plugin 'JamshedVesuna/vim-markdown-preview'    "  [vim-markdown-preview]    =  Markdown preview
-Plugin 'airblade/vim-rooter'                   "  [vim-rooter]              =  Change directory to root of projects
-Plugin 'tpope/vim-fugitive'                    "  [vim-fugitive]            =  Git integration
-Plugin 'michaeljsmith/vim-indent-object'       "  [vim-indent-object]       =  Use indent levels as text objects
+Plugin 'spiiph/vim-space'                    " [vim-space]             = Use spacebar to repeat last movement
+Plugin 'easymotion/vim-easymotion'           " [vim-easymotion]        = Fast buffer navigation **???**
+Plugin 'benmills/vimux'                      " [vimux]                 = Tmux
+Plugin 'mhinz/vim-startify'                  " [vim-startify]          = Nicer start page / most recent files **???**
+Plugin 'godlygeek/tabular'                   " [tabular]               = Alignment & tables
+Plugin 'vim-scripts/a.vim'                   " [a.vim]                 = Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                  " [vim-surround]          = Does what it says on the tin
+Plugin 'kshenoy/vim-signature'               " [vim-signature]         = marks in sidebar
+Plugin 'scrooloose/nerdtree'                 " [nerdtree]              = file tree
+Plugin 'plasticboy/vim-markdown'             " [vim-markdown]          = markdown highlighting
+Plugin 'vim-airline/vim-airline'             " [vim-airline]           = Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'      " [vim-airline-themes]    = Themes for airline
+Plugin 'morhetz/gruvbox'                     " [gruvbox]               = Pretty theme!
+Plugin 'vim-scripts/dbext.vim'               " [dbext.vim]             = databases from within vim
+Plugin 'gfontenot/vim-xcode'                 " [vim-xcode]             = Xcode integration
+Plugin 'Shougo/unite.vim'                    " [unite.vim]             = Fully replaces Ctrl-P & much more
+Plugin 'sgur/unite-qf'                       " [unite-qf]              = Quickfix for unite
+Plugin 'JamshedVesuna/vim-markdown-preview'  " [vim-markdown-preview]  = Markdown preview
+Plugin 'airblade/vim-rooter'                 " [vim-rooter]            = Change directory to root of projects
+Plugin 'tpope/vim-fugitive'                  " [vim-fugitive]          = Git integration
+Plugin 'michaeljsmith/vim-indent-object'     " [vim-indent-object]     = Use indent levels as text objects
+Plugin 'tpope/vim-unimpaired'                " [vim-unimpaired]        = paired mappings
 
 if has("win32")
-    Plugin 'Shougo/neocomplcache.vim'          "  [neocomplcache.vim]       =  Autocomplete across buffers
+    Plugin 'Shougo/neocomplcache.vim'        " [neocomplcache.vim]     = Autocomplete across buffers
 elseif has("mac")
-    Plugin 'Valloric/YouCompleteMe'            "  [YouCompleteMe]           =  Clang based completeion
+    Plugin 'Valloric/YouCompleteMe'          " [YouCompleteMe]         = Clang based completeion
 endif
 
-call vundle#end()                              "  required
-filetype plugin indent on                      "  required
+call vundle#end()                            " required
+filetype plugin indent on                    " required
 "======== [VUNDLE END] ========}}}
 
 "======== [Settings] ========{{{
