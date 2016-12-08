@@ -81,8 +81,6 @@ set encoding=utf8
 set t_Co=256
 
 " [Search Settings]
-nnoremap // /
-vnoremap // /
 set incsearch
 set ignorecase
 set smartcase
@@ -138,6 +136,9 @@ nmap <leader>v :vnew<CR>
 nmap <leader>h :new<CR>
 nmap <leader>t :tabnew<CR>
 
+" alternative to control-w (window/split control)
+nmap <leader>m <c-w>
+
 " swap defauly behavior of ' and ` (jump to mark/jump to mark @ col)
 noremap ' `
 noremap ` '
@@ -183,9 +184,7 @@ set background=dark
 
 " [vim-easymotion]
 " use // for normal search
-noremap // /
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+nnoremap // <Plug>(easymotion-sn)
 let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
 
 " [nerdtree]
