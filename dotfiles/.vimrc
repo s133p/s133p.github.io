@@ -3,46 +3,44 @@ set exrc
 set secure
 
 let mapleader=';'
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-"================= VUNDLE BEGIN ================= 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"============================================= "  VUNDLE BEGIN ==============================================================='
+filetype off                                   "  required
+set rtp+=~/.vim/bundle/Vundle.vim              "  required
+call vundle#begin()                            "  required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space'                    " [vim-space]             = Use spacebar to repeat last movement
-Plugin 'easymotion/vim-easymotion'           " [vim-easymotion]        = Fast buffer navigation **???**
-Plugin 'benmills/vimux'                      " [vimux]                 = Tmux
-Plugin 'mhinz/vim-startify'                  " [vim-startify]          = Nicer start page / most recent files **???**
-Plugin 'godlygeek/tabular'                   " [tabular]               = Alignment & tables
-Plugin 'vim-scripts/a.vim'                   " [a.vim]                 = Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                  " [vim-surround]          = Does what it says on the tin
-Plugin 'kshenoy/vim-signature'               " [vim-signature]         = marks in sidebar
-Plugin 'scrooloose/nerdtree'                 " [nerdtree]              = file tree
-Plugin 'plasticboy/vim-markdown'             " [vim-markdown]          = markdown highlighting
-Plugin 'vim-airline/vim-airline'             " [vim-airline]           = Better tab/status line
-Plugin 'vim-airline/vim-airline-themes'      " [vim-airline-themes]    = Themes for airline
-Plugin 'morhetz/gruvbox'                     " [gruvbox]               = Pretty theme!
-Plugin 'vim-scripts/dbext.vim'               " [dbext.vim]             = databases from within vim
-Plugin 'gfontenot/vim-xcode'                 " [vim-xcode]             = Xcode integration
-Plugin 'Shougo/unite.vim'                    " [unite.vim]             = Fully replaces Ctrl-P & much more
-Plugin 'sgur/unite-qf'                       " [unite-qf]              = Quickfix for unite
-Plugin 'JamshedVesuna/vim-markdown-preview'  " [vim-markdown-preview]  = Markdown preview
-Plugin 'airblade/vim-rooter'                 " [vim-rooter]            = Change directory to root of projects
-Plugin 'tpope/vim-fugitive'                  " [vim-fugitive]          = Git integration
-Plugin 'michaeljsmith/vim-indent-object'     " [vim-indent-object]     = Use indent levels as text objects
+Plugin 'spiiph/vim-space'                      "  [vim-space]               =  Use spacebar to repeat last movement
+Plugin 'easymotion/vim-easymotion'             "  [vim-easymotion]          =  Fast buffer navigation **???**
+Plugin 'benmills/vimux'                        "  [vimux]                   =  Tmux
+Plugin 'mhinz/vim-startify'                    "  [vim-startify]            =  Nicer start page / most recent files **???**
+Plugin 'godlygeek/tabular'                     "  [tabular]                 =  Alignment & tables
+Plugin 'vim-scripts/a.vim'                     "  [a.vim]                   =  Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                    "  [vim-surround]            =  Does what it says on the tin
+Plugin 'kshenoy/vim-signature'                 "  [vim-signature]           =  marks in sidebar
+Plugin 'scrooloose/nerdtree'                   "  [nerdtree]                =  file tree
+Plugin 'plasticboy/vim-markdown'               "  [vim-markdown]            =  markdown highlighting
+Plugin 'vim-airline/vim-airline'               "  [vim-airline]             =  Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'        "  [vim-airline-themes]      =  Themes for airline
+Plugin 'morhetz/gruvbox'                       "  [gruvbox]                 =  Pretty theme!
+Plugin 'vim-scripts/dbext.vim'                 "  [dbext.vim]               =  databases from within vim
+Plugin 'gfontenot/vim-xcode'                   "  [vim-xcode]               =  Xcode integration
+Plugin 'Shougo/unite.vim'                      "  [unite.vim]               =  Fully replaces Ctrl-P & much more
+Plugin 'sgur/unite-qf'                         "  [unite-qf]                =  Quickfix for unite
+Plugin 'JamshedVesuna/vim-markdown-preview'    "  [vim-markdown-preview]    =  Markdown preview
+Plugin 'airblade/vim-rooter'                   "  [vim-rooter]              =  Change directory to root of projects
+Plugin 'tpope/vim-fugitive'                    "  [vim-fugitive]            =  Git integration
+Plugin 'michaeljsmith/vim-indent-object'       "  [vim-indent-object]       =  Use indent levels as text objects
 
 if has("win32")
-    Plugin 'Shougo/neocomplcache.vim'        " [neocomplcache.vim]     = Autocomplete across buffers
+    Plugin 'Shougo/neocomplcache.vim'          "  [neocomplcache.vim]       =  Autocomplete across buffers
 elseif has("mac")
-    Plugin 'Valloric/YouCompleteMe'          " [YouCompleteMe]         = Clang based completeion
+    Plugin 'Valloric/YouCompleteMe'            "  [YouCompleteMe]           =  Clang based completeion
 endif
 
-"================= VUNDLE END ================= 
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+call vundle#end()                              "  required
+filetype plugin indent on                      "  required
+"============================================  "  VUNDLE END ================================================================='
 
 
 " [Settings]
@@ -67,7 +65,7 @@ set cmdheight=2
 set notimeout ttimeout ttimeoutlen=200
 set relativenumber
 set number
-set cul 
+set cul
 set scrolloff=6
 set splitbelow
 set splitright
@@ -130,8 +128,8 @@ nmap gl <C-W>l
 nmap gj <C-W>j
 nmap gw <c-w>
 " go next/previous buffer
-nnoremap gb :bnext<cr> 
-nnoremap gB :bprevious<cr> 
+nnoremap gb :bnext<cr>
+nnoremap gB :bprevious<cr>
 
 " create splits/tabs
 nmap <leader>v :vnew<CR>
@@ -177,7 +175,7 @@ augroup commentz
     autocmd FileType c,cpp nnoremap skd :s/\/\/.*//<CR>
 augroup END
 
-"================= [Plugin mappings/settings] ================= 
+"================= [Plugin mappings/settings] =================
 " [gruvbox]
 colorscheme gruvbox
 set background=dark
@@ -195,7 +193,7 @@ let g:ycm_confirm_extra_conf = 0                              " Don't confirm on
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some defaults
 
 " [vim-airline]
-let g:airline#extensions#tabline#enabled = 1 
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
