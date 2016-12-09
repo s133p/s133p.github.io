@@ -11,8 +11,9 @@ call vundle#begin()                          " required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'spiiph/vim-space'                    " [vim-space]             = Use spacebar to repeat last movement
-Plugin 'easymotion/vim-easymotion'           " [vim-easymotion]        = Fast buffer navigation **???**
-Plugin 'benmills/vimux'                      " [vimux]                 = Tmux
+Plugin 'Shougo/unite.vim'                    " [unite.vim]             = Fully replaces Ctrl-P & much more
+"Plugin 'easymotion/vim-easymotion'           " [vim-easymotion]        = Fast buffer navigation **???**
+"Plugin 'benmills/vimux'                      " [vimux]                 = Tmux
 Plugin 'mhinz/vim-startify'                  " [vim-startify]          = Nicer start page / most recent files **???**
 Plugin 'godlygeek/tabular'                   " [tabular]               = Alignment & tables
 Plugin 'vim-scripts/a.vim'                   " [a.vim]                 = Swap between cpp & hpp
@@ -25,13 +26,13 @@ Plugin 'vim-airline/vim-airline-themes'      " [vim-airline-themes]    = Themes 
 Plugin 'morhetz/gruvbox'                     " [gruvbox]               = Pretty theme!
 Plugin 'vim-scripts/dbext.vim'               " [dbext.vim]             = databases from within vim
 Plugin 'gfontenot/vim-xcode'                 " [vim-xcode]             = Xcode integration
-Plugin 'Shougo/unite.vim'                    " [unite.vim]             = Fully replaces Ctrl-P & much more
 Plugin 'sgur/unite-qf'                       " [unite-qf]              = Quickfix for unite
 Plugin 'JamshedVesuna/vim-markdown-preview'  " [vim-markdown-preview]  = Markdown preview
 Plugin 'airblade/vim-rooter'                 " [vim-rooter]            = Change directory to root of projects
 Plugin 'tpope/vim-fugitive'                  " [vim-fugitive]          = Git integration
 Plugin 'michaeljsmith/vim-indent-object'     " [vim-indent-object]     = Use indent levels as text objects
 Plugin 'tpope/vim-unimpaired'                " [vim-unimpaired]        = paired mappings
+Plugin 's133p/vim-magic-template'            " [vim-magic-template]    = make .h/.cpp interactively from template (personal)
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'        " [neocomplcache.vim]     = Autocomplete across buffers
@@ -166,8 +167,9 @@ augroup myfolding
     au!
     autocmd FileType vim setlocal fdm=marker
     autocmd FileType c,cpp setlocal fdm=syntax
-    autocmd FileType c,cpp setlocal nofoldenable
+    autocmd FileType c,cpp,vim setlocal nofoldenable
 augroup END
+
 " I never use the default s or S, so nop them; now its a new prefix!
 " Think: special -> ...
 " nnoremap s <nop>
@@ -176,6 +178,16 @@ augroup END
 " nnoremap so O<esc>
 " nnoremap sd yyp
 " nnoremap sr !!zsh<cr>
+
+" Personal notes: Opens a new tab, opens nerdtree in notes_folder
+function! OpenPersonalNotes()
+    let notes_folder="~/Dropbox/vim-notes"
+    tabnew
+    execute "lcd " . notes_folder
+    " Open nerdtree in notes directory
+    execute "normal \<c-n>"
+endfunction
+nnoremap <leader>n :call OpenPersonalNotes()<cr>
 
 "======== [END MAPPINGS] ========}}}
 
