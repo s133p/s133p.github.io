@@ -280,6 +280,7 @@ augroup plugcpp
         autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
     elseif has("win32")
         autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
+        autocmd FileType c,cpp nmap <leader>cr :make ./vs2013/local.sln /p:Configuration=Release<cr>
     endif
 augroup END
 " [a.vim]}}}
