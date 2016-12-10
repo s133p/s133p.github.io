@@ -185,7 +185,7 @@ function! OpenPersonalNotes()
     tabnew
     execute "lcd " . notes_folder
     " Open nerdtree in notes directory
-    execute "normal \<c-n>"
+    execute "Unite -start-insert -no-split file_rec"
 endfunction
 nnoremap <leader>n :call OpenPersonalNotes()<cr>
 
