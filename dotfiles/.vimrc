@@ -289,16 +289,16 @@ augroup END
 
 " [unite.vim] & [unite-qf] {{{
 let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#filters#matcher_default#use(['matcher_glob'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
-nmap <leader>f :Unite -start-insert -no-split file_rec tab buffer<cr>
-nmap <leader>F :Unite -start-insert -no-split file tab buffer<cr>
+nmap <leader>f :Unite -start-insert -no-split file_rec<cr>
+nmap <leader>F :Unite -start-insert -no-split file tab<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>ur :Unite register<cr>
-nmap <leader>cf :Unite qf locationlist<cr>
+nmap <leader>uf :Unite qf locationlist<cr>
 " let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
 " let g:unite_source_menu_menus.git = {
 "     \ 'description' : '            gestionar repositorios git
