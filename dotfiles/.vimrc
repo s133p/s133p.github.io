@@ -5,43 +5,42 @@ set secure
 let mapleader=';'
 
 "======== [VUNDLE BEGIN] ========{{{
-filetype off                                 " required
-set rtp+=~/.vim/bundle/Vundle.vim            " required
-call vundle#begin()                          " required
+filetype off                                " required
+set rtp+=~/.vim/bundle/Vundle.vim           " required
+call vundle#begin()                         " required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space'                    " [vim-space]             = Use spacebar to repeat last movement
-Plugin 'Shougo/unite.vim'                    " [unite.vim]             = Fully replaces Ctrl-P & much more
-"Plugin 'easymotion/vim-easymotion'           " [vim-easymotion]        = Fast buffer navigation **???**
-"Plugin 'benmills/vimux'                      " [vimux]                 = Tmux
-Plugin 'mhinz/vim-startify'                  " [vim-startify]          = Nicer start page / most recent files **???**
-Plugin 'godlygeek/tabular'                   " [tabular]               = Alignment & tables
-Plugin 'vim-scripts/a.vim'                   " [a.vim]                 = Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                  " [vim-surround]          = Does what it says on the tin
-Plugin 'kshenoy/vim-signature'               " [vim-signature]         = marks in sidebar
-Plugin 'scrooloose/nerdtree'                 " [nerdtree]              = file tree
-Plugin 'plasticboy/vim-markdown'             " [vim-markdown]          = markdown highlighting
-Plugin 'vim-airline/vim-airline'             " [vim-airline]           = Better tab/status line
-Plugin 'vim-airline/vim-airline-themes'      " [vim-airline-themes]    = Themes for airline
-Plugin 'morhetz/gruvbox'                     " [gruvbox]               = Pretty theme!
-Plugin 'vim-scripts/dbext.vim'               " [dbext.vim]             = databases from within vim
-Plugin 'gfontenot/vim-xcode'                 " [vim-xcode]             = Xcode integration
-Plugin 'sgur/unite-qf'                       " [unite-qf]              = Quickfix for unite
-Plugin 'JamshedVesuna/vim-markdown-preview'  " [vim-markdown-preview]  = Markdown preview
-Plugin 'airblade/vim-rooter'                 " [vim-rooter]            = Change directory to root of projects
-Plugin 'tpope/vim-fugitive'                  " [vim-fugitive]          = Git integration
-Plugin 'michaeljsmith/vim-indent-object'     " [vim-indent-object]     = Use indent levels as text objects
-Plugin 'tpope/vim-unimpaired'                " [vim-unimpaired]        = paired mappings
-Plugin 's133p/vim-magic-template'            " [vim-magic-template]    = make .h/.cpp interactively from template (personal)
+Plugin 'spiiph/vim-space'                   "  [vim-space]            =  Use spacebar to repeat last movement
+Plugin 'Shougo/unite.vim'                   "  [unite.vim]            =  Fully replaces Ctrl-P & much more
+"Plugin 'benmills/vimux'                    "  [vimux]                =  Tmux
+Plugin 'mhinz/vim-startify'                "  [vim-startify]         =  Nicer start page / most recent files **???**
+Plugin 'godlygeek/tabular'                  "  [tabular]              =  Alignment & tables
+Plugin 'vim-scripts/a.vim'                  "  [a.vim]                =  Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                 "  [vim-surround]         =  Does what it says on the tin
+Plugin 'kshenoy/vim-signature'              "  [vim-signature]        =  marks in sidebar
+Plugin 'scrooloose/nerdtree'                "  [nerdtree]             =  file tree
+Plugin 'plasticboy/vim-markdown'            "  [vim-markdown]         =  markdown highlighting
+Plugin 'vim-airline/vim-airline'            "  [vim-airline]          =  Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'     "  [vim-airline-themes]   =  Themes for airline
+Plugin 'morhetz/gruvbox'                    "  [gruvbox]              =  Pretty theme!
+Plugin 'vim-scripts/dbext.vim'              "  [dbext.vim]            =  databases from within vim
+Plugin 'gfontenot/vim-xcode'                "  [vim-xcode]            =  Xcode integration
+Plugin 'sgur/unite-qf'                      "  [unite-qf]             =  Quickfix for unite
+Plugin 'JamshedVesuna/vim-markdown-preview' "  [vim-markdown-preview] =  Markdown preview
+Plugin 'airblade/vim-rooter'                "  [vim-rooter]           =  Change directory to root of projects
+Plugin 'tpope/vim-fugitive'                 "  [vim-fugitive]         =  Git integration
+Plugin 'michaeljsmith/vim-indent-object'    "  [vim-indent-object]    =  Use indent levels as text objects
+Plugin 'tpope/vim-unimpaired'               "  [vim-unimpaired]       =  paired mappings
+Plugin 's133p/vim-magic-template'           "  [vim-magic-template]   =  make .h/.cpp interactively from template (personal)
 
 if has("win32")
-    Plugin 'Shougo/neocomplcache.vim'        " [neocomplcache.vim]     = Autocomplete across buffers
+    Plugin 'Shougo/neocomplcache.vim'       "  [neocomplcache.vim]    =  Autocomplete across buffers
 elseif has("mac")
-    Plugin 'Valloric/YouCompleteMe'          " [YouCompleteMe]         = Clang based completeion
+    Plugin 'Valloric/YouCompleteMe'         "  [YouCompleteMe]        =  Clang based completeion
 endif
 
-call vundle#end()                            " required
-filetype plugin indent on                    " required
+call vundle#end()                           " required
+filetype plugin indent on                   " required
 "======== [VUNDLE END] ========}}}
 
 "======== [Settings] ========{{{
@@ -126,7 +125,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "go (beween) splits
-nmap gs <C-W><C-W>
+"nmap gs <C-W><C-W>
 nmap gk <C-W>k
 nmap gh <C-W>h
 nmap gl <C-W>l
@@ -157,7 +156,7 @@ nnoremap <leader>p "*p
 nnoremap <leader>y 0"*y$
 nnoremap <leader>Y "*y$
 " Yank entire buffer
-nnoremap <leader>ay mzggVG"*y`z
+nnoremap <leader>aa ggVG
 
 " Execute current line or current selection as Vim EX commands.
 nnoremap <leader>e :exe getline(".")<CR>
@@ -170,24 +169,36 @@ augroup myfolding
     autocmd FileType c,cpp,vim setlocal nofoldenable
 augroup END
 
-" I never use the default s or S, so nop them; now its a new prefix!
-" Think: special -> ...
-" nnoremap s <nop>
-" nnoremap S <nop>
-" nnoremap sl o<esc>
-" nnoremap so O<esc>
-" nnoremap sd yyp
-" nnoremap sr !!zsh<cr>
-
-" Personal notes: Opens a new tab, opens nerdtree in notes_folder
+" Personal notes: Opens unite in g:personal_notes_dir
 function! OpenPersonalNotes()
-    let notes_folder="~/Dropbox/vim-notes"
-    tabnew
-    execute "lcd " . notes_folder
+    if !exists("g:personal_notes_dir")
+        let g:personal_notes_dir="~/Dropbox/vim-notes"
+    endif
     " Open nerdtree in notes directory
-    execute "Unite -start-insert -no-split file_rec"
+    execute "Unite -path=" . g:personal_notes_dir . " -start-insert -no-split file_rec"
 endfunction
 nnoremap <leader>n :call OpenPersonalNotes()<cr>
+
+function! CreateMyUniteMenu()
+    if !exists("g:personal_notes_dir")
+        let g:personal_notes_dir="~/Dropbox/vim-notes"
+    endif
+
+    let personal_notes_files=globpath("~/Dropbox/vim-notes", "*blog*")
+    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
+    let g:unite_source_menu_menus.test = {
+                \ 'description' : '            TestMenu
+                \                            ⌘ <leader>m',
+                \}
+    let g:unite_source_menu_menus.test.command_candidates = [
+                \['▷ Notes                    ⌘ ;n',
+                \'call OpenPersonalNotes()'],
+                \['▷ Magic Template           ⌘ ;z',
+                \'call MakeTemplate()'],
+                \]
+    nnoremap <silent> <leader>m :Unite -silent -start-insert menu:test<CR>
+ endfunction
+ call CreateMyUniteMenu()
 
 "======== [END MAPPINGS] ========}}}
 
@@ -197,12 +208,6 @@ nnoremap <leader>n :call OpenPersonalNotes()<cr>
 colorscheme gruvbox
 set background=dark
 " [END gruvbox] }}}
-
-" [vim-easymotion] {{{
-" use // for normal search
-nnoremap // <Plug>(easymotion-sn)
-let g:EasyMotion_smartcase = 1  " Turn on case insensitive feature
-" [END vim-easymotion] }}}
 
 " [nerdtree] {{{
 map <C-n> :NERDTreeToggle<CR>
@@ -295,10 +300,12 @@ call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/
 nmap <leader>f :Unite -start-insert -no-split file_rec<cr>
 nmap <leader>F :Unite -start-insert -no-split file tab<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
-nmap <leader>ub :Unite -no-split buffer<cr>
+nmap <leader>ub :Unite -no-split -auto-preview -vertical-preview buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>ur :Unite register<cr>
-nmap <leader>uf :Unite qf locationlist<cr>
+nmap <leader>uf :Unite qf locationlist -no-split -auto-preview -vertical-preview<cr>
+nmap <leader>ug :Unite vimgrep -no-split -auto-preview -vertical-preview<cr>
+
 " let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
 " let g:unite_source_menu_menus.git = {
 "     \ 'description' : '            gestionar repositorios git
