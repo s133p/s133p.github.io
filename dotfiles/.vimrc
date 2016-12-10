@@ -281,6 +281,8 @@ augroup plugcpp
     elseif has("win32")
         autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
         autocmd FileType c,cpp nmap <leader>cr :make ./vs2013/local.sln /p:Configuration=Release<cr>
+        " Convert visual studio solution for cinder to local version
+        " execute "%s/%DS_PLATFORM_086%/". escape($DS_PLATFORM_086, '\\/.*$^~[]') ."\/g"
     endif
 augroup END
 " [a.vim]}}}
@@ -289,13 +291,50 @@ augroup END
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\)')
-nmap <leader>f :Unite -start-insert file_rec tab buffer<cr>
-nmap <leader>F :Unite -start-insert file tab buffer<cr>
-nmap <leader>u :Unite tab bookmark buffer<cr>
-nmap <leader>Ub :UniteBookmarkAdd<cr><cr>
-nmap <leader>Ur :Unite register<cr>
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
+nmap <leader>f :Unite -start-insert -no-split file_rec tab buffer<cr>
+nmap <leader>F :Unite -start-insert -no-split file tab buffer<cr>
+nmap <leader>ut :Unite tab bookmark<cr>
+nmap <leader>ub :Unite -no-split buffer<cr>
+nmap <leader>uB :UniteBookmarkAdd<cr><cr>
+nmap <leader>ur :Unite register<cr>
 nmap <leader>cf :Unite qf locationlist<cr>
+" let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
+" let g:unite_source_menu_menus.git = {
+"     \ 'description' : '            gestionar repositorios git
+"         \                            ⌘ [espacio]g',
+"     \}
+" let g:unite_source_menu_menus.git.command_candidates = [
+"     \['▷ tig                                                        ⌘ ,gt',
+"         \'normal ,gt'],
+"     \['▷ git status       (Fugitive)                                ⌘ ,gs',
+"         \'Gstatus'],
+"     \['▷ git diff         (Fugitive)                                ⌘ ,gd',
+"         \'Gdiff'],
+"     \['▷ git commit       (Fugitive)                                ⌘ ,gc',
+"         \'Gcommit'],
+"     \['▷ git log          (Fugitive)                                ⌘ ,gl',
+"         \'exe "silent Glog | Unite quickfix"'],
+"     \['▷ git blame        (Fugitive)                                ⌘ ,gb',
+"         \'Gblame'],
+"     \['▷ git stage        (Fugitive)                                ⌘ ,gw',
+"         \'Gwrite'],
+"     \['▷ git checkout     (Fugitive)                                ⌘ ,go',
+"         \'Gread'],
+"     \['▷ git rm           (Fugitive)                                ⌘ ,gr',
+"         \'Gremove'],
+"     \['▷ git mv           (Fugitive)                                ⌘ ,gm',
+"         \'exe "Gmove " input("destino: ")'],
+"     \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
+"         \'Git! push'],
+"     \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
+"         \'Git! pull'],
+"     \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
+"         \'exe "Git! " input("comando git: ")'],
+"     \['▷ git cd           (Fugitive)',
+"         \'Gcd'],
+"     \]
+" nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
 " [END unite.vim] }}}
 
 " [dbext.vim]{{{
