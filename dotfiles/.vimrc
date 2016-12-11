@@ -117,6 +117,8 @@ endif
 
 "======== [MAPPINGS] ========{{{
 nmap Y y$ " yank til EOL
+" Stamp lasy yank
+nnoremap S viw"0p
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
 nmap <leader>x :q<CR>
@@ -179,26 +181,26 @@ function! OpenPersonalNotes()
 endfunction
 nnoremap <leader>n :call OpenPersonalNotes()<cr>
 
-function! CreateMyUniteMenu()
-    if !exists("g:personal_notes_dir")
-        let g:personal_notes_dir="~/Dropbox/vim-notes"
-    endif
-
-    let personal_notes_files=globpath("~/Dropbox/vim-notes", "*blog*")
-    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
-    let g:unite_source_menu_menus.test = {
-                \ 'description' : '            TestMenu
-                \                            ⌘ <leader>m',
-                \}
-    let g:unite_source_menu_menus.test.command_candidates = [
-                \['▷ Notes                    ⌘ ;n',
-                \'call OpenPersonalNotes()'],
-                \['▷ Magic Template           ⌘ ;z',
-                \'call MakeTemplate()'],
-                \]
-    nnoremap <silent> <leader>m :Unite -silent -start-insert menu:test<CR>
- endfunction
- call CreateMyUniteMenu()
+"function! CreateMyUniteMenu()
+"    if !exists("g:personal_notes_dir")
+"        let g:personal_notes_dir="~/Dropbox/vim-notes"
+"    endif
+"
+"    let personal_notes_files=globpath("~/Dropbox/vim-notes", "*blog*")
+"    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
+"    let g:unite_source_menu_menus.test = {
+"                \ 'description' : '            TestMenu
+"                \                            ⌘ <leader>m',
+"                \}
+"    let g:unite_source_menu_menus.test.command_candidates = [
+"                \['▷ Notes                    ⌘ ;n',
+"                \'call OpenPersonalNotes()'],
+"                \['▷ Magic Template           ⌘ ;z',
+"                \'call MakeTemplate()'],
+"                \]
+"    nnoremap <silent> <leader>m :Unite -silent -start-insert menu:test<CR>
+" endfunction
+" call CreateMyUniteMenu()
 
 "======== [END MAPPINGS] ========}}}
 
@@ -250,12 +252,14 @@ augroup markdown
     autocmd BufNewFile,BufReadPost *.md nnoremap <buffer> j gj
     autocmd BufNewFile,BufReadPost *.md nnoremap <buffer> k gk
     autocmd BufNewFile,BufReadPost *.md setlocal linebreak
-    autocmd BufEnter *.md set spell
-    autocmd BufLeave *.md set nospell
-    "au BufRead *.md set nofoldenable
-    "au BufRead,BufWrite *.md Toc
-    autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
+    autocmd BufEnter,BufnewFile *.md setlocal spell
     autocmd FileType markdown setlocal nofoldenable
+
+    autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
+    autocmd FileType markdown nmap <buffer> <leader>mn A<cr>**[<space>_<space>]**<space>
+    " TODO: make function to enable set clear to be same combo..
+    autocmd FileType markdown nmap <buffer> <leader>m<space> ^f[lrx
+    autocmd FileType markdown nmap <buffer> <leader>mu ^f[lr<space>
 augroup END
 " [vim-markdown] & [vim-markdown-preview]}}}
 
