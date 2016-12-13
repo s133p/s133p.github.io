@@ -12,8 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'spiiph/vim-space'                   "  [vim-space]            =  Use spacebar to repeat last movement
 Plugin 'Shougo/unite.vim'                   "  [unite.vim]            =  Fully replaces Ctrl-P & much more
-"Plugin 'benmills/vimux'                    "  [vimux]                =  Tmux
-Plugin 'mhinz/vim-startify'                "  [vim-startify]         =  Nicer start page / most recent files **???**
+Plugin 'mhinz/vim-startify'                 "  [vim-startify]         =  Nicer start page / most recent files **???**
 Plugin 'godlygeek/tabular'                  "  [tabular]              =  Alignment & tables
 Plugin 'vim-scripts/a.vim'                  "  [a.vim]                =  Swap between cpp & hpp
 Plugin 'tpope/vim-surround'                 "  [vim-surround]         =  Does what it says on the tin
