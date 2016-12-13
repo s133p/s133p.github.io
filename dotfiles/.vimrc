@@ -115,15 +115,15 @@ endif
 "======== [END Gvim / MacVim] ========}}}
 
 "======== [MAPPINGS] ========{{{
-nmap Y y$ " yank til EOL
+nnoremap Y y$ " yank til EOL
 " Stamp lasy yank
 nnoremap S viw"0p
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
-nmap <leader>x :q<CR>
-nmap <leader>q :q<CR>
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <leader>x :q<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "go (beween) splits
 "nmap gs <C-W><C-W>
@@ -139,9 +139,9 @@ nnoremap gb :bnext<cr>
 nnoremap gB :bprevious<cr>
 
 " create splits/tabs
-nmap <leader>v :vnew<CR>
-nmap <leader>V :new<CR>
-nmap <leader>t :tabnew<CR>
+nnoremap <leader>v :vnew<CR>
+nnoremap <leader>V :new<CR>
+nnoremap <leader>t :tabnew<CR>
 
 " swap defauly behavior of ' and ` (jump to mark/jump to mark @ col)
 noremap ' `
@@ -181,27 +181,6 @@ function! OpenPersonalNotes()
     execute "Unite -path=" . g:personal_notes_dir . " -start-insert -no-split file_rec"
 endfunction
 nnoremap <leader>n :call OpenPersonalNotes()<cr>
-
-"function! CreateMyUniteMenu()
-"    if !exists("g:personal_notes_dir")
-"        let g:personal_notes_dir="~/Dropbox/vim-notes"
-"    endif
-"
-"    let personal_notes_files=globpath("~/Dropbox/vim-notes", "*blog*")
-"    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
-"    let g:unite_source_menu_menus.test = {
-"                \ 'description' : '            TestMenu
-"                \                            ⌘ <leader>m',
-"                \}
-"    let g:unite_source_menu_menus.test.command_candidates = [
-"                \['▷ Notes                    ⌘ ;n',
-"                \'call OpenPersonalNotes()'],
-"                \['▷ Magic Template           ⌘ ;z',
-"                \'call MakeTemplate()'],
-"                \]
-"    nnoremap <silent> <leader>m :Unite -silent -start-insert menu:test<CR>
-" endfunction
-" call CreateMyUniteMenu()
 
 "======== [END MAPPINGS] ========}}}
 
