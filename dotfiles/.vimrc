@@ -127,11 +127,13 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "go (beween) splits
 "nmap gs <C-W><C-W>
-nmap gk <C-W>k
-nmap gh <C-W>h
-nmap gl <C-W>l
-nmap gj <C-W>j
-nmap gw <c-w>
+nnoremap gk <C-W>k
+nnoremap gj <C-W>j
+nnoremap gh <C-W>h
+nnoremap gl <C-W>l
+nnoremap gH :tabprevious<cr>
+nnoremap gL :tabnext<cr>
+nnoremap gw <c-w>
 " go next/previous buffer
 nnoremap gb :bnext<cr>
 nnoremap gB :bprevious<cr>
@@ -223,7 +225,10 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' " provide some def
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 " [END vim-airline] }}}
 
