@@ -77,6 +77,7 @@ set nowrap
 set lazyredraw
 set encoding=utf8
 set t_Co=256
+set switchbuf=usetab
 "======== [END Settings] ========}}}
 
 "======== [Search Settings] ========{{{
@@ -207,7 +208,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 " [END vim-airline] }}}
 
@@ -284,14 +285,14 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_glob'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
-nmap <leader>f :Unite -start-insert -no-split file_rec<cr>
-nmap <leader>F :Unite -start-insert -no-split file tab<cr>
+nmap <leader>f :Unite -start-insert -no-split -default-action=tabswitch file_rec<cr>
+nmap <leader>F :Unite -start-insert -no-split -default-action=tabswitch file tab<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
-nmap <leader>ub :Unite -no-split -auto-preview -vertical-preview buffer<cr>
+nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>ur :Unite register<cr>
-nmap <leader>uf :Unite qf locationlist -no-split -auto-preview -vertical-preview<cr>
-nmap <leader>ug :Unite vimgrep -no-split -auto-preview -vertical-preview<cr>
+nmap <leader>uf :Unite qf locationlist -no-split -default-action=tabswitch<cr>
+nmap <leader>ug :Unite vimgrep -no-split -default-action=tabswitch<cr>
 
 " let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
 " let g:unite_source_menu_menus.git = {
