@@ -31,6 +31,8 @@ Plugin 'tpope/vim-fugitive'                 "  [vim-fugitive]         =  Git int
 Plugin 'michaeljsmith/vim-indent-object'    "  [vim-indent-object]    =  Use indent levels as text objects
 Plugin 'tpope/vim-unimpaired'               "  [vim-unimpaired]       =  paired mappings
 Plugin 's133p/vim-magic-template'           "  [vim-magic-template]   =  make .h/.cpp interactively from template (personal)
+Plugin 'tpope/vim-repeat'                   "  [vim-repeat]           =  Allow plugin mappings to be repeated w/ .
+Plugin 'tomtom/tcomment_vim'                "  [tcomment]             =  Shortcuts for commenting
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'       "  [neocomplcache.vim]    =  Autocomplete across buffers
@@ -85,6 +87,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
+map <leader><space> :let @/=''<cr> " clear search
 "======== [END Search Settings] ========}}}
 
 "======== [Gvim / MacVim] ========{{{
@@ -97,7 +100,7 @@ if has("win32")
 
     " Fullscreen on app-start
     au GUIEnter * simalt ~x
-    "
+
     " remap insert (FN-; on poker3 kbd)
     " inoremap <Insert> <esc>
 elseif has("mac")
@@ -284,6 +287,7 @@ nmap <leader>uu :UniteFirst resume<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
+nmap <leader>uc :Unite change<cr>
 nmap <leader>ur :Unite register<cr>
 nmap <leader>uf :Unite qf locationlist -no-split -default-action=tabswitch<cr>
 nmap <leader>ug :Unite vimgrep -no-split -default-action=tabswitch<cr>
