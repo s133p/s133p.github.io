@@ -149,11 +149,12 @@ noremap ' `
 noremap ` '
 
 " J & K jump to bottom/top & center on new pos
-nnoremap J Lzz
-vnoremap J Lzz
-nnoremap K Hzz
-vnoremap K Hzz
+nnoremap J <c-d>
+vnoremap J <c-d>
+nnoremap K <c-u>
+vnoremap K <c-u>
 nnoremap <leader>J J
+nnoremap <leader>K K
 
 "<leader>y & <leader>p copy from system clipboard
 nnoremap <leader>p "*p
@@ -285,8 +286,9 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_glob'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
-nmap <leader>f :Unite -start-insert -no-split -default-action=tabswitch file_rec<cr>
-nmap <leader>F :Unite -start-insert -no-split -default-action=tabswitch file tab<cr>
+nmap <leader>f :UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec<cr>
+nmap <leader>F :UniteWithProjectDir -start-insert -no-split file tab<cr>
+nmap <leader>uu :UniteFirst resume<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
