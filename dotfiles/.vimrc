@@ -85,7 +85,6 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
 "======== [END Search Settings] ========}}}
 
 "======== [Gvim / MacVim] ========{{{
@@ -93,25 +92,18 @@ if has("win32")
     "gvim specific
     set shellslash
     "set autochdir
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L
+    set guioptions=c  "only console prompt, no other ui-chrome
     set guifont=Sauce_Code_powerline:h10:cANSI:qDRAFT
-    set guioptions-=e " Use default vim tabs
-    set guioptions+=c " use console prompt
+
+    " Fullscreen on app-start
     au GUIEnter * simalt ~x
+    "
     " remap insert (FN-; on poker3 kbd)
-    inoremap <Insert> <esc>
+    " inoremap <Insert> <esc>
 elseif has("mac")
     " macvim options
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L
+    set guioptions=c  "only console prompt, no other ui-chrome
     set guifont=Hack\ Regular:h12
-    set guioptions-=e " Use default vim tabs
-    set guioptions+=c " use console prompt
 endif
 "======== [END Gvim / MacVim] ========}}}
 
