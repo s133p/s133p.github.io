@@ -5,61 +5,58 @@ set secure
 let mapleader=';'
 
 "======== [VUNDLE BEGIN] ========{{{
-filetype off                                " required
-set rtp+=~/.vim/bundle/Vundle.vim           " required
-call vundle#begin()                         " required
+filetype off                                  " required
+set rtp+=~/.vim/bundle/Vundle.vim             " required
+call vundle#begin()                           " required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'spiiph/vim-space'                   "  [vim-space]            =  Use spacebar to repeat last movement
-Plugin 'Shougo/unite.vim'                   "  [unite.vim]            =  Fully replaces Ctrl-P & much more
-Plugin 'mhinz/vim-startify'                 "  [vim-startify]         =  Nicer start page / most recent files **???**
-Plugin 'godlygeek/tabular'                  "  [tabular]              =  Alignment & tables
-Plugin 'vim-scripts/a.vim'                  "  [a.vim]                =  Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                 "  [vim-surround]         =  Does what it says on the tin
-Plugin 'kshenoy/vim-signature'              "  [vim-signature]        =  marks in sidebar
-Plugin 'scrooloose/nerdtree'                "  [nerdtree]             =  file tree
-Plugin 'plasticboy/vim-markdown'            "  [vim-markdown]         =  markdown highlighting
-Plugin 'vim-airline/vim-airline'            "  [vim-airline]          =  Better tab/status line
-Plugin 'vim-airline/vim-airline-themes'     "  [vim-airline-themes]   =  Themes for airline
-Plugin 'morhetz/gruvbox'                    "  [gruvbox]              =  Pretty theme!
-Plugin 'vim-scripts/dbext.vim'              "  [dbext.vim]            =  databases from within vim
-Plugin 'gfontenot/vim-xcode'                "  [vim-xcode]            =  Xcode integration
-Plugin 'sgur/unite-qf'                      "  [unite-qf]             =  Quickfix for unite
-Plugin 'JamshedVesuna/vim-markdown-preview' "  [vim-markdown-preview] =  Markdown preview
-Plugin 'airblade/vim-rooter'                "  [vim-rooter]           =  Change directory to root of projects
-Plugin 'tpope/vim-fugitive'                 "  [vim-fugitive]         =  Git integration
-Plugin 'michaeljsmith/vim-indent-object'    "  [vim-indent-object]    =  Use indent levels as text objects
-Plugin 'tpope/vim-unimpaired'               "  [vim-unimpaired]       =  paired mappings
-Plugin 's133p/vim-magic-template'           "  [vim-magic-template]   =  make .h/.cpp interactively from template (personal)
-Plugin 'tpope/vim-repeat'                   "  [vim-repeat]           =  Allow plugin mappings to be repeated w/ .
-Plugin 'tomtom/tcomment_vim'                "  [tcomment]             =  Shortcuts for commenting
+Plugin 'tpope/vim-sensible'                   " [vim-sensible]        = Sensible defaults
+Plugin 'tpope/vim-repeat'                     " [vim-repeat]          = Allow plugin mappings to be repeated w/ '.'
+Plugin 'tpope/vim-unimpaired'                 " [vim-unimpaired]      = paired mappings
+Plugin 'tpope/vim-abolish'                    " [vim-abolish]         = Coerce cases
+Plugin 'michaeljsmith/vim-indent-object'      " [vim-indent-object]   = Use indent levels as text objects
+Plugin 'tomtom/tcomment_vim'                  " [tcomment]            = Shortcuts for commenting
+Plugin 'spiiph/vim-space'                     " [vim-space]           = Use spacebar to repeat last movement
+Plugin 'Shougo/unite.vim'                     " [unite.vim]           = Fully replaces Ctrl-P & much more
+Plugin 'sgur/unite-qf'                        " [unite-qf]            = Quickfix for unite
+Plugin 'shougo/neomru.vim'                    " [neomru]              = MRU for unite, replaces startify
+Plugin 'vim-scripts/a.vim'                    " [a.vim]               = Swap between cpp & hpp
+Plugin 'tpope/vim-surround'                   " [vim-surround]        = Does what it says on the tin
+Plugin 'airblade/vim-rooter'                  " [vim-rooter]          = Change directory to root of projects
+Plugin 'tpope/vim-fugitive'                   " [vim-fugitive]        = Git integration
+Plugin 'junegunn/vim-easy-align'              " [vim-easy-align]      = Replacees tabular, includes text-obj mappings
+Plugin 'kshenoy/vim-signature'                " [vim-signature]       = marks in sidebar
+Plugin 'scrooloose/nerdtree'                  " [nerdtree]            = file tree
+Plugin 'plasticboy/vim-markdown'              " [vim-markdown]        = markdown highlighting
+Plugin 'vim-airline/vim-airline'              " [vim-airline]         = Better tab/status line
+Plugin 'vim-airline/vim-airline-themes'       " [vim-airline-themes]  = Themes for airline
+Plugin 'morhetz/gruvbox'                      " [gruvbox]             = Pretty theme!
+Plugin 'vim-scripts/dbext.vim'                " [dbext.vim]           = databases from within vim
+Plugin 'gfontenot/vim-xcode'                  " [vim-xcode]           = Xcode integration
+
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}    " [sparkup]             = shortcut format for generating html/xml
+Plugin 'jiangmiao/auto-pairs'                 " [auto-pairs]          = Auto-create pair & jump to end if matching pair typed
+Plugin 's133p/vim-magic-template'             " [vim-magic-template]  = make .h/.cpp interactively from template (personal)
 
 if has("win32")
-    Plugin 'Shougo/neocomplcache.vim'       "  [neocomplcache.vim]    =  Autocomplete across buffers
+    Plugin 'Shougo/neocomplcache.vim'         " [neocomplcache.vim]   = Autocomplete across buffers
 elseif has("mac")
-    Plugin 'Valloric/YouCompleteMe'         "  [YouCompleteMe]        =  Clang based completeion
+    Plugin 'Valloric/YouCompleteMe'           " [YouCompleteMe]       = Clang based completeion
 endif
 
-call vundle#end()                           " required
-filetype plugin indent on                   " required
+call vundle#end()                             " required
+filetype plugin indent on                     " required
 "======== [VUNDLE END] ========}}}
 
 "======== [Settings] ========{{{
 filetype indent plugin on
 syntax on
 set hidden
-set wildmenu
 set showcmd
 set nohlsearch
-set ignorecase
-set smartcase
-set backspace=indent,eol,start
-set autoindent
 set nostartofline
-set ruler
-set laststatus=2
 set confirm
-set visualbell
+set novisualbell
 set t_vb=
 set mouse=a
 set cmdheight=2
@@ -80,6 +77,16 @@ set lazyredraw
 set encoding=utf8
 set t_Co=256
 set switchbuf=usetab
+set shortmess=I
+
+" TESTING!!
+" set list                              " show whitespace
+" set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+" set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+"                                       " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+" set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+" set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+" set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 "======== [END Settings] ========}}}
 
 "======== [Search Settings] ========{{{
@@ -87,7 +94,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
+map <leader><space> :let @/=''<cr>
 "======== [END Search Settings] ========}}}
 
 "======== [Gvim / MacVim] ========{{{
@@ -169,6 +176,13 @@ augroup myfolding
     autocmd FileType c,cpp,vim setlocal nofoldenable
 augroup END
 
+" `<Tab>`/`<S-Tab>` to move between matches without leaving incremental search.
+" Note dependency on `'wildcharm'` being set to `<C-z>` in order for this to
+" work.
+set wildcharm=<c-z>
+cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
+cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
+
 " Personal notes: Opens unite in g:personal_notes_dir
 function! OpenPersonalNotes()
     if !exists("g:personal_notes_dir")
@@ -182,6 +196,19 @@ nnoremap <leader>n :call OpenPersonalNotes()<cr>
 "======== [END MAPPINGS] ========}}}
 
 "======== [Plugin mappings/settings] ========{{{
+
+" [vim-easy-align] {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+    let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['r'] = { 'pattern': '=', 'ignore_groups': ['String'], 'left_margin': 2  }
+
+" [END vim-easy-align] }}}
 
 " [gruvbox] {{{
 colorscheme gruvbox
@@ -213,13 +240,10 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_targets = '/,*'
 " [END vim-rooter] (auto cd to project roots) }}}
 
-" [vim-markdown] & [vim-markdown-preview]{{{
+" [vim-markdown] {{{
 let g:vim_markdown_fenced_languages = ['c=c']
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_level = 6
-let g:vim_markdown_preview_github=0
-let g:vim_markdown_preview_temp_file=1
-let g:vim_markdown_preview_toggle=1
 augroup mkdownNotes
     au!
     autocmd BufWritePost /Users/lukepurcell/Desktop/nano-blog/posts/*.md silent exec "!/Users/lukepurcell/Desktop/nano-blog/make_preview.sh" | redraw!
@@ -237,11 +261,10 @@ augroup markdown
 
     autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
     autocmd FileType markdown nmap <buffer> <leader>mn A<cr>**[<space>_<space>]**<space>
-    " TODO: make function to enable set clear to be same combo..
-    autocmd FileType markdown nmap <buffer> <leader>m<space> ^f[lrx
-    autocmd FileType markdown nmap <buffer> <leader>mu ^f[lr<space>
+    " Swap [ X ] and [ _ ] with space
+    autocmd FileType markdown nmap <buffer> <space> :.g/[ X ]/s/ X / * /<cr>:.g/[ _ ]/s/ _ / X /<cr>:.g/[ \* ]/s/ \* / _ /<cr>
 augroup END
-" [vim-markdown] & [vim-markdown-preview]}}}
+" [vim-markdown] }}}
 
 " [a.vim]{{{
 augroup clearimap
@@ -271,63 +294,28 @@ augroup plugcpp
         autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
         autocmd FileType c,cpp nmap <leader>cr :make ./vs2013/local.sln /p:Configuration=Release<cr>
         " Convert visual studio solution for cinder to local version
+        " combine this with a test to see if ./vs2013/local.sln exists,
+        " creating it if it doesnt.
         " execute "%s/%DS_PLATFORM_086%/". escape($DS_PLATFORM_086, '\\/.*$^~[]') ."\/g"
     endif
 augroup END
 " [a.vim]}}}
 
 " [unite.vim] & [unite-qf] {{{
-let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_glob'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
 nmap <leader>f :UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec<cr>
 nmap <leader>F :UniteWithProjectDir -start-insert -no-split file tab<cr>
-nmap <leader>uu :UniteFirst resume<cr>
+nmap <leader>r :Unite -no-split -default-action=tabswitch file_mru <cr>
+nmap <leader>U :UniteFirst resume<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>uc :Unite change<cr>
-nmap <leader>ur :Unite register<cr>
 nmap <leader>uf :Unite qf locationlist -no-split -default-action=tabswitch<cr>
 nmap <leader>ug :Unite vimgrep -no-split -default-action=tabswitch<cr>
 
-" let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
-" let g:unite_source_menu_menus.git = {
-"     \ 'description' : '            gestionar repositorios git
-"         \                            ⌘ [espacio]g',
-"     \}
-" let g:unite_source_menu_menus.git.command_candidates = [
-"     \['▷ tig                                                        ⌘ ,gt',
-"         \'normal ,gt'],
-"     \['▷ git status       (Fugitive)                                ⌘ ,gs',
-"         \'Gstatus'],
-"     \['▷ git diff         (Fugitive)                                ⌘ ,gd',
-"         \'Gdiff'],
-"     \['▷ git commit       (Fugitive)                                ⌘ ,gc',
-"         \'Gcommit'],
-"     \['▷ git log          (Fugitive)                                ⌘ ,gl',
-"         \'exe "silent Glog | Unite quickfix"'],
-"     \['▷ git blame        (Fugitive)                                ⌘ ,gb',
-"         \'Gblame'],
-"     \['▷ git stage        (Fugitive)                                ⌘ ,gw',
-"         \'Gwrite'],
-"     \['▷ git checkout     (Fugitive)                                ⌘ ,go',
-"         \'Gread'],
-"     \['▷ git rm           (Fugitive)                                ⌘ ,gr',
-"         \'Gremove'],
-"     \['▷ git mv           (Fugitive)                                ⌘ ,gm',
-"         \'exe "Gmove " input("destino: ")'],
-"     \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
-"         \'Git! push'],
-"     \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
-"         \'Git! pull'],
-"     \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
-"         \'exe "Git! " input("comando git: ")'],
-"     \['▷ git cd           (Fugitive)',
-"         \'Gcd'],
-"     \]
-" nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
 " [END unite.vim] }}}
 
 " [dbext.vim]{{{
@@ -409,5 +397,10 @@ if has("win32")
     set novisualbell
 endif
 " [neocomplcache.vim]}}}
+
+" [sparkup] {{{
+" Use sparkup default mapping <c-e> in normal & insert mode
+let g:sparkupMapsNormal = 1
+" [sparkup] }}}
 
 "======== [END Plugin mappings/settings] ========}}}
