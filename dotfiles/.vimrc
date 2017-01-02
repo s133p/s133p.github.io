@@ -107,9 +107,6 @@ if has("win32")
 
     " Fullscreen on app-start
     au GUIEnter * simalt ~x
-
-    " remap insert (FN-; on poker3 kbd)
-    " inoremap <Insert> <esc>
 elseif has("mac")
     " macvim options
     set guioptions=c  "only console prompt, no other ui-chrome
@@ -118,9 +115,59 @@ endif
 "======== [END Gvim / MacVim] ========}}}
 
 "======== [MAPPINGS] ========{{{
-nnoremap Y y$ " yank til EOL
-" Stamp lasy yank
-nnoremap S viw"0p
+
+"EXPERIMENTAL! But so-far, seem really good!
+    "- operator pending for 'stamp'
+    nmap <silent> s :set opfunc=MagicStamp<CR>g@
+    vmap <silent> s :<C-U>call MagicStamp(visualmode(), 1)<CR>
+    " non-operator pending: Stamp lasy yank, normal & visual
+    nnoremap S viw"0p
+
+    "- operator pending for 'system-clipboard-yank'
+    nmap <silent> <leader>y :set opfunc=MagicClip<CR>g@
+    vmap <silent> <leader>y :<C-U>call MagicClip(visualmode(), 1)<CR>
+
+    "- operator pending for 'system-clipboard-paste-stamp'
+    nmap <silent> <leader>S :set opfunc=MagicPaste<CR>g@
+    vmap <silent> <leader>S :<C-U>call MagicPaste(visualmode(), 1)<CR>
+    " non-operator pending: Paste fron system clipboard
+    nnoremap <leader>p "*p
+    nnoremap <leader>P "*P
+
+    function! MagicStamp(type, ...)
+        call MagicDo(a:type, "\"0p")
+    endfunction
+
+    function! MagicClip(type, ...)
+        call MagicDo(a:type, "\"*y")
+    endfunction
+
+    function! MagicPaste(type, ...)
+        call MagicDo(a:type, "\"*p")
+    endfunction
+
+    function! MagicDo(type, what_magic)
+        let sel_save = &selection
+        let &selection = "inclusive"
+        let reg_save = @@
+
+        if a:0  " Invoked from Visual mode, use gv command.
+            silent exe "normal! gv" . a:what_magic
+        elseif a:type == 'line'
+            silent exe "normal! '[V']" . a:what_magic
+        else
+            silent exe "normal! `[v`]" . a:what_magic
+        endif
+
+        let &selection = sel_save
+        let @@ = reg_save
+    endfunction
+    "END EXPERIMENTAL!
+
+" yank til EOL
+nnoremap Y y$ 
+
+" Shorcuts for common actions
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
 nnoremap <leader>x :q<CR>
@@ -128,16 +175,18 @@ nnoremap <leader>q :q<CR>
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
-"go (beween) splits
-"nmap gs <C-W><C-W>
+" Movement between splits/windows/buffers
 nnoremap gk <C-W>k
 nnoremap gj <C-W>j
 nnoremap gh <C-W>h
 nnoremap gl <C-W>l
+nnoremap <left> <c-w><left>
+nnoremap <right> <c-w><right>
+nnoremap <up> <c-w><up>
+nnoremap <down> <c-w><down>
 nnoremap gH :tabprevious<cr>
 nnoremap gL :tabnext<cr>
 nnoremap gw <c-w>
-" go next/previous buffer
 nnoremap gb :bnext<cr>
 nnoremap gB :bprevious<cr>
 
@@ -150,7 +199,7 @@ nnoremap <leader>t :tabnew<CR>
 noremap ' `
 noremap ` '
 
-" J & K jump to bottom/top & center on new pos
+" J & K as page-up/page-down, orginal functions shadowed on <leader>
 nnoremap J <c-d>
 vnoremap J <c-d>
 nnoremap K <c-u>
@@ -158,10 +207,11 @@ vnoremap K <c-u>
 nnoremap <leader>J J
 nnoremap <leader>K K
 
-"<leader>y & <leader>p copy from system clipboard
-nnoremap <leader>p "*p
-nnoremap <leader>y 0"*y$
-nnoremap <leader>Y "*y$
+" <leader>y & <leader>p copy from system clipboard NOTE: testing
+" better/operator pending version
+" nnoremap <leader>p "*p
+" nnoremap <leader>y 0"*y$
+" nnoremap <leader>Y "*y$
 " Yank entire buffer
 nnoremap <leader>aa ggVG
 
@@ -401,6 +451,6 @@ endif
 " [sparkup] {{{
 " Use sparkup default mapping <c-e> in normal & insert mode
 let g:sparkupMapsNormal = 1
-" [sparkup] }}}
+" [END sparkup] }}}
 
 "======== [END Plugin mappings/settings] ========}}}
