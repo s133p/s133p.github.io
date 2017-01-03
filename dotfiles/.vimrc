@@ -163,10 +163,10 @@ endif
         let &selection = sel_save
         let @@ = reg_save
     endfunction
-    "END EXPERIMENTAL!
+"END EXPERIMENTAL!
 
 " yank til EOL
-nnoremap Y y$ 
+nnoremap Y y$
 
 " Shorcuts for common actions
 noremap <Leader><Leader> :
@@ -183,15 +183,20 @@ nnoremap gk <C-W>k
 nnoremap gj <C-W>j
 nnoremap gh <C-W>h
 nnoremap gl <C-W>l
-nnoremap <left> <c-w><left>
-nnoremap <right> <c-w><right>
-nnoremap <up> <c-w><up>
-nnoremap <down> <c-w><down>
+
+nnoremap <c-left> <c-w><left>
+nnoremap <c-right> <c-w><right>
+nnoremap <c-up> <c-w><up>
+nnoremap <c-down> <c-w><down>
+
+nnoremap <c-h> <c-w><left>
+nnoremap <c-l> <c-w><right>
+nnoremap <c-k> <c-w><up>
+nnoremap <c-j> <c-w><down>
+
 nnoremap gH :tabprevious<cr>
 nnoremap gL :tabnext<cr>
 nnoremap gw <c-w>
-nnoremap gb :bnext<cr>
-nnoremap gB :bprevious<cr>
 
 " create splits/tabs
 nnoremap <leader>v :vnew<CR>
@@ -247,6 +252,11 @@ function! OpenPersonalNotes(type)
 endfunction
 nnoremap <leader>n :call OpenPersonalNotes('n')<cr>
 nnoremap <leader>N :call OpenPersonalNotes('v')<cr>
+
+" OSX shortcut to open the pretty-notes
+if has("osx")
+    nnoremap <leader>gn :call system("open ~/Dropbox/vim-notes/index.html")<cr>
+endif
 
 "======== [END MAPPINGS] ========}}}
 
