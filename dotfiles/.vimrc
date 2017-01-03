@@ -80,13 +80,13 @@ set switchbuf=usetab
 set shortmess=I
 
 " TESTING!!
-" set list                              " show whitespace
-" set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-" set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-"                                       " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-" set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-" set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-" set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 "======== [END Settings] ========}}}
 
 "======== [Search Settings] ========{{{
@@ -332,8 +332,8 @@ augroup clearimap
 augroup END
 augroup plugcpp
     autocmd!
-    autocmd FileType c,cpp nmap <leader>cv :AV<cr>
-    autocmd FileType c,cpp nmap <leader>cV :AS<cr>
+    autocmd FileType c,cpp nmap <buffer> <leader>cv :AV<cr>
+    autocmd FileType c,cpp nmap <buffer> <leader>cV :AS<cr>
     " autocmd FileType c,cpp nmap <leader><leader> m'A;<esc>''
     if has("mac")
         " [vimmux] (tmux)
@@ -342,14 +342,14 @@ augroup plugcpp
         " autocmd FileType c,cpp nmap <leader>ccz :call VimuxZoomRunner()<CR>
         " autocmd FileType c,cpp nmap <leader>ccc :VimuxInterruptRunner<CR>
         " [YouComepleteMe]
-        autocmd FileType c,cpp nmap <leader>ct :YcmCompleter GetType<cr>
-        autocmd FileType c,cpp nmap <leader>cf :YcmCompleter FixIt<cr>
-        autocmd FileType c,cpp nmap <leader>cd :YcmCompleter GoToDeclaration<cr>
+        autocmd FileType c,cpp nmap <buffer> <leader>ct :YcmCompleter GetType<cr>
+        autocmd FileType c,cpp nmap <buffer> <leader>cf :YcmCompleter FixIt<cr>
+        autocmd FileType c,cpp nmap <buffer> <leader>cd :YcmCompleter GoToDeclaration<cr>
         autocmd FileType c,cpp highlight YcmErrorSection cterm=NONE ctermfg=white ctermbg=darkgrey
         autocmd FileType c,cpp highlight YcmWarningSection cterm=NONE ctermfg=white ctermbg=Darkblue
     elseif has("win32")
-        autocmd FileType c,cpp nmap <leader>cb :make ./vs2013/local.sln<cr>
-        autocmd FileType c,cpp nmap <leader>cr :make ./vs2013/local.sln /p:Configuration=Release<cr>
+        autocmd FileType c,cpp nmap <buffer> <leader>cb :make ./vs2013/local.sln<cr>
+        autocmd FileType c,cpp nmap <buffer> <leader>cr :make ./vs2013/local.sln /p:Configuration=Release<cr>
         " Convert visual studio solution for cinder to local version
         " combine this with a test to see if ./vs2013/local.sln exists,
         " creating it if it doesnt.
@@ -392,7 +392,7 @@ endfunction
 " Dont try file_rec in my homedir
 function! MyUniteSpecial()
     if expand("%:p:h") == expand("~")
-        execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file"
+        execute "UniteWithProjectDir -start-insert -no-split file"
     else
         execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec"
     endif
