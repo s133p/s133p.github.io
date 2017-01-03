@@ -119,39 +119,40 @@ endif
 "EXPERIMENTAL! But so-far, seem really good!
     "- operator pending for 'stamp'
     nmap <silent> s :set opfunc=MagicStamp<CR>g@
-    vmap <silent> s :<C-U>call MagicStamp(visualmode(), 1)<CR>
+    vmap <silent> s :<C-U>call MagicStamp(visualmode())<CR>
     " non-operator pending: Stamp lasy yank, normal & visual
     nnoremap S viw"0p
 
     "- operator pending for 'system-clipboard-yank'
     nmap <silent> <leader>y :set opfunc=MagicClip<CR>g@
-    vmap <silent> <leader>y :<C-U>call MagicClip(visualmode(), 1)<CR>
+    vmap <silent> <leader>y :<C-U>call MagicClip(visualmode())<CR>
 
     "- operator pending for 'system-clipboard-paste-stamp'
-    nmap <silent> <leader>S :set opfunc=MagicPaste<CR>g@
-    vmap <silent> <leader>S :<C-U>call MagicPaste(visualmode(), 1)<CR>
-    " non-operator pending: Paste fron system clipboard
+    nmap <silent> <leader>s :set opfunc=MagicPaste<CR>g@
+    vmap <silent> <leader>s :<C-U>call MagicPaste(visualmode())<CR>
+    " non-operator echo: Paste fron system clipboard
     nnoremap <leader>p "*p
     nnoremap <leader>P "*P
 
     function! MagicStamp(type, ...)
-        call MagicDo(a:type, "\"0p")
+        call MagicDo(a:type, "\"0p", a:000)
     endfunction
 
     function! MagicClip(type, ...)
-        call MagicDo(a:type, "\"*y")
+        call MagicDo(a:type, "\"*y", a:000)
     endfunction
 
     function! MagicPaste(type, ...)
-        call MagicDo(a:type, "\"*p")
+        call MagicDo(a:type, "\"*p", a:000)
     endfunction
 
-    function! MagicDo(type, what_magic)
+
+    function! MagicDo(type, what_magic, ...)
         let sel_save = &selection
         let &selection = "inclusive"
         let reg_save = @@
 
-        if a:0  " Invoked from Visual mode, use gv command.
+        if a:type == 'v'  " Invoked from Visual mode, use gv command.
             silent exe "normal! gv" . a:what_magic
         elseif a:type == 'line'
             silent exe "normal! '[V']" . a:what_magic
