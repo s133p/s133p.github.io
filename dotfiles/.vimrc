@@ -37,6 +37,7 @@ Plugin 'gfontenot/vim-xcode'                  " [vim-xcode]           = Xcode in
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}    " [sparkup]             = shortcut format for generating html/xml
 Plugin 'jiangmiao/auto-pairs'                 " [auto-pairs]          = Auto-create pair & jump to end if matching pair typed
 Plugin 's133p/vim-magic-template'             " [vim-magic-template]  = make .h/.cpp interactively from template (personal)
+Plugin 'sjl/gundo.vim'                        " [gundo.vim]           = run :Gundo to get visual change history
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'         " [neocomplcache.vim]   = Autocomplete across buffers
@@ -484,5 +485,9 @@ endif
 " Use sparkup default mapping <c-e> in normal & insert mode
 let g:sparkupMapsNormal = 1
 " [END sparkup] }}}
+
+" [gundo.vim] {{{
+nmap <leader>gu :GundoToggle<cr>
+" [END gundo.vim] }}}
 
 "======== [END Plugin mappings/settings] ========}}}
