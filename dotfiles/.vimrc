@@ -234,15 +234,25 @@ set wildcharm=<c-z>
 cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
 
-" Personal notes: Opens unite in g:personal_notes_dir
-function! OpenPersonalNotes()
+" Personal notes: Opens unite in g:personal_notes_dir or g:personal_nv_notes_dir
+" based on invocation
+function! OpenPersonalNotes(type)
     if !exists("g:personal_notes_dir")
         let g:personal_notes_dir="~/Dropbox/vim-notes"
     endif
-    " Open nerdtree in notes directory
-    execute "Unite -path=" . g:personal_notes_dir . " -start-insert -no-split file_rec"
+    if !exists("g:personal_nv_notes_dir")
+        let g:personal_nv_notes_dir="~/Dropbox/NV-Notes"
+    endif
+
+    " Open Unite in notes directory
+    if a:type == 'n'
+        execute "Unite -path=" . g:personal_notes_dir . " -start-insert -no-split file_rec"
+    elseif a:type == 'v'
+        execute "Unite -path=" . g:personal_nv_notes_dir . " -start-insert -no-split file_rec"
+    endif
 endfunction
-nnoremap <leader>n :call OpenPersonalNotes()<cr>
+nnoremap <leader>n :call OpenPersonalNotes('n')<cr>
+nnoremap <leader>N :call OpenPersonalNotes('v')<cr>
 
 "======== [END MAPPINGS] ========}}}
 
@@ -297,8 +307,12 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_level = 6
 augroup mkdownNotes
     au!
-    autocmd BufWritePost /Users/lukepurcell/Desktop/nano-blog/posts/*.md silent exec "!/Users/lukepurcell/Desktop/nano-blog/make_preview.sh" | redraw!
-    autocmd BufEnter /Users/lukepurcell/Desktop/nano-blog/posts/*.md lcd ~/Desktop/nano-blog
+    " On osx-only (until I can get it working under windows):
+    " Call MakeHtmlPreview function from vim-magic-template on each write of
+    " personal notes
+    if has("mac")
+        autocmd BufWritePost ~/Dropbox/vim-notes/*.md silent call MakeHtmlPreview()
+    endif
 augroup END
 augroup markdown
     au!
@@ -384,7 +398,7 @@ augroup END
 " [dbext.vim]}}}
 
 " [vim-fugitive] {{{
-nmap <leader>gs :Gstatus<cr>
+nmap <leader>gs :Gstatus<cr>/modified<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
 nmap <leader>gu :Gpull<cr>
