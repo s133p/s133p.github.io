@@ -147,7 +147,6 @@ endif
         call MagicDo(a:type, "\"*p", a:000)
     endfunction
 
-
     function! MagicDo(type, what_magic, ...)
         let sel_save = &selection
         let &selection = "inclusive"
@@ -170,6 +169,8 @@ endif
 nnoremap Y y$ 
 
 " Shorcuts for common actions
+noremap <Leader><Leader> :
+
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
 nnoremap <leader>x :q<CR>
