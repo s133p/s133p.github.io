@@ -208,14 +208,6 @@ vnoremap K <c-u>
 nnoremap <leader>J J
 nnoremap <leader>K K
 
-" <leader>y & <leader>p copy from system clipboard NOTE: testing
-" better/operator pending version
-" nnoremap <leader>p "*p
-" nnoremap <leader>y 0"*y$
-" nnoremap <leader>Y "*y$
-" Yank entire buffer
-nnoremap <leader>aa ggVG
-
 " Execute current line or current selection as Vim EX commands.
 nnoremap <leader>e :exe getline(".")<CR>
 vnoremap <leader>e :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
@@ -325,7 +317,7 @@ augroup markdown
     autocmd FileType markdown setlocal nofoldenable
 
     autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
-    autocmd FileType markdown nmap <buffer> <leader>mn A<cr>**[<space>_<space>]**<space>
+    autocmd FileType markdown nmap <buffer> <leader>a A<cr>**[<space>_]**<space>
     " Swap [ X ] and [ _ ] with space
     autocmd FileType markdown nmap <buffer> <space> :.g/[ X ]/s/ X / * /<cr>:.g/[ _ ]/s/ _ / X /<cr>:.g/[ \* ]/s/ \* / _ /<cr>
 augroup END
@@ -370,7 +362,7 @@ augroup END
 call unite#filters#matcher_default#use(['matcher_glob'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
-nmap <leader>f :UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec<cr>
+nmap <leader>f :call MyUniteSpecial()<cr>
 nmap <leader>F :UniteWithProjectDir -start-insert -no-split file tab<cr>
 nmap <leader>r :Unite -no-split -default-action=tabswitch file_mru <cr>
 nmap <leader>U :UniteFirst resume<cr>
@@ -378,8 +370,33 @@ nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>uc :Unite change<cr>
-nmap <leader>uf :Unite qf locationlist -no-split -default-action=tabswitch<cr>
-nmap <leader>ug :Unite vimgrep -no-split -default-action=tabswitch<cr>
+nmap <leader>uf :Unite qf locationlist -default-action=switch<cr>
+
+nmap <leader>ug :call MyUniteVimGrep(1)<cr>
+nmap <leader>uG :call MyUniteVimGrep(0)<cr>
+" Replaces vimgrep in unite, saving to locationlist for easy access
+function! MyUniteVimGrep(clear_search)
+    if !exists("g:my_vim_grep_search") || a:clear_search
+        let g:my_vim_grep_search=""
+    endif
+    if !exists("g:my_vim_grep_pat")
+        let g:my_vim_grep_pat="**"
+    endif
+
+    let g:my_vim_grep_search = input("Find> ", g:my_vim_grep_search)
+    let g:my_vim_grep_pat = input("Where> ", g:my_vim_grep_pat)
+    execute "lvimgrep /" . g:my_vim_grep_search . "/j " . g:my_vim_grep_pat
+    execute "Unite qf locationlist -default-action=switch"
+endfunction
+
+" Dont try file_rec in my homedir
+function! MyUniteSpecial()
+    if expand("%:p:h") == expand("~")
+        execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file"
+    else
+        execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec"
+    endif
+endfunction
 
 " [END unite.vim] }}}
 
