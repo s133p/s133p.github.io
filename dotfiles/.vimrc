@@ -365,7 +365,7 @@ call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
 nmap <leader>f :call MyUniteSpecial()<cr>
 nmap <leader>F :UniteWithProjectDir -start-insert -no-split file tab<cr>
-nmap <leader>r :Unite -no-split -default-action=tabswitch file_mru <cr>
+nmap <leader>r :Unite -no-split -start-insert -default-action=tabswitch file_mru <cr>
 nmap <leader>U :UniteFirst resume<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
@@ -393,7 +393,7 @@ endfunction
 " Dont try file_rec in my homedir
 function! MyUniteSpecial()
     if expand("%:p:h") == expand("~")
-        execute "UniteWithProjectDir -start-insert -no-split file"
+        execute "UniteWithProjectDir -start-insert -no-split file file_mru"
     else
         execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec"
     endif
