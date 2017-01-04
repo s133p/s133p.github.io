@@ -11,38 +11,41 @@ call vundle#begin()                           " required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'                   " [vim-sensible]        = Sensible defaults
-Plugin 'tpope/vim-repeat'                     " [vim-repeat]          = Allow plugin mappings to be repeated w/ '.'
 Plugin 'tpope/vim-unimpaired'                 " [vim-unimpaired]      = paired mappings
 Plugin 'tpope/vim-abolish'                    " [vim-abolish]         = Coerce cases
+Plugin 'tpope/vim-surround'                   " [vim-surround]        = Does what it says on the tin
+Plugin 'tpope/vim-repeat'                     " [vim-repeat]          = Allow plugin mappings to be repeated w/ '.'
 Plugin 'michaeljsmith/vim-indent-object'      " [vim-indent-object]   = Use indent levels as text objects
 Plugin 'tomtom/tcomment_vim'                  " [tcomment]            = Shortcuts for commenting
 Plugin 'spiiph/vim-space'                     " [vim-space]           = Use spacebar to repeat last movement
+Plugin 'junegunn/vim-easy-align'              " [vim-easy-align]      = Replacees tabular, includes text-obj mappings
+Plugin 'kshenoy/vim-signature'                " [vim-signature]       = marks in sidebar
+Plugin 'jiangmiao/auto-pairs'                 " [auto-pairs]          = Auto-create pair & jump to end if matching pair typed
+
+Plugin 'scrooloose/nerdtree'                  " [nerdtree]            = file tree
 Plugin 'Shougo/unite.vim'                     " [unite.vim]           = Fully replaces Ctrl-P & much more
 Plugin 'sgur/unite-qf'                        " [unite-qf]            = Quickfix for unite
 Plugin 'shougo/neomru.vim'                    " [neomru]              = MRU for unite, replaces startify
 Plugin 'vim-scripts/a.vim'                    " [a.vim]               = Swap between cpp & hpp
-Plugin 'tpope/vim-surround'                   " [vim-surround]        = Does what it says on the tin
 Plugin 'airblade/vim-rooter'                  " [vim-rooter]          = Change directory to root of projects
 Plugin 'tpope/vim-fugitive'                   " [vim-fugitive]        = Git integration
-Plugin 'junegunn/vim-easy-align'              " [vim-easy-align]      = Replacees tabular, includes text-obj mappings
-Plugin 'kshenoy/vim-signature'                " [vim-signature]       = marks in sidebar
-Plugin 'scrooloose/nerdtree'                  " [nerdtree]            = file tree
+
 Plugin 'plasticboy/vim-markdown'              " [vim-markdown]        = markdown highlighting
+Plugin 'vim-scripts/dbext.vim'                " [dbext.vim]           = databases from within vim
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}    " [sparkup]             = shortcut format for generating html/xml
+
 Plugin 'vim-airline/vim-airline'              " [vim-airline]         = Better tab/status line
 Plugin 'vim-airline/vim-airline-themes'       " [vim-airline-themes]  = Themes for airline
 Plugin 'morhetz/gruvbox'                      " [gruvbox]             = Pretty theme!
-Plugin 'vim-scripts/dbext.vim'                " [dbext.vim]           = databases from within vim
-Plugin 'gfontenot/vim-xcode'                  " [vim-xcode]           = Xcode integration
 
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}    " [sparkup]             = shortcut format for generating html/xml
-Plugin 'jiangmiao/auto-pairs'                 " [auto-pairs]          = Auto-create pair & jump to end if matching pair typed
 Plugin 's133p/vim-magic-template'             " [vim-magic-template]  = make .h/.cpp interactively from template (personal)
-Plugin 'sjl/gundo.vim'                        " [gundo.vim]           = run :Gundo to get visual change history
 
 if has("win32")
     Plugin 'Shougo/neocomplcache.vim'         " [neocomplcache.vim]   = Autocomplete across buffers
 elseif has("mac")
     Plugin 'Valloric/YouCompleteMe'           " [YouCompleteMe]       = Clang based completeion
+    Plugin 'fatih/vim-go'                     " [vim-go]              = Lots of nice go features
+    Plugin 'gfontenot/vim-xcode'              " [vim-xcode]           = Xcode integration
 endif
 
 call vundle#end()                             " required
