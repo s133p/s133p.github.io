@@ -95,7 +95,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr>
+"map <leader><space> :let @/=''<cr>
 "======== [END Search Settings] ========}}}
 
 "======== [Gvim / MacVim] ========{{{
@@ -111,7 +111,8 @@ if has("win32")
 elseif has("mac")
     " macvim options
     set guioptions=c  "only console prompt, no other ui-chrome
-    set guifont=Hack\ Regular:h12
+    "set guifont=Hack\ Regular:h12
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 endif
 "======== [END Gvim / MacVim] ========}}}
 
@@ -172,9 +173,7 @@ nnoremap Y y$
 "noremap <Leader><Leader> :
 nnoremap <Leader><Leader> ^y$dd:<c-r>0<cr>
 
-
-noremap <Leader>ww :w<CR>
-noremap <Leader>wq :wq<CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <leader>x :q<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
