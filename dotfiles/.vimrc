@@ -169,7 +169,9 @@ endif
 nnoremap Y y$
 
 " Shorcuts for common actions
-noremap <Leader><Leader> :
+"noremap <Leader><Leader> :
+nnoremap <Leader><Leader> ^y$dd:<c-r>0<cr>
+
 
 noremap <Leader>ww :w<CR>
 noremap <Leader>wq :wq<CR>
@@ -329,9 +331,9 @@ augroup markdown
     autocmd FileType markdown setlocal nofoldenable
 
     autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
-    autocmd FileType markdown nmap <buffer> <leader>a A<cr>**[<space>_]**<space>
+    autocmd FileType markdown nmap <buffer> <leader>a A<cr>**[-]**<space>
     " Swap [ X ] and [ _ ] with space
-    autocmd FileType markdown nmap <buffer> <space> :.g/[ X ]/s/ X / * /<cr>:.g/[ _ ]/s/ _ / X /<cr>:.g/[ \* ]/s/ \* / _ /<cr>
+    autocmd FileType markdown nnoremap <buffer> <silent> <leader><space> mz:.g/\[+\]/s/\[+\]/[*]/<cr>:.g/\[-\]/s/\[-\]/[+]/<cr>:.g/\[\*\]/s/\[\*\]/[-]/<cr>`zmz
 augroup END
 " [vim-markdown] }}}
 
@@ -376,13 +378,13 @@ call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(xcode\/build\|\.xcodeproj\|\.DS_Store\|node_modules\|data\/fonts\|data\/images\|DSNode\/node\|install\|vs2013\/Debug\|vs2013\/Release\)')
 nmap <leader>f :call MyUniteSpecial()<cr>
 nmap <leader>F :UniteWithProjectDir -start-insert -no-split file tab<cr>
-nmap <leader>r :Unite -no-split -start-insert -default-action=tabswitch file_mru <cr>
+nmap <leader>r :Unite -no-split -start-insert file_mru <cr>
 nmap <leader>U :UniteFirst resume<cr>
 nmap <leader>ut :Unite tab bookmark<cr>
 nmap <leader>ub :Unite -no-split buffer<cr>
 nmap <leader>uB :UniteBookmarkAdd<cr><cr>
 nmap <leader>uc :Unite change<cr>
-nmap <leader>uf :Unite qf locationlist -default-action=switch<cr>
+nmap <leader>uf :Unite qf locationlist<cr>
 
 nmap <leader>ug :call MyUniteVimGrep(1)<cr>
 nmap <leader>uG :call MyUniteVimGrep(0)<cr>
@@ -401,12 +403,12 @@ function! MyUniteVimGrep(clear_search)
     execute "Unite qf locationlist -default-action=switch"
 endfunction
 
-" Dont try file_rec in my homedir
+" Dont try file_rec in my homedir, do file and mru instead
 function! MyUniteSpecial()
     if expand("%:p:h") == expand("~")
         execute "UniteWithProjectDir -start-insert -no-split file file_mru"
     else
-        execute "UniteWithProjectDir -start-insert -no-split -default-action=tabswitch file_rec"
+        execute "UniteWithProjectDir -start-insert -no-split file_rec"
     endif
 endfunction
 
