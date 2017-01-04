@@ -20,7 +20,7 @@ Plugin 'tomtom/tcomment_vim'                  " [tcomment]            = Shortcut
 Plugin 'spiiph/vim-space'                     " [vim-space]           = Use spacebar to repeat last movement
 Plugin 'junegunn/vim-easy-align'              " [vim-easy-align]      = Replacees tabular, includes text-obj mappings
 Plugin 'kshenoy/vim-signature'                " [vim-signature]       = marks in sidebar
-Plugin 'jiangmiao/auto-pairs'                 " [auto-pairs]          = Auto-create pair & jump to end if matching pair typed
+Plugin 'cohama/lexima.vim'                    " [lexima-vim]          = Auto-create pair & jump to end if matching pair typed
 
 Plugin 'scrooloose/nerdtree'                  " [nerdtree]            = file tree
 Plugin 'Shougo/unite.vim'                     " [unite.vim]           = Fully replaces Ctrl-P & much more
