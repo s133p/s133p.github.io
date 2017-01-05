@@ -335,7 +335,7 @@ augroup markdown
     autocmd FileType markdown nnoremap <buffer> <leader>mc :Toc<cr>
     autocmd FileType markdown nmap <buffer> <leader>a A<cr>**[-]**<space>
     " Swap [ X ] and [ _ ] with space
-    autocmd FileType markdown nnoremap <buffer> <silent> <leader><space> mz:.g/\[+\]/s/\[+\]/[*]/<cr>:.g/\[-\]/s/\[-\]/[+]/<cr>:.g/\[\*\]/s/\[\*\]/[-]/<cr>`zmz
+    autocmd FileType markdown nnoremap <buffer> <silent> <leader><space> mz:.g/\[+\]/s/\[+\]/[*]/<cr>:.g/\[-\]/s/\[-\]/[+]/<cr>:.g/\[\*\]/s/\[\*\]/[-]/<cr>`z:delmarks!<cr>
 augroup END
 " [vim-markdown] }}}
 
