@@ -11,7 +11,7 @@ call vundle#begin()                           " required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'                   " [vim-sensible]        = Sensible defaults
-Plugin 'tpope/vim-unimpaired'                 " [vim-unimpaired]      = paired mappings
+"Plugin 'tpope/vim-unimpaired'                 " [vim-unimpaired]      = paired mappings
 Plugin 'tpope/vim-abolish'                    " [vim-abolish]         = Coerce cases
 Plugin 'tpope/vim-surround'                   " [vim-surround]        = Does what it says on the tin
 Plugin 'tpope/vim-repeat'                     " [vim-repeat]          = Allow plugin mappings to be repeated w/ '.'
@@ -177,9 +177,13 @@ endfunction
 nnoremap Y y$
 
 " Shorcuts for common actions
-nmap <silent> <space> o<esc>k
-nmap <silent> <leader><space> O<esc>j
 nnoremap <Leader><Leader> ^y$dd:<c-r>0<cr>
+
+"Replacements for vim-unimpaired
+nnoremap <silent> <space> o<esc>k
+nnoremap <silent> <leader><space> O<esc>j
+nnoremap <silent> coh :set hlsearch!<cr>
+nnoremap <silent> cos :set spell!<cr>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>x :q<CR>
