@@ -3,7 +3,10 @@
         <title>.</title>
         <link rel="shortcut icon" href="avatar_2450e2b4c51a_128.png">
         <style>
-            body {background-color: #231f20;}
+            body {
+                background-color: #231f20;
+                font-size: .6em;
+            }
             #container {
                 width: 80%;
                 margin-top: 80px;
@@ -16,11 +19,11 @@
             }
             .spacer {
                 margin: 20px;
-                height: 3em;
+                height: 1em;
                 flex-basis: 90%;
                 flex-grow: 1;
                 border-top: 1px solid #fd8724;
-                border-bottom: 1px solid #fd8724;
+                /* border-bottom: 1px solid #fd8724; */
             }
             a {
                 min-width: 300px;
@@ -32,12 +35,18 @@
                 display: block;
                 background-color: #262626;
                 text-align: center;
-                font-size: 3.2em;
+                font-size: 3.6em;
                 font-weight: 300;
                 font-family: Raleway, Helvetica Neue, Helvetica, sans-serif;
                 text-decoration: none;
                 color: #ada823;
                 border-bottom: 4px solid #b87fa0;
+            }
+            a.small {
+                flex-basis: 8%;
+                font-size: 2.0em;
+                padding-top: 0.9em;
+                padding-bottom: 0.9em;
             }
             a:hover {
                 color: #ada823;
@@ -55,6 +64,11 @@
             <a href="https://www.tumblr.com/dashboard">[ TUMBLR ]</a>
             <a href="https://www.netflix.com/browse">[ NETFLIX ]</a>
 
+            <div class="spacer"> </div>
+            <a class="small" href="https://www.reddit.com/r/vim/">[ /r/vim ]</a>
+            <a class="small" href="https://www.reddit.com/r/unixporn/">[ /r/unixporn ]</a>
+            <a class="small" href="https://maps.google.com/">[ MAPS ]</a>
+            <a class="small" href="http://giphy.com/">[ GIFs ]</a>
             <div class="spacer"> </div>
 
             <a href="https://downstream.hipchat.com/chat/lobby">[ HIPCHAT ]</a>
