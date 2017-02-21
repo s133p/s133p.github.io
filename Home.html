@@ -9,8 +9,8 @@
                 font-size: .6em;
             }
             #container {
-                width: 80%;
-                min-width: 400px;
+                width: 50%;
+                min-width: 700px;
                 margin-top: 80px;
                 margin-left: auto;
                 margin-right: auto;
@@ -18,6 +18,16 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 flex-flow: flex-start;
+                -webkit-transition: all .25s; /* Safari */
+                transition: all .25s;
+                transition-timing-function: ease-in-out;
+            }
+            @media (max-width: 800px) {
+                #container {
+                    width: 95%;
+                    min-width: 95%;
+                    font-size: 0.75em;
+                }
             }
             .spacer {
                 margin: 20px;
@@ -28,8 +38,8 @@
                 /* border-bottom: 1px solid #fd8724; */
             }
             a {
-                min-width: 3em;
-                flex-basis: 3em;
+                min-width: 4em;
+                flex-basis: 4em;
                 flex-grow: 1;
                 margin: 10px;
                 padding-top: .8em;
@@ -37,7 +47,7 @@
                 display: block;
                 background-color: #2B2B2B;
                 text-align: center;
-                font-size: 7.0em;
+                font-size: 6.0em;
                 font-weight: 300;
                 font-family: Raleway, Helvetica Neue, Helvetica, sans-serif;
                 text-decoration: none;
@@ -46,22 +56,43 @@
             }
             a.small {
                 font-size: 2.6em;
+                flex-basis: 5em;
                 padding-top: 0.9em;
                 padding-bottom: 0.9em;
             }
             a:hover {
-                color: #FF6081;
+                /* color: #FF6081; */
                 border-bottom: 4px solid #F7D3C6;
             }
+            a i {
+                -webkit-transition: all .15s; /* Safari */
+                transition: all .15s;
+                transition-timing-function: ease-in-out;
+                transform: scale(1, 1);
+            }
+            a:hover i {
+                transform: scale(1.25, 1.25) rotate(12deg);
+            }
+            a:hover i.fa { color: #eee; }
+            a:hover i.fa-rss-square { color: #FF6600; }
+            a:hover i.fa-facebook-square { color: #3B5998; }
+            a:hover i.fa-tumblr-square { color: #35465c; }
+            a:hover i.fa-paper-plane { color: #eee; }
+            a:hover i.fa-youtube-square { color: #cd201f; }
+            a:hover i.fa-youtube-play { color: #B9090B; }
+            a:hover i.fa-reddit-square { color: #eee; }
+            a:hover i.fa-code { color: #3AADD1; }
+            a:hover i.fa-terminal { color: #3AADD1; }
+            a:hover i.fa-keyboard-o { color: #3AADD1; }
         </style>
     </head>
     <body>
         <div id="container">
             <a href="http://feedly.com/i/latest"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
             <a href="https://www.tumblr.com/dashboard"><i class="fa fa-tumblr-square" aria-hidden="true"></i></a>
-            <a href="https://inbox.google.com/?pli=1"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
             <a href="https://www.youtube.com/"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            <a href="https://inbox.google.com/?pli=1"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
             <a href="https://www.netflix.com/browse"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
 
             <div class="spacer"> </div>
