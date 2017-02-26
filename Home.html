@@ -6,6 +6,7 @@
         <style>
             body {
                 background-color: #231f20;
+                font-family: Raleway, Helvetica Neue, Helvetica, sans-serif;
                 font-size: .6em;
             }
             #container {
@@ -18,9 +19,8 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 flex-flow: flex-start;
-                -webkit-transition: all .25s; /* Safari */
-                transition: all .25s;
-                transition-timing-function: ease-in-out;
+
+                animation: startup .5s ease-in-out 0s normal 1 forwards running;
             }
             @media (max-width: 800px) {
                 #container {
@@ -35,7 +35,11 @@
                 flex-basis: 100%;
                 flex-grow: 1;
                 border-top: 1px solid #C2F2ED;
-                /* border-bottom: 1px solid #fd8724; */
+            }
+
+            a, a i {
+                transition: all .25s;
+                transition-timing-function: ease-in-out;
             }
             a {
                 min-width: 4em;
@@ -49,10 +53,8 @@
                 text-align: center;
                 font-size: 6.0em;
                 font-weight: 300;
-                font-family: Raleway, Helvetica Neue, Helvetica, sans-serif;
                 text-decoration: none;
-                color: #F7D3C6;
-                border-bottom: 4px solid #FF6081;
+                border-bottom: 4px solid rgba(0,0,0,0);
             }
             a.small {
                 font-size: 2.6em;
@@ -61,20 +63,17 @@
                 padding-bottom: 0.9em;
             }
             a:hover {
-                /* color: #FF6081; */
-                border-bottom: 4px solid #F7D3C6;
+                /* border-bottom: 4px solid #F7D3C6; */
+                border-bottom: 4px solid #FFF;
             }
-            a i {
-                -webkit-transition: all .1s; /* Safari */
-                transition: all .1s;
-                transition-timing-function: ease-in-out;
-                transform: scale(1, 1);
+            a i.fa {
+                color: #F7D3C6;
+                padding-bottom: 6px;
+                opacity:.5;
             }
             a:hover i {
-                transform: scale(1.25, 1.25) rotate(8deg);
-            }
-            a:active i {
-                transform: scale(1.5, 1.5) rotate(-8deg);
+                animation: bounce .25s ease-in-out .1s alternate 2 both running;
+                opacity:1;
             }
             a:hover i.fa { color: #eee; }
             a:hover i.fa-rss-square { color: #FF6600; }
@@ -101,7 +100,27 @@
             a:hover i.fa-tachometer { color: #1980E8; }
             a:hover i.fa-archive { color: #01B1F0; }
             a:hover i.fa-github-alt { color: #fff; }
+
+            @keyframes startup {
+                0% { opacity:0; transform: scale(1.15); }
+                30% { opacity:0; }
+                100% { opacity:1; transform: scale(1); }
+            }
+            @keyframes bounce {
+                0% { transform: scale(1);  }
+                100% { transform: scale(1.125); }
+            }
         </style>
+        <script type="text/javascript">
+            // window.addEventListener('load', function(){
+            //     // document.getElementById("container").innerHTML += "boop?";
+            //     var things = document.getElementsByTagName("a");
+            //     for(var i = 0; i < things.length; ++i){
+            //         things[i].onclick = function(){ this.classList.add("fuck"); };
+            //     }
+            //     // things[0].classList.add("fuck")
+            // }, false );
+        </script>
     </head>
     <body>
         <div id="container">
