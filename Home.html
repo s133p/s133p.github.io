@@ -3,124 +3,7 @@
         <title>.</title>
         <link rel="shortcut icon" href="avatar_2450e2b4c51a_128.png">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-        <style>
-            body {
-                background-color: #231f20;
-                font-family: Raleway, Helvetica Neue, Helvetica, sans-serif;
-                font-size: .6em;
-            }
-            #container {
-                width: 50%;
-                min-width: 700px;
-                margin-top: 80px;
-                margin-left: auto;
-                margin-right: auto;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                flex-flow: flex-start;
-
-                animation: startup .5s ease-in-out 0s normal 1 forwards running;
-            }
-            @media (max-width: 800px) {
-                #container {
-                    width: 95%;
-                    min-width: 95%;
-                    font-size: 0.75em;
-                }
-            }
-            .spacer {
-                margin: 20px;
-                height: 1em;
-                flex-basis: 100%;
-                flex-grow: 1;
-                border-top: 1px solid #C2F2ED;
-            }
-
-            a, a i {
-                transition: all .25s;
-                transition-timing-function: ease-in-out;
-            }
-            a {
-                min-width: 4em;
-                flex-basis: 4em;
-                flex-grow: 1;
-                margin: 10px;
-                padding-top: .8em;
-                padding-bottom: .8em;
-                display: block;
-                background-color: #2B2B2B;
-                text-align: center;
-                font-size: 6.0em;
-                font-weight: 300;
-                text-decoration: none;
-                border-bottom: 4px solid rgba(0,0,0,0);
-            }
-            a.small {
-                font-size: 2.6em;
-                flex-basis: 5em;
-                padding-top: 0.9em;
-                padding-bottom: 0.9em;
-            }
-            a:hover {
-                /* border-bottom: 4px solid #F7D3C6; */
-                border-bottom: 4px solid #FFF;
-            }
-            a i.fa {
-                color: #F7D3C6;
-                padding-bottom: 6px;
-                opacity:.5;
-            }
-            a:hover i {
-                animation: bounce .25s ease-in-out .1s alternate 2 both running;
-                opacity:1;
-            }
-            a:hover i.fa { color: #eee; }
-            a:hover i.fa-rss-square { color: #FF6600; }
-            a:hover i.fa-tumblr-square { color: #35465c; }
-            a:hover i.fa-youtube-square { color: #cd201f; }
-
-            a:hover i.fa-facebook-square { color: #3B5998; }
-            a:hover i.fa-paper-plane { color: #fff; }
-            a:hover i.fa-youtube-play { color: #B9090B; }
-
-            a:hover i.fa-reddit-square { color: #eee; }
-            a:hover i.fa-code { color: #3AADD1; }
-            a:hover i.fa-terminal { color: #3AADD1; }
-            a:hover i.fa-keyboard-o { color: #3AADD1; }
-
-            a:hover i.fa-map { color: #DE4A39; }
-            a:hover i.fa-gift { color: #9A1FFF; }
-            a:hover i.fa-university { color: #E5091F; }
-
-            a:hover i.fa-weixin { color: #1D4F83; }
-            a:hover i.fa-envelope { color: #0070C9; }
-            a:hover i.fa-bug { color: #EF7D00; }
-
-            a:hover i.fa-tachometer { color: #1980E8; }
-            a:hover i.fa-archive { color: #01B1F0; }
-            a:hover i.fa-github-alt { color: #fff; }
-
-            @keyframes startup {
-                0% { opacity:0; transform: scale(1.15); }
-                30% { opacity:0; }
-                100% { opacity:1; transform: scale(1); }
-            }
-            @keyframes bounce {
-                0% { transform: scale(1);  }
-                100% { transform: scale(1.125); }
-            }
-        </style>
-        <script type="text/javascript">
-            // window.addEventListener('load', function(){
-            //     // document.getElementById("container").innerHTML += "boop?";
-            //     var things = document.getElementsByTagName("a");
-            //     for(var i = 0; i < things.length; ++i){
-            //         things[i].onclick = function(){ this.classList.add("fuck"); };
-            //     }
-            //     // things[0].classList.add("fuck")
-            // }, false );
-        </script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="container">
@@ -132,18 +15,27 @@
             <a href="https://www.netflix.com/browse"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
 
             <div class="spacer"> </div>
-            <a class="small" href="https://www.reddit.com/r/vim/">
-                <i class="fa fa-reddit-square" aria-hidden="true"></i>
-                <i class="fa fa-code" aria-hidden="true"></i>
-            </a>
-            <a class="small" href="https://www.reddit.com/r/unixporn/">
-                <i class="fa fa-reddit-square" aria-hidden="true"></i>
-                <i class="fa fa-terminal" aria-hidden="true"></i>
-            </a>
-            <a class="small" href="https://www.reddit.com/r/MechanicalKeyboards/">
-                <i class="fa fa-reddit-square" aria-hidden="true"></i>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i>
-            </a>
+
+            <!-- <div class="section"> -->
+                <!-- <a class="small icon" href="#"> -->
+                <!--     <i class="fa fa&#45;reddit&#45;square" aria&#45;hidden="true"></i> -->
+                <!-- </a> -->
+                <!-- <div class="inner&#45;section"> -->
+                    <a class="small" href="https://www.reddit.com/r/vim/">
+                        <i class="fa fa-reddit-square" aria-hidden="true"></i>
+                        <i class="fa fa-code" aria-hidden="true"></i>
+                    </a>
+                    <a class="small" href="https://www.reddit.com/r/unixporn/">
+                        <i class="fa fa-reddit-square" aria-hidden="true"></i>
+                        <i class="fa fa-terminal" aria-hidden="true"></i>
+                    </a>
+                    <a class="small" href="https://www.reddit.com/r/MechanicalKeyboards/">
+                        <i class="fa fa-reddit-square" aria-hidden="true"></i>
+                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                    </a>
+            <!--     </div> -->
+            <!-- </div> -->
+
             <a class="small" href="https://maps.google.com/"><i class="fa fa-map" aria-hidden="true"></i></a>
             <a class="small" href="http://giphy.com/"><i class="fa fa-gift" aria-hidden="true"></i></a>
             <a class="small" href="https://www.bankofamerica.com/"><i class="fa fa-university" aria-hidden="true"></i></a>
